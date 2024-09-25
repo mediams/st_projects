@@ -3,6 +3,7 @@ Offline_Materialen
 myenv/
 _Base
 notes.lnk
+
 .idea/
 
 *.iml
@@ -10,6 +11,7 @@ notes.lnk
 *.class
 
 *.log
+*.bat
 
 target/
 
