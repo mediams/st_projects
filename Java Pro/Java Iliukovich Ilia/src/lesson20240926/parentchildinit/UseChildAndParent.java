@@ -10,8 +10,8 @@ public class UseChildAndParent {
 
 //        Child.staticMethod();
         Child child = new Child();
-//        child.nonStaticMethod();
-//
+        child.nonStaticMethod();
+
 //        System.out.println(Child.staticValue);
 //        System.out.println(Parent.staticValue);
     }
