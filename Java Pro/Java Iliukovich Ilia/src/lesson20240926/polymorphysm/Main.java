@@ -8,7 +8,7 @@ public class Main {
         Integer i;
         i = 10;
 
-        Child link;
+        Parent link;
 
         boolean condition = false;
         if (condition) {
