@@ -64,3 +64,67 @@ SELECT
 *
 FROM products
 WHERE title LIKE 'sk%';
+
+use hr;
+show tables;
+select * from jobs limit 2;
+
+select * from employees WHERE department_id = 90;
+
+
+SELECT * FROM
+employees
+WHERE salary > 5000;
+
+SELECT
+*
+FROM employees
+WHERE first_name LIKE 'L%';
+
+
+SELECT 
+* 
+FROM departments
+WHERE location_id = 1700;
+
+
+USE HR;
+
+SELECT 
+* 
+FROM departments
+WHERE location_id = 1700;
+
+
+SELECT 
+* 
+FROM locations
+WHERE country_id = 'DE';
+
+SELECT
+salary
+FROM employees
+WHERE first_name = 'Lex' AND last_name = 'De Haan';
+
+
+SELECT
+*
+FROM employees
+WHERE job_id = 'FI_ACCOUNT' AND salary <8000;
+
+
+SELECT
+*
+FROM employees
+WHERE commission_pct IS NULL;
+
+
+SELECT
+first_name,
+last_name
+FROM employees
+WHERE department_id NOT IN (80, 90, 110);
+
+SELECT *
+FROM employees
+WHERE salary != 5000;
