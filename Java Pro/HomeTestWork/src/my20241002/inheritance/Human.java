@@ -30,7 +30,6 @@ public class Human extends Creature {
         }
     }
 
-
     @Override
     public void introduce() {
         System.out.printf("Hi! I'm %s. I'm the man who owns this whole zoo.\n", name);
@@ -38,6 +37,13 @@ public class Human extends Creature {
 
     @Override
     public void play(Creature another) {
-        System.out.printf("%s play with %s.", this.name, another.getName());
+        if (this == another) {
+            System.out.printf("%s going to the movies.\n", getName());
+        }else System.out.printf("%s play with %s.\n", this.getName(), another.getName());
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 }

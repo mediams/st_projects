@@ -18,7 +18,11 @@ public class Dog extends Animal {
 
     @Override
     public void play(Creature another) {
-
+        if (this == another) {
+            System.out.printf("%s is playing with her tail.\n", getName());
+        } else if (another.getClass().getSimpleName().equals("Cat") ) {
+            System.out.println("A dog barks at a cat.");
+        }else System.out.printf("%s play with %s.\n", this.getName(), another.getName());
     }
 
 }
