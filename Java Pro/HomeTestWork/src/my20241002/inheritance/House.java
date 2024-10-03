@@ -36,11 +36,19 @@ public class House {
         cat.play(cat);
         cat.play(dog);
         cat.play(human);
+        cat.catchMouse();
 
         System.out.println();
         dog.play(cat);
         dog2.play(dog);
         dog.play(human);
+
+        System.out.println();
+        Robot robot = new Robot("Verter",007,75401);
+        robot.introduce();
+        System.out.println(robot);
+        robot.walk(cat);
+        robot.catchMouse();
 
     }
 

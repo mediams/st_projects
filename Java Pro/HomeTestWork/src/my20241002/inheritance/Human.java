@@ -1,6 +1,6 @@
 package my20241002.inheritance;
 
-public class Human extends Creature {
+public class Human extends Creature implements Walkable {
 
     private String name;
 
@@ -46,4 +46,17 @@ public class Human extends Creature {
     public String getName() {
         return name;
     }
+
+    @Override
+    public void walk(Animal animal) {
+        animal.setHungry(true);
+        System.out.println("The animal has taken a walk and is hungry.");
+    }
+
+    public void walk(Animal... animal) {
+        for (Animal a : animal) {
+            walk(a);
+        }
+    }
+
 }

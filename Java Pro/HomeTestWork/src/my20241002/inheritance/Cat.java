@@ -1,6 +1,6 @@
 package my20241002.inheritance;
 
-public class Cat extends Animal {
+public class Cat extends Animal implements CatchingSkills{
 
     public Cat(String name, int age) {
         super(name, age);
@@ -24,4 +24,8 @@ public class Cat extends Animal {
         }else System.out.printf("%s play with %s.\n", this.getName(), another.getName());
     }
 
+    @Override
+    public void catchMouse() {
+        System.out.printf("%s %s catches mice.\n", this.getClass().getSimpleName(), super.getName());
+    }
 }
