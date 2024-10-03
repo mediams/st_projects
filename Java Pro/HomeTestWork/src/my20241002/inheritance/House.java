@@ -44,7 +44,7 @@ public class House {
         dog.play(human);
 
         System.out.println();
-        Robot robot = new Robot("Verter",007,75401);
+        Robot robot = new Robot("Verter", 7,75401);
         robot.introduce();
         System.out.println(robot);
         robot.walk(cat);
