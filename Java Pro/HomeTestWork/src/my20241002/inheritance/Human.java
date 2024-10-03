@@ -1,6 +1,6 @@
-package lesson20240924.inheritance;
+package my20241002.inheritance;
 
-public class Human {
+public class Human extends Creature {
 
     private String name;
 
@@ -13,10 +13,31 @@ public class Human {
         System.out.println("Animal " + animal.getName() + " is not hungry anymore");
     }
 
+    public void walkAnimal(Animal animal) {
+        animal.setHungry(true);
+        System.out.println("The animal has taken a walk and is hungry.");
+    }
+
+    public void walkAnimal(Animal... animal) {
+        for (Animal a : animal) {
+            walkAnimal(a);
+        }
+    }
+
     public void feedAnimals(Animal... animals) {
         for (Animal a : animals) {
             feedAnimal(a);
         }
     }
 
+
+    @Override
+    public void introduce() {
+        System.out.printf("Hi! I'm %s. I'm the man who owns this whole zoo.\n", name);
+    }
+
+    @Override
+    public void play(Creature another) {
+        System.out.printf("%s play with %s.", this.name, another.getName());
+    }
 }

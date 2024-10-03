@@ -1,4 +1,4 @@
-package lesson20240924.inheritance;
+package my20241002.inheritance;
 
 public class Cat extends Animal {
 
@@ -6,14 +6,18 @@ public class Cat extends Animal {
         super(name, age);
     }
 
-    public void meow() {
-        System.out.println("Meow!");
+    public String meow() {
+        return "Meow!";
     }
 
     @Override
     public void introduce() {
-        meow();
-        System.out.println("Hello! I'm cat. My name is " + getName());
+        System.out.println(meow() + " I'm cat. My name is " + getName());
+    }
+
+    @Override
+    public void play(Creature another) {
+
     }
 
 }

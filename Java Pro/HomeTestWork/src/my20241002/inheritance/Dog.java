@@ -1,4 +1,4 @@
-package lesson20240924.inheritance;
+package my20241002.inheritance;
 
 public class Dog extends Animal {
 
@@ -7,14 +7,18 @@ public class Dog extends Animal {
         // some other code
     }
 
-    public void gav() {
-        System.out.println("Gav! Gav!");
+    public String gav() {
+        return "Gav! Gav!";
     }
 
     @Override
     public void introduce() {
-        gav();
-        System.out.println("Hello! I'm dog. My name is " + getName());
+        System.out.println(gav() + " I'm dog. My name is " + getName());
+    }
+
+    @Override
+    public void play(Creature another) {
+
     }
 
 }

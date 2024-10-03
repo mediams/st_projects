@@ -1,31 +1,35 @@
-package lesson20240924.inheritance;
+package my20241002.inheritance;
 
 public class House {
 
     public static void main(String[] args) {
         Cat cat = new Cat("Tom", 2);
         Dog dog = new Dog("Maks", 1);
-
-        cat.meow();
-        dog.gav();
+        Dog dog2 = new Dog("Rex", 3);
 
         cat.introduce();
         dog.introduce();
+        System.out.println(cat);
+        System.out.println(dog);
 
-        Animal animal = new Dog("Dog", 2);
-        animal.introduce();
-        animal = new Cat("Cat", 1);
-        animal.introduce();
-
+        System.out.println();
         Human human = new Human("Peter");
-        System.out.println(cat);
-        System.out.println(dog);
-        System.out.println(animal);
+        human.introduce();
 
-        human.feedAnimals(cat, dog, animal);
+        System.out.println();
+        human.feedAnimals(cat, dog, dog2);
+
+        System.out.println();
+        human.walkAnimal(cat);
+
+        System.out.println();
         System.out.println(cat);
         System.out.println(dog);
-        System.out.println(animal);
+        System.out.println(dog2);
+
+        System.out.println();
+        human.play(cat);
+
     }
 
 }

@@ -1,6 +1,6 @@
-package lesson20240924.inheritance;
+package my20241002.inheritance;
 
-public abstract class Animal {
+public abstract class Animal extends Creature {
 
     private String name;
     private int age;
@@ -35,8 +35,8 @@ public abstract class Animal {
 
     @Override
     public String toString() {
-        return "Animal{" +
-                "name='" + name + '\'' +
+        return "Animal{" + this.getClass().getSimpleName() +
+                " name='" + name + '\'' +
                 ", age=" + age +
                 ", isHungry=" + isHungry +
                 '}';
