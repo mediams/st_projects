@@ -3,7 +3,7 @@ package my20241002.inheritance;
 public class House {
 
     public static void main(String[] args) {
-        Cat cat = new Cat("Tom", 2);
+        Cat cat = new Cat("Ara", 2);
         Dog dog = new Dog("Maks", 1);
         Dog dog2 = new Dog("Rex", 3);
 
