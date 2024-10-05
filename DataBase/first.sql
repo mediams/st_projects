@@ -345,3 +345,5 @@ SELECT
     END AS category
 FROM airliners;
 
+use hr;
+show tables;
