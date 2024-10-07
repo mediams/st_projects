@@ -370,3 +370,29 @@ SELECT
 FROM employees WHERE manager_id IS NULL;
 
 --
+
+use airport;
+
+select * from airliners;
+
+SELECT
+	side_number AS Number,
+	production_year AS Age,
+    CASE
+        WHEN distance < 2000 THEN 'Old'
+        WHEN distance BETWEEN 2000 AND 2010 THEN 'Mid'
+        ELSE "New"
+    END AS Class
+FROM airliners WHERE distance <= 10000 ORDER BY AGE;
+
+
+SELECT
+id,
+trip_id,
+CASE
+		WHEN service_class ='PremiumEconomy' THEN price * 0.80
+        WHEN service_class ='Economy' THEN price * 0.85
+        WHEN service_class ='Business' THEN price * 0.9
+        ELSE price * 1
+    END AS new_price
+FROM tickets WHERE service_class IN ('Economy', 'PremiumEconomy', 'Business');
