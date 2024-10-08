@@ -2,10 +2,11 @@ package my20241002.inheritance;
 
 public class Human extends Creature implements Walkable {
 
-    private String name;
+    //private String name;
 
     public Human(String name) {
-        this.name = name;
+        super(name);
+        //this.name = name;
     }
 
     public void feedAnimal(Animal animal) {
@@ -32,7 +33,7 @@ public class Human extends Creature implements Walkable {
 
     @Override
     public void introduce() {
-        System.out.printf("Hi! I'm %s. I'm the man who owns this whole zoo.\n", name);
+        System.out.printf("Hi! I'm %s. I'm the man who owns this whole zoo.\n", super.getName());
     }
 
     @Override
@@ -44,7 +45,7 @@ public class Human extends Creature implements Walkable {
 
     @Override
     public String getName() {
-        return name;
+        return super.getName();
     }
 
     @Override
