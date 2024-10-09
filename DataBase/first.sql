@@ -396,3 +396,34 @@ CASE
         ELSE price * 1
     END AS new_price
 FROM tickets WHERE service_class IN ('Economy', 'PremiumEconomy', 'Business');
+
+-- lesson three 09.10.2024
+
+-- varchar(32) - (2,4,8,16,32,64,128,255) хранит строковые данные
+-- integer; int - хранит целое число
+-- numeric(8.2) - хранит числа с плавающей запятой
+
+-- DML - data manipulation language (SELECT, INSERT, DELETE, UPDATE)
+-- DDL - data definition language (CREATE, DROP, ALTER, TRUNCATE)
+
+-- CREATE - команда для создания таблицы (TABLE) или базы данных (DATABASE)
+
+CREATE DATABASE students;
+
+USE students;
+
+CREATE TABLE people (
+	first_name varchar (32),
+    last_name varchar (32),
+    age integer
+);
+
+SELECT *
+FROM people;
+
+-- INSERT (INTO) - добавляет данные в таблицу
+
+-- полный вариант добавления данных
+
+INSERT INTO people(first_name, last_name, age) VALUES ('ALex', 'Alekseev', 35);
+
