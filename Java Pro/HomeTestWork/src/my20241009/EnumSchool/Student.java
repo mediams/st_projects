@@ -22,7 +22,7 @@ class Student {
     public void learn(Subject subject) {
         if (!knows(subject)) {
             subjects[subjectCount++] = subject;
-        }else System.out.println("Schon wissen");
+        } else System.out.println("Schon wissen");
     }
 
     public boolean knows(Subject subject) {
