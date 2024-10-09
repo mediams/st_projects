@@ -15,8 +15,14 @@ class Student {
         return name;
     }
 
+    public Subject[] getSubjects() {
+        return subjects;
+    }
+
     public void learn(Subject subject) {
+        if (!knows(subject)) {
             subjects[subjectCount++] = subject;
+        }else System.out.println("Schon wissen");
     }
 
     public boolean knows(Subject subject) {
@@ -26,5 +32,13 @@ class Student {
             }
         }
         return false;
+    }
+
+    public void printSubjects() {
+        System.out.print(name + " knows: ");
+        for (int i = 0; i < subjectCount; i++) {
+            System.out.print(subjects[i] + " ");
+        }
+        System.out.println();
     }
 }

@@ -9,15 +9,19 @@ class Teacher {
         this.subject = subject;
     }
 
-//    public void teach(Student student) {
-//        System.out.println("Teacher " + name + " teach " + student.getName() + " " + subject +".");
-//        student.learn(subject);
-//    }
-
     public void teach(Student... students) {
+        if (students.length > 5) {
+            System.out.println("A teacher can teach a maximum of 5 students.");
+            return;
+        }
         for (Student student : students) {
-            System.out.println("Teacher " + name + " teach " + student.getName() + " " + subject +".");
-            student.learn(subject);
+            if (student.knows(subject)) {
+                System.out.println("Teacher " + name + " can't teach " + student.getName() + " " + subject + ".");
+            } else {
+                System.out.println("Teacher " + name + " teach " + student.getName() + " " + subject + ".");
+                student.learn(subject);
+            }
+
         }
     }
 }
