@@ -8,6 +8,7 @@ public class Main {
         Box box1 = new Box("Box1", true, 1, cat1);
 
         System.out.println(cat1);
+//        box1.empty();
         System.out.println(box1.toString());
 
         System.out.println();
