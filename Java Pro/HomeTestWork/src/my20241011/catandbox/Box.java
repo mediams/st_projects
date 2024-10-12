@@ -1,6 +1,7 @@
 package my20241011.catandbox;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Box {
     private String name;
@@ -20,9 +21,16 @@ public class Box {
         this.cats = cats;
     }
 
-    public void addCat (Cat newCat){
-        this.cats[count] = newCat;
-        count++;
+    public void addCat(Cat newCat) {
+        for (int i = 0; i < cats.length; i++) {
+            if (Objects.equals(cats[i], newCat)) {
+                System.out.println("Habe schon!");
+                return;
+            }
+        }
+        Cat[] newCatArrays = Arrays.copyOf(cats, cats.length + 1);
+        newCatArrays[cats.length] = newCat;
+        this.cats = newCatArrays;
     }
 
     @Override
