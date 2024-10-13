@@ -1,9 +1,10 @@
 -- Домашка для повтора команд создания таблицы, изменения, добавления данных.
 
--- Создайте таблицу goods (id, title, quantity)
+
 CREATE DATABASE goods;
 use goods;
 
+-- Создайте таблицу goods (id, title, quantity)
 CREATE TABLE goods(
 id INTEGER PRIMARY KEY AUTO_INCREMENT,
 title VARCHAR (128),
