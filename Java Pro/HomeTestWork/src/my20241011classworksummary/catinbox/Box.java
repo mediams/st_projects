@@ -42,13 +42,13 @@ public class Box {
         return cat;
     }
 
-    //    @Override
-//    public String toString() {
-//        return "Box{" +
-//                "name='" + name + '\'' +
-//                ", canBeSold=" + canBeSold +
-//                ", count=" + count +
-//                ", cat=" + cat +
-//                '}';
-//    }
+        @Override
+    public String toString() {
+        return "Box{" +
+                "name='" + name + '\'' +
+                ", canBeSold=" + canBeSold +
+                ", count=" + count +
+                ", cat=" + cat +
+                '}';
+    }
 }

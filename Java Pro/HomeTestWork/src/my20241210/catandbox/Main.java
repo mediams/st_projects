@@ -21,5 +21,17 @@ public class Main {
         System.out.println();
         System.out.println(box1);
         System.out.println(box3);
+
+        System.out.println();
+        System.out.println(box1);
+        box1.addCat(cat1);
+        System.out.println(box1);
+//        box1.emptyCat(cat1);
+        System.out.println(box1);
+        System.out.println(box3);
+
+        Box boxCopy = box1.makeCopy();
+
+        System.out.println(boxCopy);
     }
 }
