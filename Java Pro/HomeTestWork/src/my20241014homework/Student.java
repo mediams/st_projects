@@ -35,8 +35,19 @@ public class Student {
     }
 
     public Student makeCopy() {
-        Student student = new Student(this.name, this.subjects);
+        Student student = new Student(name);
+        student.subjects = this.subjects;
         return student;
+    }
+
+    public Student deepCopy() {
+        Student student = new Student(this.name);
+        student.subjects = Arrays.copyOf(this.subjects, this.subjects.length);
+        return student;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override

@@ -10,6 +10,7 @@ public class School {
 
         Teacher teacher1 = new Teacher("Mr. Smith", Subject.MATH);
         Teacher teacher2 = new Teacher("Mrs. Smith", Subject.HISTORY);
+        Teacher teacher3 = new Teacher("Mrs. Smith", Subject.LITERATURE);
 
         Student student1 = new Student("Tom");
         Student student2 = new Student("Mary");
@@ -26,8 +27,24 @@ public class School {
         System.out.println(student1.knows(Subject.LITERATURE));
 
         System.out.println("-");
-        Student student = student2.makeCopy();
-        System.out.println(student);
+        Student studentMakeCopy = student1.makeCopy();//поверхностного копирования
+        System.out.println(studentMakeCopy);
+        student1.setName("TomNew");
+        teacher3.teach(student1);
+        System.out.println(student1);
+        System.out.println(studentMakeCopy);
+
+        System.out.println("deepCopy");
+        Student studentDeepCopy = student3.deepCopy(); //глубокого копирования
+        System.out.println(studentDeepCopy);
+        student3.setName("LucyNew");
+        teacher3.teach(student1);
+        System.out.println(studentDeepCopy);
+
+        
+
+
+
     }
 
 }
