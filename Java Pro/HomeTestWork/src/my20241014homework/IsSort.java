@@ -11,7 +11,7 @@ public class IsSort {
             if (ints[i] > ints[i + 1]) {
                 check = false;
                 break;
-            } 
+            }
         }
         System.out.println("check = " + check);
     }
