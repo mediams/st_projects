@@ -26,18 +26,13 @@ public class School {
         System.out.println(student1.knows(Subject.MATH));
         System.out.println(student1.knows(Subject.LITERATURE));
 
-        System.out.println("MakeCopy");
+        System.out.println("\nMakeCopy");
         Student studentMakeCopy = student1.makeCopy();//поверхностного копирования
         System.out.println(studentMakeCopy);
 
-        System.out.println("deepCopy");
+        System.out.println("\ndeepCopy");
         Student studentDeepCopy = student3.deepCopy(); //глубокого копирования
         System.out.println(studentDeepCopy);
-
-        System.out.println(studentMakeCopy == student1);
-        System.out.println(studentDeepCopy == student3);
-
-
     }
 
 }
