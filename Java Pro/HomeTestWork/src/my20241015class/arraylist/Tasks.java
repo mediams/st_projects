@@ -37,6 +37,32 @@ public class Tasks {
             lengthList.add(s.length());
         }
         System.out.println(lengthList);
+
+
+        List <String> stringArray = new ArrayList<>();
+        stringArray.add("Text");
+
+
+        List <String> stringUpperArray = new ArrayList<>();
+        for (String s : stringArray){
+            stringUpperArray.add(s.toUpperCase());
+        }
+        System.out.println(stringUpperArray);
+
+        List <Integer> number = new ArrayList<>();
+        number.add(123);
+
+        List<Integer> numberDopple = new ArrayList<>();
+        for (Integer integer : number){
+            numberDopple.add(integer*2);
+        }
+        System.out.println(numberDopple);
+
+
+        for (String s : stringArray){
+            numberDopple.add(s.length());
+        }
+        System.out.println(numberDopple);
     }
 }
 //1. У вас есть список строковых значений,
