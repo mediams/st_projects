@@ -35,7 +35,7 @@ public class Student {
     }
 
     public Student makeCopy() {
-        Student student = new Student(name);
+        Student student = new Student(this.name);
         student.subjects = this.subjects;
         return student;
     }
