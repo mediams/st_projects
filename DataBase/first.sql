@@ -550,3 +550,206 @@ DROP TABLE people; -- удаление таблицы !!!
 
 DROP DATABASE students; -- удаление базы данных !!!
 
+-- summary
+use goods;
+SELECT * FROM other_goods2;
+
+CREATE TABLE other_goods AS -- создание новой таблицы на основе результата выборки
+SELECT
+*
+FROM goods;
+
+CREATE TABLE young_people AS
+SELECT *
+FROM goods
+WHERE id=1;
+
+CREATE TABLE other_goods2 LIKE goods;
+
+DROP TABLE other_goods;
+
+CREATE VIEW v_other_people AS
+SELECT *
+FROM goods;
+
+SELECT *
+FROM v_other_people;
+
+DELETE FROM people
+WHERE age IS NULL;
+
+SELECT *
+FROM people
+WHERE age > 32;
+
+INSERT INTO other_people (first_name, last_name, age) VALUES ('Max', 'Maximov', 38); -- Запрос на вставку данных
+
+INSERT INTO other_people (first_name, last_name, age) 
+														SELECT first_name, last_name, age
+														FROM people
+														WHERE age > 32;
+
+SELECT 
+t1.first_name
+FROM (SELECT * 
+      FROM people
+      WHERE age > 32) AS t1;
+
+--
+-- 16-10-2024
+--
+
+-- lesson four
+-- Констрейны — ограничения для колонок в таблице
+
+-- not null — Данное ограничение исключает возможность поместить null в колонку
+-- unique — Данное ограничение исключает возможность поместить дублирующее значение в эту же колонку
+-- check - Устанавливает значениеб которые можно установить в колонку
+		-- age integer check(age>18)
+        -- age integer check (age between 18 and 45)
+        -- exists varchar(1) check (exists in ('Y','N'))
+        
+-- primary key (PK) (not null + unique) однозначно идентифицируетб - первичный ключ, комбинация двух констрейнов
+-- aouto_increment - автоматически увелечение значение в поле с каждой новой записью 
+-- default - устанавливается значение по умолчанию для колонки 
+
+use learn;
+
+drop table if exists students_new;
+
+CREATE TABLE students (
+	id integer primary key auto_increment, 
+    name varchar (32) not null,
+    surname varchar(32) not null,
+    age integer check (age between 18 AND 60),
+	email varchar(64) unique
+);
+
+INSERT INTO students ( name, surname, age, email) VALUES ('ALex', 'Alexeev', 30, 'hello@gmail.com'), ('Ivan', 'Ivanov', 20, 'ivan@gmail.com');
+
+INSERT INTO students ( name, surname, age, email) VALUES ('ALex', 'Alexeev', 25, '2ho@gmail.com');
+
+INSERT INTO students ( name, surname, age, email) VALUES
+('Maxim', 'Maximov', 40, 'hello@hello.com');
+-- Error Code: 1062. Duplicate entry 'hello@hello.com' for key 'students.email'
+
+INSERT INTO students (name, surname, age, email) VALUES 
+('Maxim', 'Maximov', 65, 'hello2@hello.com');
+-- Error Code: 3819. Check constraint 'students_chk_1' is violated.
+
+INSERT INTO students (name, age, email) VALUES 
+('Maxim', 45, 'hello2@hello.com');
+-- Error Code: 1364. Field 'surname' doesn't have a default value
+
+INSERT INTO students (id, name, surname, age, email) VALUES 
+(5, 'Maxim', 'Maximov', 30, 'hello3@hello.com');
+-- Error Code: 1062. Duplicate entry '2' for key 'students.PRIMARY'
+
+ALTER TABLE students
+MODIFY COLUMN surname varchar(32) not null default '';
+
+INSERT INTO students (name, age, email) VALUES 
+('Maxim', 45, 'hello2@hello.com');
+-- Error Code: 1364. Field 'surname' doesn't have a default value
+
+INSERT INTO students (name, surname, age, email) VALUES 
+('Maxim', null, 45, 'hello2@hello.com');
+-- Error Code: 1048. Column 'surname' cannot be null
+
+-- add field rate with defaul 0
+
+ALTER TABLE students
+ADD rate integer check (rate between 0 and 5) default 0;
+
+INSERT INTO students (name, surname, age, email, rate) VALUES 
+('Egor', 'Egorov', 30, 'hello6@hello.com', 7);
+-- Error Code: 3819. Check constraint 'students_chk_2' is violated.
+
+INSERT INTO students (name, surname, age, email, rate) VALUES 
+('Petr', 'Petrov', 25, null, 3);
+
+ALTER TABLE students
+MODIFY COLUMN email varchar(64) unique not null;
+-- Error Code: 1138. Invalid use of NULL value	0.031 sec
+
+SET SQL_SAFE_UPDATES = 0;
+
+UPDATE students
+SET email = id
+WHERE email IS NULL OR email = '';
+
+DELETE FROM students
+WHERE id = 9;
+
+-- TRUNCATE — не только удаляет данные, но и сбрасывает все счетчики
+-- приводит таблицу в состояние как после создания
+-- Восстановить данные НЕЛЬЗЯ!!!
+TRUNCATE TABLE students;
+
+-- Вертикальное объединение таблиц
+-- UNION, UNION ALL -- команда позволяет строки одной таблицы присоединить к строкам
+-- другой таблицы, причем соответствие колонок идет попозиционно
+
+CREATE TABLE students_from_berlin(
+id integer primary key auto_increment,
+name varchar(32) not null,
+surname varchar(32) not null
+);
+
+CREATE TABLE students_from_bonn(
+id integer primary key auto_increment,
+first_name varchar(32) not null,
+last_name varchar(32) not null
+);
+
+INSERT INTO students_from_berlin(name, surname) VALUES
+('Alex','Alexeev'),('Egor','Egorov');
+
+INSERT INTO students_from_bonn(first_name ,last_name ) VALUES
+('Max','Maximov'),('Oleg','Olegov');
+
+
+-- При UNION, UNION ALL за структуру результата (выборки), а именно, имена колонок, порядок колонок, количество колонок отвечает первый SELECT
+
+-- При UNION, UNION ALL очень важно, чтобы количество колонок в выборке было одинаковым в каждом SELECT!!!
+
+SELECT id, name, surname, 0 AS rate FROM students_from_berlin
+UNION ALL
+SELECT id, first_name, last_name, rate FROM students_from_bonn;
+
+ALTER TABLE students_from_bonn
+ADD rate integer check (rate between 0 and 5) default 1;
+
+SELECT CONCAT('br', '-', id) AS id, 0 AS rate, name, surname FROM students_from_berlin
+UNION ALL
+SELECT CONCAT('bn', '-', id), rate, first_name, last_name FROM students_from_bonn;
+
+CREATE TABLE students_from_münchen(
+id integer primary key auto_increment,
+first_name varchar(32) not null,
+last_name varchar(32) not null,
+address varchar (32) not null
+);
+
+INSERT INTO students_from_münchen(first_name, last_name, address) VALUES
+('Petr','Alexeev', 'street 01'),('Thomas','Egorov', 'ort 02');
+
+SELECT id, first_name AS name, last_name AS surname, 0 AS rate, address, 'München' AS city FROM students_from_münchen
+UNION ALL
+SELECT id, name, surname, 0 AS rate, '', 'Berlin' AS city FROM students_from_berlin
+UNION ALL
+SELECT id, first_name, last_name, rate, 'UNDEFINED', 'Bohnn' AS city FROM students_from_bonn
+ORDER BY id;
+
+SELECT last_name FROM students_from_münchen
+UNION ALL -- в результат попадает все, включая дубликаты
+SELECT surname FROM students_from_berlin;
+
+SELECT last_name FROM students_from_münchen
+UNION -- в результат попадает все, кроме дубликатов
+SELECT surname FROM students_from_berlin;
+
+
+select * from students_from_berlin;
+select * from students_from_bonn;
+select * from students_from_münchen;
