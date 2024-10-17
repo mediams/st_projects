@@ -40,11 +40,13 @@ public class IteratorExample {
         nexElement = iterator.next();
         System.out.println(nexElement);
 
+        System.out.println("-");
         if (iterator.hasNext()) {
             nexElement = iterator.next();
             System.out.println(nexElement);
         }
-        System.out.println();
+        System.out.println("-");
+
 
         Iterator<String> iterator2 = list.iterator();
         while (iterator2.hasNext()) {
