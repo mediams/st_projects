@@ -1,0 +1,5 @@
+START
+input A and B
+else A > B then print A
+else B > A then print B
+END
