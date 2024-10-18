@@ -64,7 +64,7 @@ public class Main {
     private static String getConcat(List<Integer> list) {
         StringBuilder listConcat = new StringBuilder();
         for (Integer s : list) {
-            listConcat.append(s + " ");
+            listConcat.append(s);
         }
         return listConcat.toString();
     }
