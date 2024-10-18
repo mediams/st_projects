@@ -24,6 +24,17 @@ public class Matrix {
             }
             System.out.println();
         }
+
+
+        //classwork
+        int min = Math.min(n, m);
+        int j = 0;
+        int [][] matrix = new int [n][m];
+        for (int i = n - 1; i >= n - min; i--) {
+            matrix[i][j++]=1;
+        }
+        System.out.println(Arrays.deepToString(matrix));
+
     }
 
 }
