@@ -8,14 +8,15 @@ public class Main {
     public static void main(String[] args) {
         List<String> list = new ArrayList<>(Arrays.asList("eis", "sort", "ein", "eis", "kaktus"));
         List<Integer> listNumbers = new ArrayList<>(Arrays.asList(6, 1, 2, 3, 4, -1));
-        System.out.println(getList(list));
-        System.out.println(getOddNUmbers(listNumbers));
-        System.out.println(getDistinct(list));
-        System.out.println(getConcat(listNumbers));
-        System.out.println(getSum(listNumbers));
-        System.out.println(getMaximum(listNumbers));
-        System.out.println(getMaxLength(list));
-        System.out.println(getTwoList(list, listNumbers));
+
+        System.out.println(getList(list)); //вернуть список со всеми значениями String более трех символов
+        System.out.println(getOddNUmbers(listNumbers)); //вернуть список, содержащий только нечетные числа
+        System.out.println(getDistinct(list)); //вернуть список этих значений без каких-либо дубликатов
+        System.out.println(getConcat(listNumbers)); //вернуть одну строку, которая представляет собой конкатенацию всех значений.
+        System.out.println(getSum(listNumbers)); //список значений Integer, вы должны вернуть их сумму
+        System.out.println(getMaximum(listNumbers));//список значений Integer, вы должны вернуть их максимум
+        System.out.println(getMaxLength(list)); //список String, вы должны вернуть максимальную длину String
+        System.out.println(getTwoList(list, listNumbers)); //метод для объединения двух списков в один общий ArrayList
     }
 
     private static List<Object> getTwoList(List<String> list, List<Integer> listNumbers) {
@@ -63,7 +64,7 @@ public class Main {
     private static String getConcat(List<Integer> list) {
         StringBuilder listConcat = new StringBuilder();
         for (Integer s : list) {
-            listConcat.append(s);
+            listConcat.append(s + " ");
         }
         return listConcat.toString();
     }

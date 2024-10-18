@@ -21,6 +21,21 @@ public class MaxOfColumn {
             newArray[i]= temp;
         }
         System.out.println(Arrays.toString(newArray));
+
+        System.out.println(Arrays.toString(getMaxArray(arrays)));
+
+    }
+    //classwork
+    public static int[] getMaxArray(int[][] array) {
+        int[] maxArray = new int[array[0].length];
+        for (int j = 0; j < array[0].length; j++) {
+            int max = array[0][j];
+            for (int i = 1; i < array.length; i++) {
+                max = Math.max(max, array[i][j]);
+            }
+            maxArray[j] = max;
+        }
+        return maxArray;
     }
 }
 
