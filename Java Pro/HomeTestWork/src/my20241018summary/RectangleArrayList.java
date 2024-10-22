@@ -25,7 +25,7 @@ public class RectangleArrayList implements Iterable<Integer> {
 
         @Override
         public boolean hasNext() {
-            return (row < data.length && col < data[0].length); //---!
+            return (row < data.length && col < data[0].length); 
         }
 
         @Override
@@ -34,12 +34,12 @@ public class RectangleArrayList implements Iterable<Integer> {
             if (!hasNext()) {
                 throw new NoSuchElementException();
             }
-            // error
-
-            num = data[row][col];//----!
-            // ++
-
-
+            num = data[row][col];
+            col++;
+            if (col >= data[row].length) {
+                row++;
+                col = 0;
+            }
             return num;
         }
     }
