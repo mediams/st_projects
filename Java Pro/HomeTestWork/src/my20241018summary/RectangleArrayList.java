@@ -30,10 +30,10 @@ public class RectangleArrayList implements Iterable<Integer> {
 
         @Override
         public Integer next() {
-            int num = 0;
             if (!hasNext()) {
                 throw new NoSuchElementException();
             }
+            int num = 0;
             num = data[row][col];
             col++;
             if (col >= data[row].length) {

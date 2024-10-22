@@ -22,6 +22,10 @@ public class MyArrayList implements Iterable<String> {
         return new MyIterator();
     }
 
+    public Iterator<String> randomIterator(){
+        return null;
+    }
+
     public class MyIterator implements Iterator<String> {
 
         private int index = 0;

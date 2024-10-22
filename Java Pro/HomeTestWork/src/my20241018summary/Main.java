@@ -5,6 +5,15 @@ import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
+        NewBox newBox = new NewBox();
+        newBox.addRectangleArea(25);
+        newBox.addRectangleArea(30);
+
+
+        for (Integer area : newBox) {
+            System.out.println("Rectangle Area: " + area);
+        }
+
         Box box = new Box("A", "B", "C");
 
         Iterator<String> iterator = box.iterator();
