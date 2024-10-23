@@ -38,13 +38,12 @@ public class Library {
 
         public void searchBook(String query) {
             System.out.println("Wir suchen: " + query);
-            Comparator<Book> comparator = new Comparator<Book>() {
-                @Override
-                public int compare(Book book1, Book book2) {
-                    System.out.println("+");
-                    return book1.getAutorName().compareTo(book2.getAutorName());
+
+            for (Book book : bookList) {
+                if (book.getAutorName().equals(query)) {
+                    System.out.println("Habe gefunden!\n" + book.getBookName() + " "+ book.getAutorName());
                 }
-            };
+            }
 
         }
     }
