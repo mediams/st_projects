@@ -9,7 +9,6 @@ public class FindX {
         while (num != num2) {
             num /= 2;
             num2 *= 2;
-            if (num == num2) break;
         }
 //        System.out.println((num / 2) * 8);
         System.out.println(num);
