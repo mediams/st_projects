@@ -1,0 +1,17 @@
+Имеется класс Cat, в котором есть имя и возраст
+class Cat
+String name;
+int age;
+
+
+Имеется класс Box, в котором есть поле Cat:
+class Box
+Cat cat;
+
+Реализовать методы equals() для классов Cat и Box так, чтобы коробки с одинаковыми кошками считались равны:
+
+Cat cat1 = new Cat("Vasya", 1);
+Cat cat2 = new Cat("Vasya", 1);
+Box box1 = new Box(cat1);
+Box box2 = new Box(cat2);
+box1.equals(box2) ---> true
