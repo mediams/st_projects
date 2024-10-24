@@ -1,7 +1,6 @@
 package my20241023homework;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 public class Library {
@@ -38,13 +37,11 @@ public class Library {
 
         public void searchBook(String query) {
             System.out.println("Wir suchen: " + query);
-
             for (Book book : bookList) {
                 if (book.getAutorName().equals(query)) {
                     System.out.println("Habe gefunden!\n" + book.getBookName() + " "+ book.getAutorName());
                 }
             }
-
         }
     }
 
