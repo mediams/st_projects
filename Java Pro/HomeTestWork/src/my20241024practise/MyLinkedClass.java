@@ -4,20 +4,19 @@ package my20241024practise;
 @Getter
 @Setter
 public class MyLinkedClass {
-    private int num;
-
+    private int number;
     private MyLinkedClass next;
 
-    public MyLinkedClass(int num) {
-        this.num = num;
+    public MyLinkedClass(int number) {
+        this.number = number;
     }
 
-    public int getNum() {
-        return num;
+    public int getNumber() {
+        return number;
     }
 
-    public void setNum(int num) {
-        this.num = num;
+    public void setNumber(int number) {
+        this.number = number;
     }
 
     public MyLinkedClass getNext() {
@@ -31,11 +30,13 @@ public class MyLinkedClass {
     public boolean isCycled(MyLinkedClass head) {
         MyLinkedClass slow = head;
         MyLinkedClass fast = head.next;
-
-        while ( slow != fast){
-            if (slow == null || fast.next == null)
+        while (slow != fast) {
+            if (fast == null || fast.next == null) {
+                return false;
+            }
+            slow = slow.next;
+            fast = fast.next.next;
         }
-
         return true;
     }
 
@@ -45,14 +46,15 @@ public class MyLinkedClass {
         MyLinkedClass l3 = new MyLinkedClass(4);
         MyLinkedClass l4 = new MyLinkedClass(8);
         MyLinkedClass l5 = new MyLinkedClass(12);
-
         l1.setNext(l2);
         l2.setNext(l3);
         l3.setNext(l4);
         l4.setNext(l5);
-        l5.setNext(l3);
+//        l5.setNext(l3);
 
+        System.out.println(l1.isCycled(l1));
 
     }
-
 }
+
+
