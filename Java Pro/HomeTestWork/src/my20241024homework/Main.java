@@ -1,9 +1,6 @@
 package my20241024homework;
 
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -22,8 +19,12 @@ public class Main {
 
         deleteItem(items, "Third item");//Создать LinkedList с объектами вашего собственного класса и удалить все элементы, удовлетворяющие определенному условию.
 
+        List<Integer> integerList = new ArrayList<>(List.of(1, 4, 3, 2, 1, 2, 2, 0));
+        int element = 2;
+        ListIterator<Integer> listIterator = integerList.listIterator();
+        while (listIterator.hasNext()) {
 
-
+        }
 
     }
 
