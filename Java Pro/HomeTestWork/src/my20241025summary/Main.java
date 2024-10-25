@@ -9,50 +9,40 @@ public class Main {
         int m = 100000;
         Random random = new Random(m);
 
-        for (int i = 0; i < m; i++) {
-            int num = random.nextInt();
-            listLinked.add(num);
-            listArray.add(num);
-        }
-
-        long start = System.currentTimeMillis();
-        int sum = 0;
-        for (int i = 0; i < m; i++) {
-            sum+=listArray.get(i);
-        }
-
-        long end = System.currentTimeMillis();
-        System.out.println("Time for ArrayList (fori) elapsed: " + (end - start));
-
-        start = System.currentTimeMillis(); // O(n^2)
-        sum = 0;
-        for (int i = 0; i < m; i++) {
-            sum+=listLinked.get(i);
-        }
-
-        end = System.currentTimeMillis();
-        System.out.println("Time for LinkedList (fori) elapsed: " + (end - start));
-
+        extracted(m, random, listLinked, listArray); //заполняем оба массива
+        extracted(m, listArray); //Time for ArrayList (fori) 
+        long end;
+        long start;
+        int sum;
+        extracted1(m, listLinked); //Time for LinkedList (fori)
         // for each
-
-        start = System.currentTimeMillis();
-        sum = 0;
-        for (Integer i : listArray) {
-            sum+=i;
-        }
-        end = System.currentTimeMillis();
-        System.out.println("Time for ArrayList (for each) elapsed: " + (end - start));
-
-        start = System.currentTimeMillis();
-        sum = 0;
-        for (Integer i : listLinked) {
-            sum+=i;
-        }
-        end = System.currentTimeMillis();
-        System.out.println("Time for LinkedList (for each) elapsed: " + (end - start));
+        extracted(listArray);//Time for ArrayList (for each)
+        extracted1(listLinked);//Time for LinkedList (for each)
 
         //iterator
+        extracted2(listArray);//Time for ArrayList (iterator)
+        extracted3(listLinked);//Time for LinkedList (iterator)
+    }
 
+    private static void extracted3(List<Integer> listLinked) {
+        int sum;
+        long end;
+        long start;
+        start = System.currentTimeMillis();
+        sum = 0;
+        Iterator<Integer> iterator2 = listLinked.iterator();
+        while (iterator2.hasNext()) {
+            int i = iterator2.next();
+            sum += i;
+        }
+        end = System.currentTimeMillis();
+        System.out.println("Time for LinkedList (iterator) elapsed: " + (end - start));
+    }
+
+    private static void extracted2(List<Integer> listArray) {
+        long end;
+        long start;
+        int sum;
         start = System.currentTimeMillis();
         sum = 0;
         Iterator <Integer> iterator = listArray.iterator();
@@ -62,15 +52,64 @@ public class Main {
         }
         end = System.currentTimeMillis();
         System.out.println("Time for ArrayList (iterator) elapsed: " + (end - start));
+    }
 
+    private static void extracted1(List<Integer> listLinked) {
+        long end;
+        int sum;
+        long start;
         start = System.currentTimeMillis();
         sum = 0;
-        Iterator <Integer> iterator2 = listLinked.iterator();
-        while (iterator2.hasNext()) {
-            int i = iterator2.next();
+        for (Integer i : listLinked) {
             sum+=i;
         }
         end = System.currentTimeMillis();
-        System.out.println("Time for LinkedList (iterator) elapsed: " + (end - start));
+        System.out.println("Time for LinkedList (for each) elapsed: " + (end - start));
+    }
+
+    private static void extracted(List<Integer> listArray) {
+        long end;
+        int sum;
+        long start;
+        start = System.currentTimeMillis();
+        sum = 0;
+        for (Integer i : listArray) {
+            sum+=i;
+        }
+        end = System.currentTimeMillis();
+        System.out.println("Time for ArrayList (for each) elapsed: " + (end - start));
+    }
+
+    private static void extracted1(int m, List<Integer> listLinked) {
+        int sum;
+        long start;
+        long end;
+        start = System.currentTimeMillis(); // O(n^2)
+        sum = 0;
+        for (int i = 0; i < m; i++) {
+            sum+= listLinked.get(i);
+        }
+
+        end = System.currentTimeMillis();
+        System.out.println("Time for LinkedList (fori) elapsed: " + (end - start));
+    }
+
+    private static void extracted(int m, List<Integer> listArray) {
+        long start = System.currentTimeMillis();
+        int sum = 0;
+        for (int i = 0; i < m; i++) {
+            sum+= listArray.get(i);
+        }
+
+        long end = System.currentTimeMillis();
+        System.out.println("Time for ArrayList (fori) elapsed: " + (end - start));
+    }
+
+    private static void extracted(int m, Random random, List<Integer> listLinked, List<Integer> listArray) {
+        for (int i = 0; i < m; i++) {
+            int num = random.nextInt();
+            listLinked.add(num);
+            listArray.add(num);
+        }
     }
 }
