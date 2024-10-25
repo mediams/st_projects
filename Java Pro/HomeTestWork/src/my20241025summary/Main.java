@@ -10,7 +10,7 @@ public class Main {
         Random random = new Random(m);
 
         extracted(m, random, listLinked, listArray); //заполняем оба массива
-        extracted(m, listArray); //Time for ArrayList (fori) 
+        extracted(m, listArray); //Time for ArrayList (fori)
         long end;
         long start;
         int sum;
@@ -22,6 +22,17 @@ public class Main {
         //iterator
         extracted2(listArray);//Time for ArrayList (iterator)
         extracted3(listLinked);//Time for LinkedList (iterator)
+
+
+        //--Создать класс Student с полями name, surname. Отсорировать список студентов по фамилии и имени.
+
+        Student student1 = new Student("Max", "Igorev");
+        Student student2 = new Student("Bob", "Alekseev");
+        Student student3 = new Student("Andrey", "Smith");
+        List<Student> listStudents = new ArrayList<>(List.of(student1, student2, student3));
+
+        Student.
+        System.out.println(listStudents);
     }
 
     private static void extracted3(List<Integer> listLinked) {
@@ -45,10 +56,10 @@ public class Main {
         int sum;
         start = System.currentTimeMillis();
         sum = 0;
-        Iterator <Integer> iterator = listArray.iterator();
+        Iterator<Integer> iterator = listArray.iterator();
         while (iterator.hasNext()) {
             int i = iterator.next();
-            sum+=i;
+            sum += i;
         }
         end = System.currentTimeMillis();
         System.out.println("Time for ArrayList (iterator) elapsed: " + (end - start));
@@ -61,7 +72,7 @@ public class Main {
         start = System.currentTimeMillis();
         sum = 0;
         for (Integer i : listLinked) {
-            sum+=i;
+            sum += i;
         }
         end = System.currentTimeMillis();
         System.out.println("Time for LinkedList (for each) elapsed: " + (end - start));
@@ -74,7 +85,7 @@ public class Main {
         start = System.currentTimeMillis();
         sum = 0;
         for (Integer i : listArray) {
-            sum+=i;
+            sum += i;
         }
         end = System.currentTimeMillis();
         System.out.println("Time for ArrayList (for each) elapsed: " + (end - start));
@@ -87,7 +98,7 @@ public class Main {
         start = System.currentTimeMillis(); // O(n^2)
         sum = 0;
         for (int i = 0; i < m; i++) {
-            sum+= listLinked.get(i);
+            sum += listLinked.get(i);
         }
 
         end = System.currentTimeMillis();
@@ -98,7 +109,7 @@ public class Main {
         long start = System.currentTimeMillis();
         int sum = 0;
         for (int i = 0; i < m; i++) {
-            sum+= listArray.get(i);
+            sum += listArray.get(i);
         }
 
         long end = System.currentTimeMillis();
