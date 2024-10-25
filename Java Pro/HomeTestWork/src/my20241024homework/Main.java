@@ -11,21 +11,43 @@ public class Main {
         items.add(new Item("Two", "Second item"));
         items.add(new Item("Three", "Third item"));
 
-        LinkedList<Integer> listNum = new LinkedList<>(List.of(1, 4, 3, 2, 1, 2, 2, 0));
+        System.out.println("\nПеребрать LinkedList и найти самую короткую строку:");
+        searchShort(list);
 
-        searchShort(list); //Перебрать LinkedList и найти самую короткую строку.
+        System.out.println("\nПеребрать LinkedList и объединить все строки в одну с использованием разделителя \"|\".");
+        toOneString(list);
 
-        toOneString(list); //Перебрать LinkedList и объединить все строки в одну с использованием разделителя "|".
-
-        deleteItem(items, "Third item");//Создать LinkedList с объектами вашего собственного класса и удалить все элементы, удовлетворяющие определенному условию.
-
+        System.out.println("\nСоздать LinkedList с объектами вашего собственного класса и удалить все элементы, удовлетворяющие определенному условию.");
+        deleteItem(items, "Third item");
+        
+        System.out.println("\nполучить первое и последнее вхождение указанных элементов в связанном списке.");
         List<Integer> integerList = new ArrayList<>(List.of(1, 4, 3, 2, 1, 2, 2, 0));
         int element = 2;
+        searchLastAndFirstElement(integerList, element);
+    }
+
+    private static void searchLastAndFirstElement(List<Integer> integerList, int element) {
         ListIterator<Integer> listIterator = integerList.listIterator();
+        int count = 0;
+        boolean hasElement = false;
         while (listIterator.hasNext()) {
-
+            int i = listIterator.next();
+            if (i == element && hasElement == false) {
+                System.out.println("Индекс первого вхождения: " + count);
+                hasElement = true;
+            }
+            count++;
         }
-
+        if (hasElement == false) System.out.println("Индекс первого вхождения: Not found");
+        hasElement = false;
+        while (listIterator.hasPrevious()) {
+            int i = listIterator.previous();
+            if (i == element && hasElement == false) {
+                System.out.println("Индекс последнего вхождения: " + listIterator.nextIndex());
+                hasElement = true;
+            }
+        }
+        if (hasElement == false) System.out.println("Индекс последнего вхождения: Not found");
     }
 
     private static void deleteItem(LinkedList<Item> items, String userSearch) {
