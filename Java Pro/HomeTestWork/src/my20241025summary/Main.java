@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
         List<Integer> listArray = new ArrayList<>();
         List<Integer> listLinked = new LinkedList<>();
-        int m = 100000;
+        int m = 1000;
         Random random = new Random(m);
 
         extracted(m, random, listLinked, listArray); //заполняем оба массива
@@ -31,8 +31,26 @@ public class Main {
         Student student3 = new Student("Andrey", "Smith");
         List<Student> listStudents = new ArrayList<>(List.of(student1, student2, student3));
 
-        Student.
+//        Collections.sort(listStudents);
+        Collections.sort(listStudents, Student.nameComparator);
         System.out.println(listStudents);
+
+        Collections.sort(listStudents, Student.surnameComparator);
+        System.out.println(listStudents);
+
+        DataItem dataItem1 = new DataItem("PC", 21);
+        DataItem dataItem2 = new DataItem("Laptop", 17);
+        DataItem dataItem3 = new DataItem("Laptop", 16);
+        DataItem dataItem4 = new DataItem("Monitor", 27);
+        DataStorage dataStorage1 = new DataStorage(dataItem1, 5.0, 1, true);
+        DataStorage dataStorage2 = new DataStorage(dataItem3, 9.0, 3, false);
+        DataStorage dataStorage3 = new DataStorage(dataItem2, 7.0, 12, true);
+        DataStorage dataStorage4 = new DataStorage(dataItem4, 7.0, 12, true);
+
+        List<DataStorage> dataStorageList = new ArrayList<>(List.of(dataStorage1, dataStorage2, dataStorage3,dataStorage4));
+
+        Collections.sort(dataStorageList);
+        System.out.println(dataStorageList);
     }
 
     private static void extracted3(List<Integer> listLinked) {
