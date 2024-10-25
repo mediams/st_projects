@@ -1,0 +1,10 @@
+1. Создать списки ArrayList, LinkedList, заполнить тестовыми данными.
+Замерить время перебора данных в цикле fori, foreach и с применением итератора.
+2. Создать класс Student с полями name, surname. Отсорировать список студентов по фамилии и имени.
+3. Создать класс DataStorage с полями
+    Data data;
+	Double weight;
+    int version;
+	boolean isActive;
+Где Data - класс с полями String data, int count.
+Отсортировать список DataStorage с учетом всех параметров.

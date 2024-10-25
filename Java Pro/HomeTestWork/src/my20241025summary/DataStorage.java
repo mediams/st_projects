@@ -13,6 +13,12 @@ public class DataStorage implements Comparable<DataStorage> {
         this.isActive = isActive;
     }
 
+    public DataStorage(Double weight, int version, boolean isActive) {
+        this.weight = weight;
+        this.version = version;
+        this.isActive = isActive;
+    }
+
     public DataItem getData() {
         return data;
     }
@@ -42,12 +48,14 @@ public class DataStorage implements Comparable<DataStorage> {
     @Override
     public int compareTo(DataStorage o) {
         int compare = data.compareTo(o.data);
-        if (compare == 0) {
-            
-            if (compare == null) {
+        if (compare != 0) return compare;
 
-            } weight.equals(weight);
-        }
-        return data.compareTo(o.data);
+        compare = Double.compare(weight, o.weight);
+        if (compare != 0) return compare;
+
+        compare = Integer.compare(version, o.version);
+        if (compare != 0) return compare;
+
+        return Boolean.compare(this.isActive, o.isActive);
     }
 }

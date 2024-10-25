@@ -40,6 +40,7 @@ public class Main {
 
         DataItem dataItem1 = new DataItem("PC", 21);
         DataItem dataItem2 = new DataItem("Laptop", 17);
+
         DataItem dataItem3 = new DataItem("Laptop", 16);
         DataItem dataItem4 = new DataItem("Monitor", 27);
         DataStorage dataStorage1 = new DataStorage(dataItem1, 5.0, 1, true);
@@ -47,7 +48,12 @@ public class Main {
         DataStorage dataStorage3 = new DataStorage(dataItem2, 7.0, 12, true);
         DataStorage dataStorage4 = new DataStorage(dataItem4, 7.0, 12, true);
 
-        List<DataStorage> dataStorageList = new ArrayList<>(List.of(dataStorage1, dataStorage2, dataStorage3,dataStorage4));
+        List<DataStorage> dataStorageList = new ArrayList<>(List.of(dataStorage1, dataStorage2, dataStorage3, dataStorage4));
+        dataStorageList.add(new DataStorage(new DataItem("Laptop", 18), 5.0, 1, true));
+        dataStorageList.add(new DataStorage(new DataItem("Laptop", 18), 5.0, 1, true));
+        dataStorageList.add(new DataStorage(new DataItem("Laptop", 18), 1.0, 2, true));
+        dataStorageList.add(new DataStorage(new DataItem("Laptop", 18), 1.0, 2, false));
+        dataStorageList.add(new DataStorage(new DataItem("Laptop", 18), 1.0, 1, true));
 
         Collections.sort(dataStorageList);
         System.out.println(dataStorageList);
