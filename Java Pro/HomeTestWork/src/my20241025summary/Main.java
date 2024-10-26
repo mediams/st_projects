@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
         List<Integer> listArray = new ArrayList<>();
         List<Integer> listLinked = new LinkedList<>();
-        int m = 1000;
+        int m = 1000000;
         Random random = new Random(m);
 
         extracted(m, random, listLinked, listArray); //заполняем оба массива
