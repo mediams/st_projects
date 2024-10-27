@@ -6,8 +6,11 @@ public class Main {
     public static void main(String[] args) {
         List<Integer> listArray = new ArrayList<>();
         List<Integer> listLinked = new LinkedList<>();
-        int m = 1000000;
+        int m = 10000;
         Random random = new Random(m);
+
+        System.out.println("//Создать списки ArrayList, LinkedList, заполнить тестовыми данными.");
+        System.out.println("//Замерить время перебора данных в цикле fori, foreach и с применением итератора.");
 
         extracted(m, random, listLinked, listArray); //заполняем оба массива
         extracted(m, listArray); //Time for ArrayList (fori)
@@ -24,7 +27,7 @@ public class Main {
         extracted3(listLinked);//Time for LinkedList (iterator)
 
 
-        //--Создать класс Student с полями name, surname. Отсорировать список студентов по фамилии и имени.
+        System.out.println("//--Создать класс Student с полями name, surname. Отсорировать список студентов по фамилии и имени.");
 
         Student student1 = new Student("Max", "Igorev");
         Student student2 = new Student("Bob", "Alekseev");
@@ -37,6 +40,16 @@ public class Main {
 
         Collections.sort(listStudents, Student.surnameComparator);
         System.out.println(listStudents);
+
+        /**
+         * 3. Создать класс DataStorage с полями
+         *     Data data;
+         * 	Double weight;
+         *     int version;
+         * 	boolean isActive;
+         * Где Data - класс с полями String data, int count.
+         * Отсортировать список DataStorage с учетом всех параметров.
+         */
 
         DataItem dataItem1 = new DataItem("PC", 21);
         DataItem dataItem2 = new DataItem("Laptop", 17);
