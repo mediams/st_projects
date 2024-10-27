@@ -753,3 +753,315 @@ SELECT surname FROM students_from_berlin;
 select * from students_from_berlin;
 select * from students_from_bonn;
 select * from students_from_münchen;
+
+
+-- 
+--
+-- summary 
+
+use learn;
+
+SELECT  first_name, last_name, address FROM students_from_dusseldorf
+UNION ALL
+SELECT name, surname, '' FROM students_from_berlin
+UNION ALL
+SELECT first_name, last_name, '' FROM  students_from_bonn;
+
+-- SUBSELECT 
+-- SUBSELECT in FROM - результат работы одного запроса, является источником данных для другого запроса
+
+SELECT
+t1.first_name,
+t1.last_name
+FROM
+	(SELECT  first_name, last_name, address FROM students_from_dusseldorf
+	UNION ALL
+	SELECT name, surname, '' FROM students_from_berlin
+	UNION ALL
+	SELECT first_name, last_name, '' FROM  students_from_bonn) AS t1
+WHERE t1.first_name LIKE '%x'
+ORDER BY t1.last_name;
+
+SELECT
+t1.first_name
+FROM
+	(SELECT
+	first_name,
+	last_name,
+	address 
+	FROM c
+	WHERE address LIKE 'B%') AS t1;
+
+
+SELECT
+*
+FROM c;
+
+SELECT
+*
+FROM students_from_berlin;
+
+-- SUBSELECT in WHERE - результат работы одного запроса - условие для другого
+
+SELECT
+*
+FROM students_from_dusseldorf
+WHERE first_name NOT IN (
+						SELECT
+						name
+						FROM 
+						students_from_berlin);
+                        
+                        
+ CREATE DATABASE factory;
+ USE factory;
+ 
+-- employees : id int PK AI, surname v(128) not null, salary int 0;
+ 
+-- administration : id int PK AI, surname v(128) not null, salary int 0;
+
+-- staff : id int PK AI, surname v(128) not null;
+
+CREATE TABLE employees(
+id integer primary key auto_increment,
+surname varchar(128) not null,
+salary integer default 0
+);
+
+CREATE TABLE administration(
+id integer primary key auto_increment,
+surname varchar(128) not null,
+salary integer default 0
+);
+
+CREATE TABLE staff(
+id integer primary key auto_increment,
+surname varchar(128) not null
+);
+
+INSERT INTO employees(surname, salary) VALUES ('Alexeev', 2000),('Maximov', 1000);
+
+INSERT INTO administration(surname, salary) VALUES ('Sergeev', 9000),('Olegov', 10000);
+
+INSERT INTO staff(surname) VALUES ('Petroff'),('Egorov');
+
+-- print all personal from factory
+-- id, surname, salary, category
+-- category - worker, boss, staff
+
+-- 1 | Sergeev | 9000 | Boss
+-- 2 | Maximov |1000  | worker
+-- ...
+
+-- ORDER BY surname
+
+SELECT id , surname , salary , 'worker' AS category FROM employees
+UNION ALL
+SELECT id , surname , salary , 'boss' FROM administration
+UNION ALL
+SELECT id , surname , 0 , 'staff' FROM staff
+ORDER BY surname;
+
+-- lesson 5 five
+
+-- JOIN - горизоетальное обьеденение таблиц, к колонкам одной таблицы добавляютмся таблицы другой
+-- INNER JION, LEFT JOIN, RIGHT JOIN
+
+-- name | surname | age| passport | from | until |
+-- Alex | Alexeev | 35 | 44444444 | 2024 | 2034  |
+
+-- Table 1							Table2
+-- name | surname | age|	 		passport | from | until |
+-- Alex | Alexeev | 35 | 			44444444 | 2024 | 2034  |
+
+USE learn;
+
+CREATE TABLE person(
+id integer primary key auto_increment,
+name varchar(64) not null
+);
+
+INSERT INTO person(name) VALUE ("Max"),
+								("Seva"),
+                                ("Sveta"),
+                                ("Lora");
+                                
+SELECT *
+FROM person;
+
+-- MAx - 25, Seva - 30, Sveta - 18, Lora - 21  
+-- 1- 25     2-30       3 - 18      4 -21      
+
+CREATE TABLE ages(
+person_id integer,
+age integer
+);    
+
+INSERT INTO ages (person_id, age) VALUES	(1,25),
+											(2,30),
+                                            (3,18),
+                                            (4,21);
+                                            
+SELECT *
+FROM ages;      
+
+SELECT
+t1.*, -- выбираем все поля из таблицы t1
+t2.* -- выбираем все поля из таблицы t2
+FROM person AS t1
+INNER JOIN ages AS t2 -- команда присоединения колонок одной таблицы к колоекам другой таблицы 
+ON t1.id = t2.person_id; -- условие сопоставления сироу одной таблицы к другой      
+
+
+SELECT
+t1.*, -- выбираем все поля из таблицы t1
+t2.age -- выбираем все поля из таблицы t2
+FROM person AS t1
+INNER JOIN ages AS t2 -- команда присоединения колонок одной таблицы к колоекам другой таблицы 
+ON t1.id = t2.person_id; -- условие сопоставления сироу одной таблицы к другой  
+                               
+-- INNER JOIN - Besonderheits     
+INSERT INTO person(name) VALUE ("Alex"),
+								("Frank");   
+                                
+                                
+INSERT INTO ages (person_id, age) VALUES	(9,25),
+											(12,30),
+                                            (31,18),
+                                            (44,21);    
+                                            
+-- INNER JOIN включает только тк строки, для которых ксть совпадения у обоих таблиц по условию указаннаму послк ключквого слова ON 
+
+
+SELECT
+t1.*,  
+t2.age  
+FROM person AS t1
+INNER JOIN ages AS t2  
+ON t1.id = t2.person_id;  
+
+USE hr;
+
+SELECT
+first_name,
+last_name,
+department_id
+FROM employees;
+
+-- 
+
+SELECT
+t1.first_name,
+t1.last_name,
+t1.department_id,
+t2.department_name
+FROM employees AS t1
+INNER JOIN departments AS t2
+ON t1.department_id = t2.department_id;
+
+SELECT
+t1.first_name,
+t1.last_name,
+t2.job_title
+FROM employees AS t1
+INNER JOIN jobs AS t2
+ON t1.job_id = t2.job_id;
+
+
+SELECT
+t1.first_name,
+t1.last_name,
+t2.department_name
+FROM employees AS t1
+INNER JOIN departments AS t2
+ON t1.department_id = t2.department_id AND t2.department_name IN ("IT", "Treasury","IT Support");
+-- WHERE t2.department_name IN ("IT", "Treasury","IT Support");
+-- WHERE t2.department_name = "IT" OR t2.department_name = "Treasury" OR t2.department_name = "IT Support";
+
+
+-- чысто на собеседовании
+-- SELF JOIN ( SELF - это не кооманда, это подход) -- Имспользуем INNER JOIN 
+SELECT
+t1.first_name,
+t1.last_name,
+t2.first_name AS name_manager,
+t2.last_name AS surname_manager
+FROM employees AS t1
+INNER JOIN employees AS t2
+ON t1.manager_id = t2.employee_id;
+
+
+SELECT
+*
+FROM departments;
+                                
+SELECT *
+FROM jobs;
+
+SELECT *
+FROM employees;   
+
+DESCRIBE employees; -- Das ist sehr interesant
+
+
+-- Homework 27-10-2024
+--
+
+DROP DATABASE goods;
+
+CREATE DATABASE goods;
+USE goods;
+CREATE TABLE goods (
+id INT PRIMARY KEY AUTO_INCREMENT,
+title VARCHAR(30),
+quantity INT NOT NULL CHECK (quantity>0),
+instock CHAR (1) NOT NULL CHECK (instock IN ('Y', 'N'))
+);
+
+insert into goods (id, title, quantity, instock) values (1, 'Велосипед', 2, 'Y');
+insert into goods (id, title, quantity, instock) values (2, 'Скейт', 4, 'Y');
+insert into goods (id, title, quantity, instock) values (3, 'Самокат', 2, 'Y');
+insert into goods (id, title, quantity, instock) values (4, 'Сноуборд', 7, 'N');
+insert into goods (id, title, quantity, instock) values (5, 'Санки', 1, 'Y');
+insert into goods (id, title, quantity, instock) values (6, 'Коньки', 3, 'N');
+insert into goods (id, title, quantity, instock) values (7, 'Ролики', 5, 'Y');
+insert into goods (title, quantity, instock) values ('Шлем', 8, 'Y');
+insert into goods (title, quantity, instock) values ('Футбольный мяч', 2, 'N');
+insert into goods (title, quantity, instock) values ('перчатки', 5, 'Y');
+
+CREATE TABLE goods_2 (
+id INT PRIMARY KEY AUTO_INCREMENT,
+title VARCHAR(30),
+quantity INT NOT NULL CHECK (quantity>0),
+price INT NOT NULL,
+in_stock CHAR (1) NOT NULL CHECK(in_stock IN('Y','N'))
+);
+
+insert into goods_2 (id, title, quantity, price, in_stock) values (1, 'Тюбинг', 5, 1000, 'Y');
+insert into goods_2 (id, title, quantity, price, in_stock) values (2, 'Санки', 2, 1500, 'Y');
+insert into goods_2 (id, title, quantity, price, in_stock) values (3, 'Снегокат', 2, 900, 'Y');
+insert into goods_2 (id, title, quantity, price, in_stock) values (4, 'Сноуборд', 7, 700, 'N');
+insert into goods_2 (id, title, quantity, price, in_stock) values (5, 'Клюшка', 8, 300, 'Y');
+insert into goods_2 (id, title, quantity, price, in_stock) values (6, 'Коньки', 3, 350, 'N');
+insert into goods_2 (id, title, quantity, price, in_stock) values (7, 'Форма', 9, 450, 'Y');
+insert into goods_2 ( title, quantity, price, in_stock) values ( 'Гантели', 9, 450, 'Y');
+insert into goods_2 (  title, quantity, price, in_stock) values ( 'Форма', 9, 450, 'Y');
+insert into goods_2 ( title, quantity, price, in_stock) values ( 'Боксерские перчатки', 9, 450, 'Y');
+
+SELECT title FROM goods
+UNION ALL
+SELECT title FROM goods_2;
+
+SELECT title FROM goods
+UNION
+SELECT title FROM goods_2;
+
+SELECT
+t1.id, t1.title, t1.quantity, 
+t2.price, t2.in_stock AS instock
+FROM goods AS t1
+INNER JOIN goods_2 AS t2
+ON t1.title = t2.title;
+
+SELECT * FROM goods;
+SELECT * FROM goods_2;
