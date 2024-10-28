@@ -44,7 +44,7 @@ public class Student implements Comparable <Student> {
         public int compare(Student o1, Student o2) {
             return 0;
         }
-    }
+    };
 
     @Override
     public String toString() {
