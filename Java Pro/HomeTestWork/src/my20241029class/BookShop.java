@@ -33,7 +33,6 @@ public class BookShop {
                 return Integer.compare(o1.getCount(), o2.getCount());
             }
         });
-        System.out.println("Sort by Count: \n" + books);
-        System.out.println(books);
+        System.out.println("Sort by Count------------: \n" + books);
     }
 }
