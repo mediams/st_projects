@@ -22,8 +22,8 @@ public class SetExamples {
         for (String s : set) {
             System.out.print(s + " ");
         }
-        Book book1 = new Book("Rawling", "Harry Potter", 10, true, 10.0);
-        Book book2 = new Book("Rawling", "Harry Potter", 10, true, 10.0);
+        Book book1 = new Book("Rawling1", "Harry Potter", 10, true, 10.0);
+        Book book2 = new Book("Rawling2", "Harry Potter", 10, true, 10.0);
         Book book3 = new Book("", "Java in Action", 14, true, 19.5);
         Book book4 = new Book("M. Twain", "Tom Sawyer", 6, true, 15.0);
         Book book5 = new Book("Rl: Tolstoy", "War and Peace", 7, true, 12.0);

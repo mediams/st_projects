@@ -18,7 +18,7 @@ public class BookShop {
         List<Book> books = new ArrayList<>(List.of(book1, book2, book3, book4, book5, book6, book7));
 
         System.out.println("Sort by Title: \n" + books);
-        Collections.sort(books, new Book.BookComparatorByTitle());
+        Collections.sort(books, new Book.BookComparatorByTitle()); //----selbst machen
         System.out.println("Sort by Author: \n" + books);
         Collections.sort(books, new BookComparatorByAuthor()); // merge sort ---> stable ---> does not change order of sorted elements
 
