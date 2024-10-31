@@ -14,11 +14,12 @@ public class ListPalendrom {
         }
         System.out.println(charList);
 
+        //O(n)
         Iterator<Character> iterator = charList.iterator();
         ListIterator<Character> listIterator = charList.listIterator(charList.size());
         int count = 0;
         while (iterator.hasNext() && listIterator.hasPrevious()) {
-            if (count >= charList.size()/2) break;
+            if (count >= charList.size() / 2) break;
 
             Character currentLeft = iterator.next();
             Character currentRight = listIterator.previous();
@@ -26,7 +27,6 @@ public class ListPalendrom {
             if (!currentLeft.equals(currentRight)) return false;
             count++;
         }
-
         return true;
     }
 }
