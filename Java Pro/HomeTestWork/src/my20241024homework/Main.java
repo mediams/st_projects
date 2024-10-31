@@ -29,25 +29,22 @@ public class Main {
     private static void searchLastAndFirstElement(List<Integer> integerList, int element) {
         System.out.println("integerList = " + integerList);
         ListIterator<Integer> listIterator = integerList.listIterator();
-        int count = 0;
-        boolean hasElement = false;
         while (listIterator.hasNext()) {
             int i = listIterator.next();
-            if (i == element && hasElement == false) {
+            if (i == element) {
                 System.out.println("Индекс первого вхождения: " + listIterator.previousIndex());
-                hasElement = true;
+                break;
             }
         }
-
-        hasElement = false;
-        while (listIterator.hasPrevious()) {
-            int i = listIterator.previous();
-            if (i == element && hasElement == false) {
-                System.out.println("Индекс последнего вхождения: " + listIterator.nextIndex());
-                hasElement = true;
+        ListIterator<Integer> listIteratorReverse = integerList.listIterator(integerList.size());
+        while (listIteratorReverse.hasPrevious()) {
+            int i = listIteratorReverse.previous();
+            if (i == element) {
+                System.out.println("Индекс последнего вхождения: " + listIteratorReverse.nextIndex());
+                break;
             }
         }
-        if (hasElement == false) System.out.printf("Индекс вхождения '%d' не найден!", element);
+//        if (hasElement == false) System.out.printf("Индекс вхождения '%d' не найден!", element);
     }
 
     private static void deleteItem(LinkedList<Item> items, String userSearch) {
