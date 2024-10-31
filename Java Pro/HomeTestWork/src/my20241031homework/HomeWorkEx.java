@@ -1,5 +1,6 @@
 package my20241031homework;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -33,6 +34,20 @@ public class HomeWorkEx {
         2 (индекс первого вхождения), 7 (индекс последнего вхождения)
          */
 
+        List<Integer> integerList = new ArrayList<>(List.of(1, 1, 2, 2, 2, 2, 2, 2, 4, 4, 5, 7, 9, 10));
+        int element = 10;
+        int left = 0;
+        int right = integerList.size() - 1;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
 
+            if ((mid == element) && (element - 1 < element)) {
+                System.out.println(integerList.get(mid));
+                return;
+            }
+            if (mid > element) {
+                right = mid - 1;
+            } else left = mid + 1;
+        }
     }
 }
