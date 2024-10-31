@@ -8,11 +8,12 @@ public class ListPalendrom {
     }
 
     public static boolean isPalindrome(String word) {
+        // O(n)
         List<Character> charList = new ArrayList<>();
         for (int i = 0; i < word.length(); i++) {
             charList.add(word.charAt(i));
         }
-        System.out.println(charList);
+        System.out.println(charList); //O(n)
 
         //O(n)
         Iterator<Character> iterator = charList.iterator();
