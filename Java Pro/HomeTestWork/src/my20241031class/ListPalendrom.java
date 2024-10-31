@@ -4,7 +4,7 @@ import java.util.*;
 
 public class ListPalendrom {
     public static void main(String[] args) {
-        isPalindrome("test");
+        isPalindrome("mamam");
     }
 
     public static boolean isPalindrome(String word) {
@@ -16,16 +16,16 @@ public class ListPalendrom {
 
         Iterator<Character> iterator = charList.iterator();
         ListIterator<Character> listIterator = charList.listIterator(charList.size());
-        while(iterator.hasNext() && listIterator.hasPrevious()){
+        while (iterator.hasNext() && listIterator.hasPrevious()) {
             Character currentLeft = iterator.next();
             Character currentRight = listIterator.previous();
-            if (currentLeft <= currentRight) {
-                System.out.println("Ups");
-                break;
-            }
+//            if (currentLeft.equals(currentRight)) {
+//                System.out.println("Ups");
+//                break;
+//            }
             if (currentLeft.equals(currentRight)) {
-                System.out.println("hit");
-            }else System.out.println("no");
+                System.out.println("hit" + currentLeft + currentRight);
+            } else System.out.println("no"+ currentLeft + currentRight);
         }
 
         return true;
