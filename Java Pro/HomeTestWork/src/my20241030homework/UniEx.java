@@ -36,6 +36,8 @@ public class UniEx {
         Collections.sort(studentList, new studentComparatorBySurname());
         System.out.println(studentList);
 
+
+        System.out.println("\n//        Составить TreeSet из исходного списка студентов.");
         TreeSet<Student> studentTreeSet = new TreeSet<>(studentList);
         System.out.println(studentTreeSet);
     }

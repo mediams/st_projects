@@ -29,7 +29,7 @@ public class PractiseEx {
 // какие вопросы будут на собесе
     public static void sortCompare(List<Book> books, Comparator<Book> comparator) {
         // first operation - make copy to array or ArrayList
-        List<Book> booksCopy = new ArrayList<>(books); // off jetzt
+        List<Book> booksCopy = new ArrayList<>(books); // off jetzt // O(n) operation
         for (int i = 0; i < books.size(); i++) { // n
             boolean isSorted = true;
             Book temp = null;
