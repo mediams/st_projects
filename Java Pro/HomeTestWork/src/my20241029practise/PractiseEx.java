@@ -31,7 +31,6 @@ public class PractiseEx {
             boolean isSorted = true;
             Book temp = null;
             for (int j = 0; j < books.size() - i - 1; j++) {
-                isSorted = true;
                 if (comparator.compare(books.get(j), books.get(j + 1)) > 0) {
                     swap(books, j, j + 1);
                     isSorted = false;

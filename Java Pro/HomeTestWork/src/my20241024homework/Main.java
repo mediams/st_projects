@@ -21,7 +21,7 @@ public class Main {
         deleteItem(items, "Third item");
 
         System.out.println("\nполучить первое и последнее вхождение указанных элементов в связанном списке.");
-        List<Integer> integerList = new ArrayList<>(List.of(1, 4, 3, 2, 1, 2, 2, 0));
+        List<Integer> integerList = new LinkedList<>(List.of(1, 4, 3, 2, 1, 2, 2, 0));
         int element = 2;
         searchLastAndFirstElement(integerList, element);
     }
@@ -36,6 +36,8 @@ public class Main {
                 break;
             }
         }
+
+//        if (hasElement == false) System.out.printf("Индекс вхождения '%d' не найден!", element);
         ListIterator<Integer> listIteratorReverse = integerList.listIterator(integerList.size());
         while (listIteratorReverse.hasPrevious()) {
             int i = listIteratorReverse.previous();
@@ -44,7 +46,6 @@ public class Main {
                 break;
             }
         }
-//        if (hasElement == false) System.out.printf("Индекс вхождения '%d' не найден!", element);
     }
 
     private static void deleteItem(LinkedList<Item> items, String userSearch) {
