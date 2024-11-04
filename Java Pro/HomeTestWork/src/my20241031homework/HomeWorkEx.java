@@ -36,18 +36,38 @@ public class HomeWorkEx {
          */
 
         List<Integer> integerList = new ArrayList<>(List.of(1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 5, 6, 7, 8, 9, 10));
-        int target = 2;
+        int target = 11;
         int left = 0;
         int right = integerList.size() - 1;
         while (left <= right) {
             int mid = left + (right - left) / 2;
             int current = integerList.get(mid);
-
             if (current == target) {
                 if ((target > integerList.get(mid - 1))) {
-                    System.out.println(mid);
-                    return;
+                    System.out.println("First index : " + mid);
+                    break;
                 } else right = mid - 1;
+            } else if (current > target) {
+                right = mid - 1;
+            } else left = mid + 1;
+
+            if (left > right) {
+                System.out.println("Not found!");
+                return;
+            }
+        }
+
+
+        left = 0;
+        right = integerList.size() - 1;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            int current = integerList.get(mid);
+            if (current == target) {
+                if ((target < integerList.get(mid + 1))) {
+                    System.out.println("Last index : " + mid);
+                    break;
+                } else left = mid + 1;
             } else if (current > target) {
                 right = mid - 1;
             } else left = mid + 1;
