@@ -9,14 +9,14 @@ public class HomeWorkEx {
     public static void main(String[] args) {
 
         Set<String> list = new TreeSet<>(List.of("Emma", "Roma", "Nicolay"));
-        System.out.println("//        Из изначально данного Set names " + list + " получить Set длин имен");
+        System.out.println("//        \nИз изначально данного Set names " + list + " получить Set длин имен");
         Set<Integer> length = new TreeSet<>();
         for (String s : list) {
             length.add(s.length());
         }
         System.out.println(length);
 
-        System.out.println("//        Имеется текст Hello world!!!. Вывести уникальный набор символов");
+        System.out.println("//        \nИмеется текст Hello world!!!. Вывести уникальный набор символов");
 
         String text = "Hello world!!!";
         Set<Character> uniqCharacter = new TreeSet<>();
@@ -26,7 +26,7 @@ public class HomeWorkEx {
         System.out.println(uniqCharacter);
 
 
-        System.out.println("  Напишите метод, чтобы получить первое и последнее вхождение элементов в отсортированном списке.");
+        System.out.println("  \nНапишите метод, чтобы получить первое и последнее вхождение элементов в отсортированном списке.");
         /*
         input:
         list = {1, 1, 2, 2, 2, 2, 2, 2, 4, 4, 5, 7, 9, 10}, element = 2
@@ -35,8 +35,12 @@ public class HomeWorkEx {
         2 (индекс первого вхождения), 7 (индекс последнего вхождения)
          */
 
-        List<Integer> integerList = new ArrayList<>(List.of(1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 5, 6, 7, 8, 9, 10));
-        int target = 11;
+        List<Integer> integerList = new ArrayList<>(List.of(1, 1, 2, 2, 2, 2, 2, 2, 4, 4, 5, 7, 9, 10));
+        int element = 2;
+        findFirstAndLastElement(integerList, element);
+    }
+
+    private static void findFirstAndLastElement(List<Integer> integerList, int target) {
         int left = 0;
         int right = integerList.size() - 1;
         while (left <= right) {
@@ -56,8 +60,6 @@ public class HomeWorkEx {
                 return;
             }
         }
-
-
         left = 0;
         right = integerList.size() - 1;
         while (left <= right) {
