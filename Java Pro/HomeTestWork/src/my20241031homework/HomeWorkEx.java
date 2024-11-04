@@ -30,25 +30,27 @@ public class HomeWorkEx {
         /*
         input:
         list = {1, 1, 2, 2, 2, 2, 2, 2, 4, 4, 5, 7, 9, 10}, element = 2
+        list = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, element = 2
         output:
         2 (индекс первого вхождения), 7 (индекс последнего вхождения)
          */
 
-        List<Integer> integerList = new ArrayList<>(List.of(1, 1, 2, 2, 2, 2, 2, 2, 4, 4, 5, 7, 9, 10));
-        int target = 9;
+        List<Integer> integerList = new ArrayList<>(List.of(1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 5, 6, 7, 8, 9, 10));
+        int target = 2;
         int left = 0;
         int right = integerList.size() - 1;
-
         while (left <= right) {
             int mid = left + (right - left) / 2;
-            if (mid == target) {
-                System.out.println("target on index = " + mid);
-                return;
-            }
-            if (mid < target) {
-                left = mid + 1;
-            } else right = mid - 1;
+            int current = integerList.get(mid);
 
+            if (current == target) {
+                if ((target > integerList.get(mid - 1))) {
+                    System.out.println(mid);
+                    return;
+                } else right = mid - 1;
+            } else if (current > target) {
+                right = mid - 1;
+            } else left = mid + 1;
         }
     }
 }
