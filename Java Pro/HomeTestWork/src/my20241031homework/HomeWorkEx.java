@@ -35,19 +35,20 @@ public class HomeWorkEx {
          */
 
         List<Integer> integerList = new ArrayList<>(List.of(1, 1, 2, 2, 2, 2, 2, 2, 4, 4, 5, 7, 9, 10));
-        int element = 10;
+        int target = 9;
         int left = 0;
         int right = integerList.size() - 1;
+
         while (left <= right) {
             int mid = left + (right - left) / 2;
-
-            if ((mid == element) && (element - 1 < element)) {
-                System.out.println(integerList.get(mid));
+            if (mid == target) {
+                System.out.println("target on index = " + mid);
                 return;
             }
-            if (mid > element) {
-                right = mid - 1;
-            } else left = mid + 1;
+            if (mid < target) {
+                left = mid + 1;
+            } else right = mid - 1;
+
         }
     }
 }
