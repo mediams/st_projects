@@ -1056,7 +1056,239 @@ INNER JOIN locations AS t3
 ON t2.location_id = t3.location_id AND t3.city IN('Seattle','Toronto');
 
 
-SELECT * FROM locations;
-SELECT * FROM countries;
-SELECT * FROM regions;
-SELECT * FROM employees;
+-- ClassWork 30-10-2024 Lesson 6
+--
+
+-- LEFT JOIN, RIGHT JOIN, SELF JOIN  (not a command)
+-- При левом соединение за основу берутся все строки левой таблицы, далее присоедняются колонки 
+-- из правой таблицы, для тех строк, для которых есть совпадение в правой таблице, в присоединяемых 
+-- колонках будет значение из правой таблицы, а для тех строк левой таблицы, для которых совпадений нет в присоединяемых колонках будет null
+
+USE learn;
+
+SELECT
+p.name,
+a.age
+FROM person AS p
+INNER JOIN ages AS a
+ON p.id = a.person_id;
+
+
+SELECT
+p.name,
+a.age
+FROM person AS p -- person left table
+LEFT JOIN ages AS a -- ages right table
+ON p.id = a.person_id;
+
+-- В отличие от внутреннего соединения, здесь принципиально какая таблица левая, какая правая
+-- за основу здесь берется левая таблица!!! 
+-- При внутреннем соединении - все равно где какая таблица
+
+-- Task 1 : Вывести всx персон, для которых не задан возраст(person, ages)
+-- все для которых - задано, заполнено, существует и тд 
+-- практически всегда это INNER JOIN - все для которых - не задано, не заполнено, не найдено, нет - практически всегда LEFT JOIN
+
+SELECT
+p.name,
+a.age
+FROM person AS p  
+LEFT JOIN ages AS a  
+ON p.id = a.person_id -- // AND a.age IS null // Здесь условие `a.age IS null` добавляется непосредственно в ON-клаузу JOIN.
+WHERE a.age IS null;
+-- WHERE - сначала все присоединяем, а потом уже фильтруем те строки для которых в присоединяемых колонкаx
+-- значение null - для этой задачи это корректно!!!
+
+-- все для которых - задано, заполнено, существует и тд - практически всегда это INNER JOIN 
+-- все для которых - не задано, не заполнено, не найдено, нет - практически всегда LEFT JOIN
+-- если в результируещем запросе нам не нужны колонки из второй таблицы, то такие задачи можно
+-- решить через подзапрос!!!!
+
+-- Task 1-1 : Вывести всех персон, для которых не задан возраст(person, ages) - решение через подзапрос
+
+
+SELECT
+person_id
+FROM ages;
+-- diese beide
+
+SELECT
+id,
+name
+FROM person 
+WHERE id NOT IN (1,2,3,4,9,12,44);
+ -- ↑↓↓↓↓
+ -- ist gleich↓
+SELECT
+id,
+name
+FROM person 
+WHERE id NOT IN (
+				SELECT
+				person_id
+				FROM ages
+);
+
+USE hr;
+
+-- Task 2 : Необходимо вывести названия департаментов, в которых никто не работает
+
+SELECT
+department_name,
+department_id
+FROM departments 
+WHERE department_id NOT IN (
+				SELECT
+				department_id
+				FROM employees
+); -- FALSH
+
+SELECT
+department_name
+FROM departments
+WHERE department_id NOT IN (
+							SELECT
+							department_id
+							FROM employees
+							WHERE department_id IS NOT NULL); -- correct
+
+SELECT
+employee_id,
+department_id
+FROM employees;
+
+SELECT
+d.department_name
+-- e.department_id
+FROM departments AS d
+LEFT JOIN employees AS e
+ON d.department_id = e.department_id  WHERE e.department_id IS NULL;
+
+USE learn;
+
+-- RIGHT JOIN
+-- При правом соединении за основу берутся все строки правой таблицы, далее присоедняются колонки 
+-- из левой таблицы, для тех строк, для которых есть совпадение в левой таблице, в присоединяемых 
+-- колонках будет значение из левой таблицы, а для тех строк правой таблицы, для которых совпадений нет 
+-- в присоединяемых колонках будет null
+
+SELECT
+p.id, 
+p.name,
+a.age
+FROM person AS p
+RIGHT JOIN ages AS a -- за основу берутся строки правой таблицы!!! в левом - основа левая таблица!
+ON p.id = a.person_id;
+
+SELECT
+p.id, 
+p.name,
+a.age
+FROM ages  AS a
+LEFT JOIN person AS p -- за основу берутся строки left таблицы!!! в right - основа левая таблица!
+ON p.id = a.person_id;
+
+-- FULL JOIN - LEFT JOIN + UNION ALL + RIGHT JOIN
+-- shop
+
+USE shop;
+
+-- Task 2 : print name for All sellers and name their boss
+
+SELECT
+s1.SNAME AS seller_Name,
+s2.SNAME AS boss_Name
+FROM sellers AS s1
+LEFT JOIN sellers AS s2
+ON s1.BOSS_ID = s2.SELL_ID;
+
+SELECT 
+t1.SNAME AS name1,
+t2.SNAME AS name_of_boss
+FROM sellers AS t1
+LEFT JOIN sellers AS t2
+ON t1.BOSS_ID = t1.SELL_ID;
+--
+
+-- Task 3 : print all customers and their orders id
+SELECT
+c.CNAME,
+o.ORDER_ID
+FROM customers AS c
+LEFT JOIN orders AS o
+ON c.CUST_ID = o.CUST_ID;
+
+
+-- Task 4: print client name, order amount for clients with order amount more than 1000
+SELECT
+c.CNAME,
+o.ORDER_ID,
+o.AMT
+FROM customers AS c
+INNER JOIN orders AS o
+ON c.CUST_ID = o.CUST_ID AND o.AMT > 1000; -- besser
+-- ON c.CUST_ID = o.CUST_ID WHERE o.AMT > 1000; -- schlechter
+
+
+-- summary 
+-- 
+
+use shop;
+
+-- Task 1 : print all sellers(id, name) and their orders(id, date)
+SELECT
+s.SELL_ID,
+s.SNAME,
+o.ORDER_ID,
+o.ODATE
+FROM sellers AS s
+LEFT JOIN orders AS o
+ON s.SELL_ID = o.SELL_ID;
+
+-- Task 2 : print customers name with orders and add to result sellers name
+-- add conditional sellers and customers from different cities
+SELECT
+c.CNAME,
+o.ORDER_ID,
+s.SNAME
+FROM customers AS c
+INNER JOIN orders AS o
+ON c.CUST_ID = o.CUST_ID
+INNER JOIN sellers AS s
+ON o.SELL_ID = s.SELL_ID AND c.CITY <> s.CITY;
+
+
+
+-- Task 3 : print customers name without any orders 
+SELECT
+c.CNAME,
+o.ORDER_ID
+FROM customers AS c
+LEFT JOIN orders AS o
+ON c.CUST_ID = o.CUST_ID WHERE o.ORDER_ID IS NULL;
+
+SELECT
+CNAME
+FROM customers
+WHERE CUST_ID NOT IN (
+							SELECT
+							CUST_ID
+							FROM orders
+							WHERE ORDER_ID IS NOT NULL);    
+                            
+-- Task 4 : print seller name, boss name,   difference between boss comm and sel comm  
+-- include sellers without boss
+    
+SELECT
+s1.SNAME AS sellers,
+s2.SNAME AS Boss,
+s2.COMM - s1.COMM  AS difference
+FROM sellers AS s1
+left JOIN sellers AS s2
+ON s1.BOSS_ID = s2.SELL_ID;
+
+
+
+select * from customers;
+select * from orders;
+select * from sellers;
