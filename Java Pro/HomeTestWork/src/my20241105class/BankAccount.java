@@ -37,8 +37,8 @@ public class BankAccount {
     }
 
     public static void main(String[] args) {
-        BankAccount bankAccount1 = new BankAccount(10, 20);
-        BankAccount bankAccount2 = new BankAccount(15, 10);
+        BankAccount bankAccount1 = new BankAccount(10, 10);
+        BankAccount bankAccount2 = new BankAccount(20, 10);
         System.out.println(bankAccount1.equals(bankAccount2));
         System.out.println(bankAccount1.hashCode());
         System.out.println(bankAccount2.hashCode());
