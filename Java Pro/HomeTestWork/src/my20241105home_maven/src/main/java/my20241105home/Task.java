@@ -1,9 +1,6 @@
 package my20241105home;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.TreeSet;
+import java.util.*;
 
 public class Task {
     /**
@@ -40,5 +37,10 @@ public class Task {
 
         TreeSet<Person> sortedList = DataBase.getPersonTreeSet();
         System.out.println("Sorted: " + sortedList);
+
+        DataBase.addPersonToLinkedList(personList);
+
+        LinkedList<Person> sortedByAge = DataBase.getPersonLinkedList();
+        System.out.println("By Age: " + sortedByAge);
     }
 }
