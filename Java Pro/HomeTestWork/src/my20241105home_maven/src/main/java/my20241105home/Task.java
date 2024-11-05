@@ -1,39 +1,44 @@
 package my20241105home;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.TreeSet;
 
 public class Task {
     /**
      * Person
-     *      id
-     *      name
-     *      surname
-     *      age
-     *      sex
-     *      email
-     *
-     *      Address address
-     *
+     * id
+     * name
+     * surname
+     * age
+     * sex
+     * email
+     * <p>
      * Address address
-     *      id
-     *      street
-     *      int houseNumber
-     *      postCode
-     *
+     * <p>
+     * Address address
+     * id
+     * street
+     * int houseNumber
+     * postCode
+     * <p>
      * DataBase
-     *      static TreeSet
-     *      static LinkedList
-     *
-     *
-     * 1 = method List<Person> generatePerson 40()
-     * 2 = TreeSet = name, surname, age, Address
-     * 3 = LinkedList age > param
+     * static TreeSet
+     * static LinkedList
+     * <p>
+     * <p>
+     * 1 = method List<Person> generatePerson 40() *** написать метод который генерирует 40 рандомных личностей
+     * 2 = TreeSet = name, surname, age, Address *** Необходимо написать метод сортировки
+     * 3 = LinkedList age > param *** в линкет-лист необходимо чтобы попали люди с возрастом не более 25
      */
     public static void main(String[] args) {
         List<Person> personList = new ArrayList<>(new Person().gen(40));
         System.out.println(personList);
+
+        DataBase.addPersonToSet(personList);
+
+        TreeSet<Person> sortedList = DataBase.getPersonTreeSet();
+        System.out.println("Sorted: " + sortedList);
     }
-
-
 }

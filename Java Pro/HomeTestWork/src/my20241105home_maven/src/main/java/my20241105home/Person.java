@@ -90,7 +90,11 @@ public class Person implements Comparable<Person> {
     //    name, surname, age, Address
     @Override
     public int compareTo(Person o) {
-        int result = name.compareTo(o.name);
+        int result = Integer.compare(id, o.id);
+        if (result != 0) {
+            return result;
+        }
+        result = name.compareTo(o.name);
         if (result != 0) {
             return result;
         }
