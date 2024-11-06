@@ -27,32 +27,54 @@ public class MyStack {
     }
 
     public void push(String s) {
+        if (isFull()) {
+            return;
+        }
         data[count] = s;
         count++;
     }
 
-    public String pop(){
+    public int size() {
+        return count;
+    }
+
+    public String pop() {
         count--;
-        String t = data[count];
+        if (isEmpty()) {
+            System.out.println("Array is Empty!");
+            return null;
+        }
+        String s = data[count];
         data[count] = null;
-        return t;
+        return s;
+    }
+
+    public String peek() {
+//        return data[count - 1];
+        return null;
     }
 
     public boolean isEmpty() {
-        boolean check = false;
-        if (this.data == null) {
-            return true;
-        }
-        if (data.length == 0) {
+        if (data[0] == null) {
             return true;
         }
         return false;
     }
 
+    public boolean isFull() {
+        if (data[size - 1] != null) {
+            System.out.println("Array is full!");
+            return true;
+        }
+        return false;
+    }
 
     public static void main(String[] args) {
         MyStack myStack = new MyStack(5);
         myStack.push("Test");
+        System.out.println(myStack);
+        System.out.println(myStack.pop());
+        System.out.println(myStack);
         myStack.push("Test2");
 //        myStack.push("Test3");
         System.out.println(myStack.isEmpty());
@@ -60,17 +82,25 @@ public class MyStack {
         System.out.println(myStack.pop());
         System.out.println(myStack);
         myStack.push("Test3");
+        myStack.push("Test4");
+        myStack.push("Test4");
+        myStack.push("Test4");
+//        myStack.push("Test5");
+        myStack.push("Test6");
+        myStack.pop();
+        myStack.pop();
+        myStack.pop();
+        myStack.pop();
+        myStack.pop();
+        myStack.pop();
 //        myStack.push("Test3");
 //        myStack.push("Test3");
         System.out.println(myStack);
+        System.out.println(myStack.peek());
+        System.out.println(myStack.size());
+        System.out.println(myStack.isEmpty());
 
     }
-//    pop()
-//
-//    peek()
-//
-//    size()
-//
-//    isEmpty()
+
 
 }
