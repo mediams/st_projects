@@ -18,7 +18,7 @@ public class Shop {
         System.out.println(items);
 
         while (!items.isEmpty()) {
-            System.out.println("Customer # " + items.size() + ", buy a " + items.poll());
+            System.out.println("Customer" + ", buy a " + items.poll());
         }
 
     }
