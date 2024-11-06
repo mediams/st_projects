@@ -1,6 +1,6 @@
 package my20241105home.shop;
 
-public class Item {
+public class Item implements Comparable<Item> {
     private String title;
     private double price;
 
@@ -23,5 +23,10 @@ public class Item {
                 "title='" + title + '\'' +
                 ", price=" + price +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Item o) {
+        return Double.compare(this.price, o.price);
     }
 }
