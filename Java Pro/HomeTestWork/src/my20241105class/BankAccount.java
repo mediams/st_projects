@@ -2,7 +2,7 @@ package my20241105class;
 
 import java.util.Objects;
 
-public class BankAccount {
+public class BankAccount implements Comparable<BankAccount>{
     private int accountA;
     private int accountB;
     boolean isActive;
@@ -12,9 +12,12 @@ public class BankAccount {
         this.accountB = accountB;
     }
 
-
-
-//    @Override
+    public BankAccount(int accountA, int accountB, boolean isActive) {
+        this.accountA = accountA;
+        this.accountB = accountB;
+        this.isActive = isActive;
+    }
+    //    @Override
 //    public int hashCode() {
 //        int result = accountA;
 //        result = 31 * result + accountB;
@@ -45,5 +48,19 @@ public class BankAccount {
         System.out.println(bankAccount1.hashCode() == bankAccount2.hashCode());
 
 
+    }
+
+    @Override
+    public String toString() {
+        return "BankAccount{" +
+                "accountA=" + accountA +
+                ", accountB=" + accountB +
+                ", isActive=" + isActive +
+                '}';
+    }
+
+    @Override
+    public int compareTo(BankAccount o) {
+        return Boolean.compare(isActive, o.isActive);
     }
 }
