@@ -1,9 +1,6 @@
 package my20241107practise;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class MapEx {
     public static void main(String[] args) {
@@ -44,14 +41,36 @@ public class MapEx {
                 )
         );
 
-        for (Map<String, List<Integer>> value : dataNew.values()){
-            for (List<Integer> integerList : value.values()){
+        for (Map<String, List<Integer>> value : dataNew.values()) {
+            for (List<Integer> integerList : value.values()) {
                 int sumNew = 0;
-                for (int numNew : integerList){
+                for (int numNew : integerList) {
                     sumNew += numNew;
                 }
                 System.out.println(sumNew);
             }
         }
+
+        Map<String, Map<String, String>> employees = Map.of(
+                "1", Map.of("Имя", "Alice", "Отдел", "IT"),
+                "2", Map.of("Имя", "Bob", "Отдел", "HR"),
+                "3", Map.of("Имя", "Charlie", "Отдел", "IT")
+        );
+
+//        getEmployee(employees);
     }
+//    Напишите метод, который принимает на вход название отдела и возвращает список ID сотрудников из этого отдела.
+
+    public static List<String> getEmployee(String departmantName, Map<String, Map<String, String>> employees) {
+        List<String> list = new ArrayList<>();
+        Map<String, String> emp1 = new HashMap<>();
+
+        for (Map<String, String> listMap : employees.values()){
+
+        }
+
+
+        return list;
+    }
+
 }
