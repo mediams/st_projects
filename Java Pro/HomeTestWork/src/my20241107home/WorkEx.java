@@ -23,8 +23,9 @@ public class WorkEx {
         Pizza pizza5 = new Pizza("With Pork", 6, "Peter", false);
         Pizza pizza6 = new Pizza("Vegetarian", 2, "Steve", true);
         Pizza pizza7 = new Pizza("Spicy", 1, "John", true);
+        Pizza pizza8 = new Pizza("Spicy2", 1, "John", true);
 
-        List<Pizza> pizzas = List.of(pizza1, pizza2, pizza3, pizza4, pizza5, pizza6, pizza7);
+        List<Pizza> pizzas = List.of(pizza1, pizza2, pizza3, pizza4, pizza5, pizza6, pizza7, pizza8);
 
         HashSet<String> uniquePizzas = new HashSet<>();
         for (Pizza p : pizzas) {
@@ -34,16 +35,29 @@ public class WorkEx {
 
         HashMap<String, Integer> countPizzas = new HashMap<>();
         for (Pizza p : pizzas) {
-            if (!countPizzas.containsKey(p.getCookName()) && countPizzas.containsKey(p.isPresent()) == true) {
-                countPizzas.put(p.getCookName(), 1);
-            } else {
-                countPizzas.put(p.getCookName(), countPizzas.get(p.getCookName()) + 1);
+            if (p.isPresent()) {
+                if (!countPizzas.containsKey(p.getCookName())) {
+                    countPizzas.put(p.getCookName(), 1);
+                } else {
+                    countPizzas.put(p.getCookName(), countPizzas.get(p.getCookName()) + 1);
+                }
             }
         }
 
         System.out.println(countPizzas);
+
+        Map<String, Set<String>> namesPizzaEachCooker = new HashMap<>();
+
+        for (Pizza p : pizzas) {
+            if (!namesPizzaEachCooker.containsKey(p.getCookName())) {
+                namesPizzaEachCooker.put(p.getCookName(), new HashSet<>(Set.of(p.getName())));
+            } else {
+                namesPizzaEachCooker.get(p.getCookName()).add(p.getName());
+            }
+        }
+        System.out.println(namesPizzaEachCooker);
     }
 }
-//        Используя HashMap, создай счетчик, который будет считать количество пицц, приготовленных каждым поваром.
-//Этот шаг уже реализован в твоем коде, но попробуй еще раз,
-// добавив дополнительные условия (например, учитывай только те пиццы, которые есть в наличии).
+
+//Создай Map<String, Set<String>>, где ключом будет имя повара, а значением — Set с именами всех пицц, которые он приготовил.
+//Здесь удобно использовать HashSet для хранения уникальных имен пицц для каждого повара.
