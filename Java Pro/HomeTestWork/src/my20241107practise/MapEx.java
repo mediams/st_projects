@@ -56,21 +56,20 @@ public class MapEx {
                 "2", Map.of("Имя", "Bob", "Отдел", "HR"),
                 "3", Map.of("Имя", "Charlie", "Отдел", "IT")
         );
-
-//        getEmployee(employees);
+        String nameOfDepartment = "IT";
+        List<String> list = new ArrayList<>();
+        for (Map.Entry<String, Map<String, String>> entry : employees.entrySet()) {
+            System.out.println(entry);
+            Map<String, String> entry2 = entry.getValue();
+//            System.out.println(entry);
+            if (entry2.get("Отдел") == nameOfDepartment) {
+                System.out.println(entry2.get("Имя"));
+                list.add(entry.getKey() + ": " + entry2.get("Имя"));
+            }
+        }
+        System.out.println(list);
     }
+}
+
 //    Напишите метод, который принимает на вход название отдела и возвращает список ID сотрудников из этого отдела.
 
-    public static List<String> getEmployee(String departmantName, Map<String, Map<String, String>> employees) {
-        List<String> list = new ArrayList<>();
-        Map<String, String> emp1 = new HashMap<>();
-
-        for (Map<String, String> listMap : employees.values()){
-
-        }
-
-
-        return list;
-    }
-
-}
