@@ -1287,8 +1287,156 @@ FROM sellers AS s1
 left JOIN sellers AS s2
 ON s1.BOSS_ID = s2.SELL_ID;
 
+-- lesson seven
+--
+
+CREATE DATABASE uni;
+USE uni;
+
+-- students (id - pk ai, name string 128 not null, age int)
+
+CREATE TABLE students (
+id INTEGER PRIMARY KEY AUTO_INCREMENT,
+name VARCHAR (128) NOT NULL,
+age INTEGER
+);
+
+-- teacher (id - pk ai, name string 128 not null, age int)
+
+CREATE TABLE teacher (
+id INTEGER PRIMARY KEY AUTO_INCREMENT,
+name VARCHAR (128) NOT NULL,
+age INTEGER
+);
+
+-- competencies (id - pk ai, title string 128 not null, age int)
+
+CREATE TABLE competencies (
+id INTEGER PRIMARY KEY AUTO_INCREMENT,
+title VARCHAR (128) NOT NULL
+);
+
+-- teachers2competencies (id - pk ai, teacher_id int, competencies_id)
+
+CREATE TABLE teachers2competencies (
+id INTEGER PRIMARY KEY AUTO_INCREMENT,
+teacher_id INTEGER,
+competencies_id INTEGER
+);
+
+-- courses (id - pk ai,teacher_id, title string 128 not null, headman_id int)
+
+CREATE TABLE courses (
+id INTEGER PRIMARY KEY AUTO_INCREMENT,
+teacher_id INTEGER,
+title VARCHAR (128) NOT NULL,
+headman_id INTEGER
+);
+
+-- students2courses (id - pk ai, student_id, course_id)
+CREATE TABLE students2courses (
+id INTEGER PRIMARY KEY AUTO_INCREMENT,
+student_id INTEGER,
+course_id INTEGER
+);
+
+ALTER TABLE teacher RENAME TO teachers;
+
+-- Task 1 : Вывести имена студенов и названия курсов, которые они проходят
+
+SELECT
+s.name,
+c.title
+FROM students AS s
+INNER JOIN students2courses AS sc
+ON s.id = sc.course_id
+INNER JOIN courses AS c
+-- ON sc.id=s.id;
+   ON c.id = sc.course_id;
+   
+
+SELECT
+t.name,
+c.title
+FROM teachers AS t
+LEFT JOIN teachers2competencies AS tc
+-- ON t.id = tc.competencies_id
+   ON t.id = tc.teacher_id
+LEFT JOIN competencies AS c
+ON c.id = tc.competencies_id;
 
 
-select * from customers;
-select * from orders;
-select * from sellers;
+-- Task 3 :  Вывести преподавателя без компетенций
+
+SELECT
+t1.name,
+t2.teacher_id
+FROM teachers t1
+LEFT JOIN teachers2competencies AS t2
+ON t1.id = t2.teacher_id
+WHERE t2.teacher_id IS NULL;
+
+
+
+
+SELECT
+t.name,
+c.title
+FROM teachers AS t
+LEFT JOIN teachers2competencies AS tc
+ON t.id = tc.teacher_id
+LEFT JOIN competencies AS c
+ON c.id = tc.competencies_id WHERE c.title IS NULL;
+
+SELECT
+name
+FROM teachers
+WHERE id NOT IN (
+				SELECT
+				teacher_id
+				FROM teachers2competencies);
+ -- -------------------------------------------------------     
+ -- Task 4 :  Вывести студентов которые не проходят ни один курс
+ 
+SELECT
+t1.name,
+t2.course_id
+FROM students t1
+LEFT JOIN students2courses AS t2
+ON t1.id = t2.course_id
+WHERE t2.course_id IS NULL;
+
+
+SELECT
+name
+FROM students
+WHERE id NOT IN (
+				SELECT
+				course_id
+				FROM students2courses);
+ 
+  -- Task 5 : Вывести курсы, которые не посещает ни один студент
+
+SELECT
+c1.title,
+t2.course_id
+FROM courses c1
+LEFT JOIN students2courses AS t2
+ON c1.id = t2.course_id
+WHERE t2.course_id IS NULL;
+
+SELECT
+title
+FROM courses
+WHERE id NOT IN (
+				SELECT
+				course_id
+				FROM students2courses);
+
+
+select * from students;
+select * from teachers;
+select * from Competencies;
+select * from Teachers2Competencies;
+select * from courses;
+select * from students2courses;
