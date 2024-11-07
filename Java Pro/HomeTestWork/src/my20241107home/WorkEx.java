@@ -11,6 +11,15 @@ public class WorkEx {
         map.put(1, "One");
         map.put(2, "Two");
         map.put(3, "Three");
+        map.put(3, "Three");
+
+        Map<Integer, List<String>> map2 = new HashMap<>();
+    // Добавляем ключ и значение
+        map2.put(1, new ArrayList<>(List.of("One")));
+    // Добавляем еще одно значение к существующему ключу
+        map2.get(1).add("Another One");
+        System.out.println(map2); // {1=[One, Another One]}
+
 
         for (Map.Entry<Integer, String> entry : map.entrySet()) {
             System.out.println(entry.getKey() + " : " + entry.getValue());
@@ -59,5 +68,3 @@ public class WorkEx {
     }
 }
 
-//Создай Map<String, Set<String>>, где ключом будет имя повара, а значением — Set с именами всех пицц, которые он приготовил.
-//Здесь удобно использовать HashSet для хранения уникальных имен пицц для каждого повара.
