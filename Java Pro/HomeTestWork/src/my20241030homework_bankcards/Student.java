@@ -1,4 +1,4 @@
-package my20241030homework;
+package my20241030homework_bankcards;
 
 public class Student implements Comparable<Student> {
     private String name;

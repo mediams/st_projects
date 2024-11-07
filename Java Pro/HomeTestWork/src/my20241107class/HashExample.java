@@ -27,15 +27,15 @@ public class HashExample {
         BankAccount bankAccount1 = new BankAccount(10, 10, false);
         BankAccount bankAccount2 = new BankAccount(10, 10, true);
 
-// o1.equals(o2) == true =---> hash1 == hash2
 
-        Set<BankAccount> bankAccountSet = new HashSet<>(); //equals // hashcode
+        Set<BankAccount> bankAccountSet = new HashSet<>();  // equals() must be consistent hashcode()
+                                                            // o1.equals(o2) == true ---> hash1 == hash2
         bankAccountSet.add(bankAccount1);
         bankAccountSet.add(bankAccount2);
         System.out.println(bankAccountSet);
 
         bankAccountSet = new TreeSet<>();   // compareTo() must be consistent with equals()
-                                            // o1.compareTo(o2) == 0 <-|---> o1.equals(o2.) == true
+                                            // o1.compareTo(o2) == 0 <----> o1.equals(o2.) == true
         bankAccountSet.add(bankAccount1);
         bankAccountSet.add(bankAccount2);
         System.out.println(bankAccountSet);

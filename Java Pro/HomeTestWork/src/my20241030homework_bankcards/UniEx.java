@@ -1,6 +1,4 @@
-package my20241030homework;
-
-import my20241029class.Book;
+package my20241030homework_bankcards;
 
 import java.util.*;
 

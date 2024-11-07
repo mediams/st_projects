@@ -61,6 +61,9 @@ public class BankAccount implements Comparable<BankAccount>{
 
     @Override
     public int compareTo(BankAccount o) {
-        return Boolean.compare(isActive, o.isActive);
+        int result = accountA - o.accountA;
+        if (result == 0) result = accountB - o.accountB;
+        if (result == 0) result = Boolean.compare(isActive, o.isActive);
+        return result;
     }
 }
