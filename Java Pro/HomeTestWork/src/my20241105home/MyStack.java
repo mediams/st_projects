@@ -40,8 +40,9 @@ public class MyStack {
 
     public String pop() {
         if (isEmpty()) {
-            System.out.println("Array is Empty!");
-            return null;
+//            System.out.println("Array is Empty!");
+//            return null;
+            throw new RuntimeException("Stack is full");
         }
         count--;
         String s = data[count];
@@ -51,8 +52,9 @@ public class MyStack {
 
     public String peek() {
         if (isEmpty()) {
-            System.out.println("Array is Empty!");
-            return null;
+//            System.out.println("Array is Empty!");
+//            return null;
+            throw new RuntimeException("Stack is full");
         }
         return data[count - 1];
     }
