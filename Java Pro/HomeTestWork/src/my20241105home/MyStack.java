@@ -28,7 +28,7 @@ public class MyStack {
 
     public void push(String s) {
         if (isFull()) {
-            return;
+            throw new RuntimeException("Stack is full");
         }
         data[count] = s;
         count++;
@@ -54,7 +54,7 @@ public class MyStack {
         if (isEmpty()) {
 //            System.out.println("Array is Empty!");
 //            return null;
-            throw new RuntimeException("Stack is full");
+            throw new RuntimeException("Stack is Empty!");
         }
         return data[count - 1];
     }
@@ -79,23 +79,23 @@ public class MyStack {
         System.out.println(myStack);
         System.out.println("Function pop (): " + myStack.pop());
         System.out.println(myStack);
+        myStack.push("Test1");
+        myStack.push("Test2");
         myStack.push("Test3");
         myStack.push("Test4");
-        myStack.push("Test4");
-        myStack.push("Test4");
-//        myStack.push("Test5");
-        myStack.push("Test6");
-        System.out.println(myStack);
+        myStack.push("Test5");
+//        myStack.push("Test6");
+        System.out.println("Mehr als size" + myStack);
         System.out.println("Function pop (): " + myStack.pop());
         System.out.println("Function pop (): " + myStack.pop());
         System.out.println("Function pop (): " + myStack.pop());
         System.out.println("Function pop (): " + myStack.pop());
         System.out.println("Function pop (): " + myStack.pop());
-        System.out.println("Function pop (): " + myStack.pop());
+//        System.out.println("Function pop (): " + myStack.pop());
 //        myStack.push("Test3");
 //        myStack.push("Test3");
         System.out.println(myStack);
-        System.out.println(myStack.peek());
+//        System.out.println(myStack.peek());
         System.out.println(myStack.size());
         System.out.println("Is Array Empty: " + myStack.isEmpty());
 
