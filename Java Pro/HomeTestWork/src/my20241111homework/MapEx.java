@@ -95,6 +95,15 @@ public class MapEx {
 
         System.out.println(vocabulary);
 
+//        Составить маршрут из заданного списка билетов
+//        Имеется перемешанный список билетов. Необходимо найти маршрут, восстановив порядок билетов.
+//        Вход:
+//        «Berlin» -> «London»
+//        «Tokyo» -> «Seoul»
+//        «Mumbai» -> «Berlin»
+//        «Seoul» -> «Mumbai»
 
+//        Выход:
+//        Tokyo->Seoul, Seoul->Mumbai, Mumbai->Berlin, Berlin->London
     }
 }
