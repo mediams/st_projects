@@ -1,9 +1,6 @@
 package my20241111homework;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class MapEx {
     public static void main(String[] args) {
@@ -54,5 +51,27 @@ public class MapEx {
             getCountryEmployeass.put(customer.getCountry(), customers);
         }
         System.out.println(getCountryEmployeass);
+
+//        Получить Map страна / суммарный накопленный бонус покупателей из данной страны
+        Map<String, Integer> getCountrySumOfBonus = new HashMap<>();
+        for (Customer customer : list) {
+            getCountrySumOfBonus.put(customer.getCountry(), getCountrySumOfBonus.getOrDefault(customer.getCountry(), 0) + 1);
+        }
+        System.out.println(getCountrySumOfBonus);
+
+//        2. Имеется некоторый текст. Составить словарь используемых в нем слов с частотой их употребления.
+//        Отсортировать словарь по частоте встречаемости слов (по убыванию).
+
+        String text = "The method that is currently being executed by a thread" +
+                "is the thread’s current method. The stack frame for the" +
+                "current method is the current frame. The class in which" +
+                "the current method is defined is called the current class, and" +
+                "the current class’s constant pool is the current constant pool." +
+                "As it executes a method, the JVM keeps track of the current" +
+                "class and current constant pool. When the JVM encounters" +
+                "instructions that operate on data stored in the stack frame," +
+                "it performs those operations on the current frame.";
+
+        String [] stringArray = text.toLowerCase().replaceAll("[^a-zA-Z ]", "").split(" ");
     }
 }
