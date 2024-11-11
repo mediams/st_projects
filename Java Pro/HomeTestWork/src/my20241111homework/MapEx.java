@@ -72,6 +72,29 @@ public class MapEx {
                 "instructions that operate on data stored in the stack frame," +
                 "it performs those operations on the current frame.";
 
-        String [] stringArray = text.toLowerCase().replaceAll("[^a-zA-Z ]", "").split(" ");
+        String[] stringArray = text.toLowerCase().replaceAll("[^a-zA-Z ]", "").split(" ");
+
+        Map<String, Integer> vocabulary = new HashMap<>();
+        for (String s : stringArray) {
+            vocabulary.put(s, vocabulary.getOrDefault(s, 0) + 1);
+        }
+
+        System.out.println(vocabulary);
+        List<Map.Entry<String, Integer>> listMap = new ArrayList<>(vocabulary.entrySet());
+
+        listMap.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                return o2.getValue().compareTo(o1.getValue());
+            }
+        });
+
+        for (Map.Entry<String, Integer> entry : listMap) {
+            System.out.print(entry.getKey() + ": " + "(" + entry.getValue() + "); ");
+        }
+
+        System.out.println(vocabulary);
+
+
     }
 }
