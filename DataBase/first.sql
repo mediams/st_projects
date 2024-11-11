@@ -1434,9 +1434,18 @@ WHERE id NOT IN (
 				FROM students2courses);
 
 
-select * from students;
-select * from teachers;
-select * from Competencies;
-select * from Teachers2Competencies;
-select * from courses;
-select * from students2courses;
+-- summary lesson
+
+-- millis , 1 Jan 1970 03-00
+-- Date - пример формата данного типа 2024.10.27
+-- Time - хранит только время 21:05
+-- DateTime - хранит дaту и время вместe date+time
+-- Timestamp - формат хранения даты и времени в миллисекундах
+-- Year - хранит только год (обрезанный int)
+-- Функции для получения текущей даты :
+
+
+SELECT curdate(); -- only date 
+SELECT now(); -- date + time when script run (request) 
+SELECT sysdate(); -- - date + time when function run
+

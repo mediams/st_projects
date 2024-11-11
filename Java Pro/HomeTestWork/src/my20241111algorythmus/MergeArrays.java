@@ -15,7 +15,7 @@ public class MergeArrays {
         //Time complexity 0(n+m)
 
         //1. Создадим массив, в который поместим результат длинной m+n
-        int[] temp = new int[n + m];
+//        int[] temp = new int[n + m];
 //Space complexity 0(n+m)
         int i1 = 0;
         int i2 = 0;
