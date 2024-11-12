@@ -16,7 +16,7 @@ public class LambdaEx {
 
         List<String> strings = Arrays.asList("HELLO", "world", "JAVA", "functional");
 
-        System.out.println(filteredList(strings, s -> false);
+//        System.out.println(filteredList(strings, s -> false);
     }
 
     public double doSmth(MyInterface myInterface, double a, double b) {
