@@ -1445,7 +1445,63 @@ WHERE id NOT IN (
 -- Функции для получения текущей даты :
 
 
-SELECT curdate(); -- only date 
-SELECT now(); -- date + time when script run (request) 
-SELECT sysdate(); -- - date + time when function run
+SELECT curdate(); -- only date                			2024-11-11
+SELECT now(); -- date + time when script run (request) 	2024-11-11 13:53:37
+SELECT sysdate(); -- - date + time when function run	2024-11-11 13:53:45
+
+-- Конвертация строки в дату :
+SELECT str_to_date("2024-10-27 21:15:20", "%Y-%m-%d %H:%i:%s");	-- 2024-10-27 21:15:20
+SELECT str_to_date("2024-10-27 21:15:20", "%Y-%m-%d");			-- 2024-10-27
+SELECT str_to_date("27-10-2024 21:15:20", "%d-%m-%Y");			-- 2024-10-27
+
+SELECT extract(hour from "2024-10-27 21:15:20");
+SELECT extract(month from "2024-10-27 21:15:20");
+SELECT extract(year from "2024-10-27 21:15:20");
+SELECT extract(day from "2024-10-27");
+SELECT extract(hour_minute from " 024-10-27 21:15:20");
+
+
+-- hour, month, year, day, minute, second, year_month, day_second, hour_minute
+-- date_add, date_sub - Функции для прибавления и вычитания чего-то из даты SELECT date_add("2024-10-27 21:15:20", interval 5 day); -- add 5 days to date
+SELECT date_add("2024-10-27 21:15:20", interval -5 day); -- substract 5 days from date
+SELECT date_add("2024-10-27 21:15:20", interval -5 day); -- substract 5 days from date
+SELECT date_sub("2024-10-27 21:15:20", interval 5 day); -- substract 5 days from date
+SELECT date_add("2024-10-27 21:15:20", interval 5 month); -- add 5 months to date
+
+use shop;
+
+select * from orders;
+
+SELECT
+MONTH(odate),
+odate
+FROM orders;
+
+select
+*
+from orders
+WHERE MONTH(odate) = 3;
+
+SELECT 
+*
+FROM orders
+WHERE odate BETWEEN '2022-04-10' AND '2022-05-10';
+
+SELECT
+odate,
+WEEKDAY (odate), -- starts from 0 ( Monday - 0, Tuesday - 1 etc)
+DAYOFWEEK(odate) -- sterts from Sunday ( Sunday - 1, Monday - 2 etc)
+FROM orders;
+
+select
+*
+from orders
+WHERE WEEKDAY(odate) = 3;
+
+SELECT
+c.CNAME
+FROM customers AS c
+INNER JOIN orders AS o
+ON c.CUST_ID = o.CUST_ID AND WEEKDAY(odate) = 1;
+
 
