@@ -1,4 +1,4 @@
-package my20241029class;
+package my20241112class;
 
 import java.util.Comparator;
 
@@ -39,6 +39,26 @@ public class Book {
 
     public double getPrice() {
         return price;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public void setCanBeSold(boolean canBeSold) {
+        this.canBeSold = canBeSold;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     @Override
