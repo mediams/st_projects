@@ -13,6 +13,7 @@ public class ApplyAction {
                 System.out.println("result = " + result + data);
             }
         };
+
         multiplyBy10.doAction(10);
         multiplyBy10.doAction(7);
 
