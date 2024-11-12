@@ -28,7 +28,7 @@ public class KeysInMap {
         }
 
         book1.setTitle("Java"); // this will break tree;
-        Book updateBook = book1.updateBook ("Java"); // make copy - modify // kann man das machen
+//        Book updateBook = book1.updateBook ("Java"); // make copy - modify // kann man das machen
 
         System.out.println("<-------------------------->");
         for (Map.Entry<Book, Integer> entry : bookMap.entrySet()){
