@@ -5,4 +5,9 @@ public class ActionImplementation implements Action{
     public void perform() {
         System.out.println("Action performed!");
     }
+
+    @Override
+    public void perform(String message) {
+
+    }
 }
