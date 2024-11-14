@@ -17,7 +17,10 @@ public class Main {
         };
         System.out.println(stringGenerator.method());
 
-        
+        Thread thread = new Thread(() -> {
+
+        });
+
         new Main().generate(() -> {
             StringBuilder newString = new StringBuilder();
             for (char i = 'A'; i <= 'Z'; i++) {
