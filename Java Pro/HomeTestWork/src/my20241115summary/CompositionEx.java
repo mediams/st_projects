@@ -32,5 +32,9 @@ public class CompositionEx {
 
         System.out.println(function.andThen(function2).andThen(function3).apply("input"));
         System.out.println(function.compose(function2).compose(function3).apply("input"));
+
+
+
+
     }
 }
