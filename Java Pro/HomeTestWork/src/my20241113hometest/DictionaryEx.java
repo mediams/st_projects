@@ -5,6 +5,8 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class DictionaryEx {
+
+    // не эффективно
     public static void main(String[] args) {
         Map<String, String> dictionary = new HashMap<>();
 
@@ -16,6 +18,7 @@ public class DictionaryEx {
         System.out.println("Введите слово для перевода: ");
         Scanner scanner = new Scanner(System.in);
         String word = scanner.next();
+
         getTranslate(dictionary, word);
 
         System.out.println("Весь словарь: \n" + dictionary);
