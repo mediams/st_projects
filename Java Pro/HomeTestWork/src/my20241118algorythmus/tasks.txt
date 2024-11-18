@@ -1,0 +1,19 @@
+public DynamicArray() {
+this.array = new int[1];
+count = 0;
+size = 1;
+
+
+class DynamicArray {
+constructor() {
+this.array = new Array(1);
+this.count = 0;
+this.size = 1;
+
+add(data)
+- добавляет данные в конец массива
+//можно просто добавить и иногда нужно увеличить массив и потом добавить
+remove()
+- удаляет последний элемент
+growSize() - увеличивает массив в 1.5 раза, перекопировать элементы
+старого массива в новый, и заменить старый массив в переменной array на новый
