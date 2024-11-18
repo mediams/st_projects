@@ -32,17 +32,11 @@ public class Main {
         checkIsEven.accept(-1);
 
 //        3. Создать три функции:
-
-
-
-
 //        Составить композитную функцию так, чтобы:
-
 //        Input:
 //        777
 //        Output:
 //        8
-
 //        Input:
 //        "Hello!"
 //        Output:
@@ -66,7 +60,7 @@ public class Main {
         System.out.println("//        а) функции выполнялись последовательно друг за другом f1 -> f2 -> f3");
         Function<Integer, Integer> andThen = multiply.andThen(toString.andThen(lengthOfSring));
         System.out.println(andThen.apply(777));
-        
+
         System.out.println("//        б) в порядке f3 -> f1 -> f2");
         Function<String, String> compose = lengthOfSring.andThen(toString.compose(multiply));
         System.out.println(compose.apply("Hello!"));
