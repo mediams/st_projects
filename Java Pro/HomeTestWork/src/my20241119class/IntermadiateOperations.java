@@ -2,8 +2,10 @@ package my20241119class;
 
 import my20241015class.Cat;
 
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class IntermadiateOperations {
     public static void main(String[] args) {
@@ -58,6 +60,37 @@ public class IntermadiateOperations {
 //                - вывести список сотрудников, работающих более 30 часов, с именем, начинающимся на J
 //        - вывести список фамилий сотрудников с именем John
 //        - вывести список всех уникальных имен сотрудников
+        Employee employees = new Employee();
+        List<Employee> listAge = employees.getListEmployees().stream().filter(employee -> employee.getAge() > 20).toList();
+        System.out.println(listAge);
+
+        List<Employee> listTimeMoreThan = employees.getListEmployees().stream()
+                .filter(employee -> employee.getWorkingHoursInMonth() > 40)
+                .filter(employee -> employee.getName().startsWith("J"))
+                .toList();
+        System.out.println(listTimeMoreThan);
+
+        // Задача 10: Получение списка квадратов чисел
+        List<Integer> numbers5 = Arrays.asList(1, 2, 3, 4, 5);
+        List<Integer> resultInteger = numbers5.stream().map(x -> x * x).toList();
+        System.out.println(resultInteger);
+
+        // Задача 13: Поиск первой строки, начинающейся с буквы 'b' (findFirs())
+        List<String> words6 = Arrays.asList("apple", "banana", "cherry", "date");
+        List<String> resultString = words6.stream().filter(s -> s.startsWith("b")).limit(1).toList();
+        System.out.println(resultString);
+
+        // Задача 14: Сокращение списка до указанного размера (например 5)
+        List<Integer> numbers6 = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        resultInteger = numbers6.stream().limit(5).toList();
+        System.out.println(resultInteger);
+
+        // Задача 15: Объединение двух списков в один
+        List<Integer> list1 = Arrays.asList(1, 2, 3);
+        List<Integer> list2 = Arrays.asList(4, 5, 6);
+
+        List<Integer> intR = Stream.concat(list1.stream(), list2.stream()).toList();
+        System.out.println(intR);
 
 
     }
