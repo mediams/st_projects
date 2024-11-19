@@ -64,5 +64,37 @@ public class Main {
         System.out.println("//        б) в порядке f3 -> f1 -> f2");
         Function<String, String> compose = lengthOfSring.andThen(toString.compose(multiply));
         System.out.println(compose.apply("Hello!"));
+
+//        4.Написать метод reduce(), который на вход принимает список чисел, оператор двух аргументов и начальное значение.
+//        public static Integer reduce(List<Integer> list, BinaryOperator<Integer> operator, Integer basicValue)
+//        Метод накапливает результат применения оператора по всем данных, начиная с начального значения.
+//                Например, вызов
+
+
+        List<Integer> listNumbers = List.of(1, 7, 3, 4);
+        System.out.println("//        reduce(list, Integer::sum, 0)) должен вернуть сумму всех чисел");
+        System.out.println(reduce(listNumbers, (x, y) -> x + y, 0));
+
+        System.out.println("//        reduce(list, (i, j) -> i * j, 1) должен вернуть произведение всех чисел");
+        System.out.println(reduce(listNumbers, (x, y) -> x * y, 1));
+
+        System.out.println(reduce(listNumbers, (x, y) -> {
+            if (x < y) {
+                x = y;
+            }
+            return x;
+        }, listNumbers.iterator().next())); // Integer.MIN_VALUE //Integer.max(x,y)
+
+        System.out.println(reduce(listNumbers, (x, y) -> Integer.max(x, y), Integer.MIN_VALUE)); // Integer.MIN_VALUE //
+
+
+    }
+
+    public static Integer reduce(List<Integer> list, BinaryOperator<Integer> operator, Integer basicValue) {
+        Integer result = basicValue;
+        for (Integer number : list) {
+            result = operator.apply(result, number);
+        }
+        return result;
     }
 }

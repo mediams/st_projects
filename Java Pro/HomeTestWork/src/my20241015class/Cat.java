@@ -36,6 +36,15 @@ public class Cat {
     public void setColour(String colour) {
         this.colour = colour;
     }
+
+    @Override
+    public String toString() {
+        return "Cat{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", colour='" + colour + '\'' +
+                '}';
+    }
 }
 
 
