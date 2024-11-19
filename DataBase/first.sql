@@ -1505,3 +1505,279 @@ INNER JOIN orders AS o
 ON c.CUST_ID = o.CUST_ID AND WEEKDAY(odate) = 1;
 
 
+-- lesson eight
+
+-- sum(column_name) - суммирует все значения в колонке
+-- avg(column_name) - вычисляет среднее значение по колонке
+-- max(column name) - находит максимальное значение в этой колонке 
+-- min(column_name) - находит минимальное значение в этой колонке
+
+-- count(column_name) - подсчитывает все not null значения в этой колонке
+-- count(*) - подсчитает все строки в выборке
+
+use hr;
+
+SELECT
+*
+FROM employees;
+
+SELECT
+SUM(salary)
+FROM employees;
+
+SELECT
+AVG(salary)
+FROM employees;
+
+SELECT
+MAX(salary),
+MIN(salary)
+FROM employees;
+
+SELECT
+COUNT(department_id) as count_of_employees -- count all not NULL values
+FROM employees;
+
+SELECT
+COUNT(*) as count_of_employees -- count all not NULL values
+FROM employees;
+
+-- incorrect
+SELECT
+-- first_name
+SUM(salary)
+FROM employees;
+
+-- Task 1 : Вывести имя и фамилию сотрудника с максимальной зарплатой
+SELECT
+first_name,
+last_name,
+salary
+FROM employees
+WHERE salary = (
+				SELECT MAX(salary) AS min_salary
+                FROM employees);
+
+-- Task 2 : Найти сотрудников,у которых зарплата меньше средней зарплаты по компании
+SELECT 
+first_name, 
+last_name
+FROM employees
+WHERE salary < (
+				SELECT AVG(salary) AS max_salary
+                FROM employees
+);
+
+SELECT
+first_name,
+last_name,
+salary
+FROM employees
+WHERE salary = (
+				SELECT MIN(salary) AS min_salary
+                FROM employees);
+
+--
+-- ------------------------------------------------------------- Вывести департаменты в которых никто не работает
+-- ------------------------------------------------------------- Подсчитать департаменты количество в которых никто не работает
+SELECT
+-- e.first_name AS name,
+-- d.department_name
+COUNT(*)
+FROM departments AS d
+LEFT JOIN employees AS e
+ON d.department_id = e.department_id
+WHERE e.first_name IS NULL;
+
+SELECT
+-- e.first_name AS name,
+-- d.department_name
+COUNT(*) AS department_cnt
+FROM departments
+WHERE department_id NOT IN (
+							SELECT
+							department_id
+							FROM employees
+							WHERE department_id IS NOT NULL);
+-- e.first_name AS name,
+-- d.department_name
+SELECT
+e.first_name AS name,
+d.department_name
+-- COUNT(*)
+FROM employees AS e
+LEFT JOIN departments AS d
+ON d.department_id = e.department_id
+WHERE e.department_id = 60 AND salary > (
+				SELECT AVG(salary)
+                FROM employees
+);
+
+-- Task 4 : Найти количество сотрудников из департамента с ид 60 и зарплатой больше чем средняя
+-- запрлата по компании
+
+SELECT
+COUNT(*) AS count_of_employees
+FROM employees
+WHERE department_id = 60 AND salary > (SELECT
+										AVG(salary)
+										FROM employees);
+
+-- DISTINCT - отбор только уникальных значений
+
+SELECT
+COUNT(DISTINCT department_id) AS count_of_dpt
+FROM employees;
+
+SELECT
+COUNT(department_id),
+COUNT(*),
+COUNT(DISTINCT department_id)
+FROM employees;
+
+SELECT
+department_id,
+SUM(salary)
+FROM employees
+GROUP BY department_id;
+
+-- Работа группировки : Сначала записи в таблице группируютя в кучки по признаку поля , которе 
+-- указано после слов GROUP BY, а потом к каждой кучке применяется агрегатная функция
+
+-- Task 5 : Посчитать количество сотрудников в каждом департаменте
+-- C:\Program Files\ffmpeg-master-latest-win64-gpl\bin
+-- USER PATH C:\path\to\ffmpeg\bin
+SELECT
+    department_id,
+    COUNT(*) AS employee_count
+FROM employees
+GROUP BY department_id;
+
+-- Task 6 : Найти департамент с максимальным количеством сотрудников
+SELECT
+    department_id,
+    max(column name) AS employee_count
+FROM employees
+GROUP BY department_id;
+
+SELECT 
+department_id, 
+employee_count
+FROM employees
+WHERE (
+    SELECT department_id, 
+    COUNT(*) AS employee_count
+    FROM employees
+    GROUP BY department_id
+);
+
+SELECT
+department_id, 
+COUNT(*) AS cnt 
+FROM employees
+GROUP BY department_id;
+
+SELECT
+MAX(t1.cnt)
+FROM (
+		SELECT
+		department_id,
+		COUNT(*) AS cnt
+		FROM employees
+		GROUP BY department_id) AS t1;
+        
+SELECT
+t2. department_id,
+t2.cnt
+FROM (
+		SELECT
+		department_id,
+		COUNT(*) AS cnt
+		FROM employees
+		GROUP BY department_id) AS t2
+		WHERE t2.cnt = (
+						SELECT
+						MAX(t1.cnt)
+						FROM (
+								SELECT
+								department_id,
+								COUNT(*) AS cnt
+								FROM employees
+								GROUP BY department_id) AS t1);
+
+
+
+-- summary - агрегатная функция нужна для вычисления какого либо значения по колонке
+-- count, sum, min, max, avg
+-- count , count (*)
+-- count (*) - все строки включая null
+-- count (column) - все значения в колонке , кроме null
+use hr;
+
+SELECT
+COUNT(department_id),
+COUNT(*),
+COUNT(DISTINCT department_id)
+FROM employees;
+
+
+SELECT
+SUM(salary)
+FROM employees;
+
+SELECT
+SUM(salary),
+department_id
+FROM employees
+GROUP BY department_id;
+
+use shop;
+
+-- Task 1: определить среднюю стоимость покупок 
+-- определить среднюю стоимость покупок в марте
+SELECT
+AVG(AMT)
+FROM orders
+WHERE MONTH(odate) = 3;
+
+-- Task 2 : определить какие покупки были совершены во вторник
+
+SELECT *
+FROM orders
+WHERE DAYOFWEEK(ODATE) = 3;
+
+-- Task 3: Определить сколько было совершено покупок в каждый месяц 
+-- отсортировать результат по возрастанию количества покупок
+
+SELECT 
+MONTH(ODATE) AS month, 
+COUNT(*) AS purchase_count
+FROM orders
+GROUP BY MONTH(ODATE)
+ORDER BY purchase_count ASC;
+
+-- Task 4: Определить в какой месяц было совершено максимальное количество покупок,
+-- вывести номер месяца и количество покупок
+
+SELECT 
+MONTH(ODATE) AS month, 
+COUNT(*) AS purchase_count
+FROM orders
+GROUP BY MONTH(ODATE)
+ORDER BY purchase_count DESC;
+
+CREATE VIEW tmp AS
+SELECT 
+COUNT(*) AS cnt,
+MONTH(odate) as m
+FROM orders
+GROUP BY MONTH(odate);
+
+
+SELECT *
+FROM tmp
+WHERE cnt = (SELECT MAX(cnt) FROM tmp);
+
+
+
+select * from orders;
