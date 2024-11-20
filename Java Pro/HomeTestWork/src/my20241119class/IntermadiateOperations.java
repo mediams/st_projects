@@ -5,6 +5,7 @@ import my20241015class.Cat;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class IntermadiateOperations {
@@ -77,7 +78,7 @@ public class IntermadiateOperations {
 
         // Задача 13: Поиск первой строки, начинающейся с буквы 'b' (findFirs())
         List<String> words6 = Arrays.asList("apple", "banana", "cherry", "date");
-        List<String> resultString = words6.stream().filter(s -> s.startsWith("b")).limit(1).toList();
+        List<String> resultString = words6.stream().filter(s -> s.startsWith("b")).limit(1).collect(Collectors.toList());
         System.out.println(resultString);
 
         // Задача 14: Сокращение списка до указанного размера (например 5)
