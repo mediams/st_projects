@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 public class HomeWorkEx {
     public static void main(String[] args) {
-        System.out.println("1 - С помощью стримов посчитать количество неповторяющихся слов в списке: ");
+        System.out.println("Task 1 - С помощью стримов посчитать количество неповторяющихся слов в списке: ");
 
         List<String> stringListAsText = List.of("С помощью стримов посчитать количество неповторяющихся слов в списке " +
                 "С помощью стримов посчитать количество людей с именем \'Tom\' в списке имен " +
@@ -17,13 +17,13 @@ public class HomeWorkEx {
                 .distinct().count();
         System.out.println(result);
 
-        System.out.println("\n2 - С помощью стримов посчитать количество людей с именем \"Tom\" в списке имен: ");
+        System.out.println("\nTask 2 - С помощью стримов посчитать количество людей с именем \"Tom\" в списке имен: ");
         List<String> stringList = List.of("Ivan", "Tom", "Bob", "Tom", "John", "Max", "Olga", "Yan", "Zara");
         System.out.println(stringList.stream()
                 .filter(s -> s.contains("Tom"))
                 .count());
 
-        System.out.println("\n3 - Из списка имен вывести первые три по алфавиту, предпоследнее имя по алфавиту");
+        System.out.println("\nTask 3 - Из списка имен вывести первые три по алфавиту, предпоследнее имя по алфавиту");
         System.out.println(stringList.stream()
                 .sorted()
                 .limit(3).collect(Collectors.toList()));
@@ -41,7 +41,7 @@ public class HomeWorkEx {
                 new Cat("OLof", 9, "black", false),
                 new Cat("Bob", 2, "grey", true)
         );
-        System.out.println("\n4 - вывести список голодных кошек старше 2 лет: ");
+        System.out.println("\nTask 4 - вывести список голодных кошек старше 2 лет: ");
         catList.stream().filter(cat -> cat.isHungry).forEach(System.out::println);
 
         System.out.println("\n//        вывести список уникальных цветов кошек: ");
