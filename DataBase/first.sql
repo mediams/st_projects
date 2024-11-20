@@ -1779,5 +1779,85 @@ FROM tmp
 WHERE cnt = (SELECT MAX(cnt) FROM tmp);
 
 
+-- lesson 20-11-2024
 
-select * from orders;
+use hr;
+
+SELECT
+department_id,
+SUM(salary)
+FROM employees
+GROUP BY department_id;
+
+-- print departments with sum salary > 50000
+
+-- having - оператор условия, который применяется на агрегированные данные 
+-- когда нужно применить фильтр на то, что получилось в результате работы 
+-- какой то агрегатной функции к каким-то группам
+
+SELECT
+department_id,
+SUM(salary)
+FROM employees
+GROUP BY department_id
+HAVING SUM(salary) > 50000;
+-- 1) Сгруппировали по кучкам 2) внутри каждой кучки посчитали сумму
+-- 3) к посчитанной сумме применили фильтр и оставили только те записи
+-- где сумма больше чем 50000
+
+
+-- Task 2 : Вывести название департамента , в которых работает больше 10 человек
+SELECT
+d.department_name,
+COUNT(e.employee_id) AS employee_id
+FROM employees AS e
+INNER JOIN departments AS d
+ON d.department_id = e.department_id
+GROUP BY d.department_id, d.department_name
+HAVING COUNT(e.employee_id) > 10;
+
+-- Task 2 : Вывести название департамента , в которых работает больше 10 человек
+
+SELECT
+department_name
+FROM departments
+WHERE department_id IN (SELECT
+							department_id
+							FROM employees
+							GROUP BY department_id
+							HAVING COUNT(*) > 10);
+
+SELECT
+t1.department_name,
+t2.cnt
+FROM departments t1
+INNER JOIN (
+			SELECT
+			department_id,
+			COUNT(*) AS cnt
+			FROM employees
+			GROUP BY department_id
+			HAVING COUNT(*) > 10) AS t2
+ON t1.department_id = t2.department_id;
+
+-- Task 3 : Необходимо вывести названия отделов, с количеством сотрудников
+-- больше среднего
+SELECT
+d.department_name,
+COUNT(e.employee_id) AS employee_cnt
+
+FROM employees AS e
+INNER JOIN departments AS d
+ON d.department_id = e.department_id
+GROUP BY d.department_id, d.department_name
+HAVING COUNT(e.employee_id) > (
+    SELECT AVG(sub.employee_cnt)
+    FROM (
+        SELECT
+            COUNT(e2.employee_id) AS employee_cnt
+        FROM employees AS e2
+        INNER JOIN departments AS d2
+        ON d2.department_id = e2.department_id
+        GROUP BY d2.department_id
+    ) AS sub
+);
