@@ -20,7 +20,7 @@ public class HomeWorkEx {
         System.out.println("\nTask 2 - С помощью стримов посчитать количество людей с именем \"Tom\" в списке имен: ");
         List<String> stringList = List.of("Ivan", "Tom", "Bob", "Tom", "John", "Max", "Olga", "Yan", "Zara");
         System.out.println(stringList.stream()
-                .filter(s -> s.contains("Tom"))
+                .filter(s -> s.equals("Tom"))
                 .count());
 
         System.out.println("\nTask 3 - Из списка имен вывести первые три по алфавиту, предпоследнее имя по алфавиту");
