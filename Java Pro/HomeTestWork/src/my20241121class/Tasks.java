@@ -19,7 +19,8 @@ public class Tasks {
 //                С помощью стримов вывести его аббревиатуру в виде S.M.A.R.T.
         List<String> stringList = List.of("Specific", "Measurable", "Achievable", "Relevant", "Time-bound");
         System.out.println(stringList.stream()
-                .map(s -> s.substring(0, 1)).reduce((s1, s2) -> s1 + "." + s2).get() + ".");
+                .map(s -> s.substring(0, 1))
+                .reduce((s1, s2) -> s1 + "." + s2).get() + ".");
 
 //        4. Переписать через стримы фрагменты кода:
         String[] strings = new String[]{"Test", "One", "Two"};
@@ -28,18 +29,7 @@ public class Tasks {
 //        }
         Arrays.stream(strings).forEach(System.out::println);
 
-//        4. Переписать через стримы фрагменты кода:
-//        public static List<String> method(List<String> strings) {
-//            List<String> result = new ArrayList<>();
-//            for (String s : strings) {
-//                if (!result.contains(s)) {
-//                    result.add(s);
-//                }
-//            }
-//            return result;
-//        }
-        List<String> strings2 = List.of("Test", "One", "Two", "One");
-        method(strings2);
+
 //        public static void feed(List<Cat> catList) {
 //            for (int i = 0; i < catList.size(); i++) {
 //                if (catList.get(i).isHungry()) {
@@ -49,14 +39,20 @@ public class Tasks {
 //        }
 
     }
-
+    //        4. Переписать через стримы фрагменты кода:
+//        public static List<String> method(List<String> strings) {
+//            List<String> result = new ArrayList<>();
+//            for (String s : strings) {
+//                if (!result.contains(s)) {
+//                    result.add(s);
+//                }
+//            }
+//            return result;
+//        }
     public static List<String> method(List<String> strings) {
-        List<String> result = new ArrayList<>();
-        for (String s : strings) {
-            if (!result.contains(s)) {
-                result.add(s);
-            }
-        }
-        return result;
+        return strings.stream()
+                .distinct()
+                .toList();
     }
+//    --------------------------------------------
 }

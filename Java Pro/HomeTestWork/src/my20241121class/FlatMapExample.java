@@ -23,13 +23,13 @@ public class FlatMapExample {
 
         Stream<List<String>> stream = listList.stream();
         stream.forEach(System.out::println);
-        Stream<String> stringStream = listList.stream().flatMap(list->list.stream());
+        Stream<String> stringStream = listList.stream().flatMap(list -> list.stream());
         stringStream.forEach(System.out::print);
 
         List<String> strings = List.of("One", "banana", "Two", "apple");
         strings.stream()
                 .flatMap(s -> s.chars().mapToObj(value -> value))
-                .map(c->Character.toString(c))
+                .map(c -> Character.toString(c))
                 .distinct()
                 .forEach(System.out::println);
 
