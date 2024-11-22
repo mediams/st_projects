@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 public class CollectorsExamples {
     public static void main(String[] args) {
         // Дан список кошек
-        Cat cat1 = new Cat("Tom", 2, "black", true);
+        Cat cat1 = new Cat("Tom", 1, "black", true);
         Cat cat2 = new Cat("Mikky", 1, "white", false);
         Cat cat3 = new Cat("Vasya", 3, "white", true);
         Cat cat4 = new Cat("Steve", 1, "grey", false);
@@ -26,13 +26,34 @@ public class CollectorsExamples {
         System.out.println(hungryCatsByName2);
 //2. Получить Map<String, Long> цвет / количество кошек данного цвета
 
-        Map<String, Integer> catByColors = catList.stream().collect(Collectors.toMap(Cat::getColor, cat -> 1, Integer::sum));
+        Map<String, Integer> catByColors = catList.stream()
+                .collect(Collectors.toMap(Cat::getColor, cat -> 1, Integer::sum));
         System.out.println(catByColors);
 
-        Map<String, Long> catByColors2 = catList.stream().collect(Collectors.groupingBy(Cat::getColor, Collectors.counting()));
+        Map<String, Long> catByColors2 = catList.stream()
+                .collect(Collectors.groupingBy(Cat::getColor, Collectors.counting()));
         System.out.println(catByColors2);
-//3. Получить Map<String, Set<String>> цвет / список имен кошек данного цвета
-//4. Получить Map<Integer, Integer> возраст / количество голодных кошек данного возраста
+//3. Получить Map<String, Set<String>> цвет / avg age кошек данного цвета
+
+        Map<String, Double> catByColors3 = catList.stream()
+                .collect(Collectors.groupingBy(Cat::getColor, Collectors.averagingDouble(Cat::getAge)));
+        System.out.println(catByColors3);
+        System.out.println("//4. Получить Map<Integer, Integer> возраст / количество голодных кошек данного возраста");
+        Map<String, List<String>> catByColors4 = catList.stream()
+                .collect(Collectors.
+                        groupingBy(Cat::getColor, Collectors.mapping(Cat::getName, Collectors.toList())));
+        System.out.println(catByColors4);
+
+        System.out.println("//5. Получить Map<Integer, Integer> возраст / количество голодных кошек данного возраста");
+        Map<Integer, Long> catsByAge = catList.stream()
+                .collect(Collectors.groupingBy(Cat::getAge, Collectors.mapping(Cat::isHungry, Collectors.counting())));
+        System.out.println(catsByAge);
+
+        Map<Integer, Long> catsByAge2 = catList.stream()
+                .filter(Cat::isHungry) // Фильтруем только голодных кошек
+                .collect(Collectors.groupingBy(Cat::getAge, Collectors.counting()));
+
+        System.out.println(catsByAge2);
 
 
     }
