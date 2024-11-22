@@ -56,12 +56,12 @@ public class PracticeEx {
 
         System.out.println("        //                - <age / количество>");
         Map<Integer, Integer> hungryCatsByName2 = employees.stream()
-                .collect(Collectors.toMap(Employee::getAge, employee -> 1, Integer::sum)); // onhe duplicate
+                .collect(Collectors.toMap(Employee::getAge, employee -> 1, Integer::sum)); //  duplicate
         System.out.println(hungryCatsByName2);
 
         System.out.println("//                - <age / список сотрудников>");
         Map<Integer, Employee> listEmployee = employees.stream()
-                .collect(Collectors.toMap(Employee::getAge, employee -> employee, (t, t2) -> t)); // with duplicate
+                .collect(Collectors.toMap(Employee::getAge, employee -> employee, (t, t2) -> t)); // replace duplicate
         System.out.println(listEmployee);
 
         Map<Integer, List<Employee>> listEmployee2 = employees.stream()
