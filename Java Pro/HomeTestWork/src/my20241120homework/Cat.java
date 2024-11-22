@@ -29,6 +29,22 @@ public class Cat {
         return isHungry;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setColour(String colour) {
+        this.colour = colour;
+    }
+
+    public void setHungry(boolean hungry) {
+        isHungry = hungry;
+    }
+
     @Override
     public String toString() {
         return "Cat{" +
