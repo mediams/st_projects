@@ -121,10 +121,7 @@ public class Tasks {
 //            return map;
 //        }
 
-        Map<Boolean, List<Integer>> map = getMap();
-        System.out.println("Делятся на 3: " + map.get(true));
-        System.out.println("Не делятся на 3: " + map.get(false));
-        System.out.println(map);
+       IntStream.range(0, 100).mapToObj(value -> value).collect(Collectors.partitioningBy(i -> i % 3 == 0));
 
 //
 //        2. С помощью IntStream и метода flatmap() получить все тройки пифагоровых чисел менее 1000.
@@ -137,8 +134,6 @@ public class Tasks {
 
 
     public static Map<Boolean, List<Integer>> getMap() {
-        return IntStream.range(0, 100)
-                .mapToObj(value -> value)
-                .collect(Collectors.partitioningBy(i -> i % 3 == 0));
+
     }
 }
