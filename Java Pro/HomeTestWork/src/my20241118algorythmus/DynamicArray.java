@@ -5,10 +5,12 @@ import java.util.Arrays;
 class DynamicArray {
     int[] array = new int[1];
     int count = 0;
-    int size = 1;
 
     public void add(int num) {
-        if (count == array.length) {
+//        if (array == null) {
+//            return;
+//        }
+        if (array.length <= count) {
             reSize();
         }
         array[count++] = num;
@@ -19,8 +21,12 @@ class DynamicArray {
     }
 
     public void remove() {
-        count--;
-        array[count] = 0;
+        if (count > 0) {
+            count--;
+            array[count] = 0;
+        } else {
+            System.out.println("Array is empty");
+        }
     }
 
     @Override
@@ -28,7 +34,6 @@ class DynamicArray {
         return "DynamicArray{" +
                 "array=" + Arrays.toString(array) +
                 ", count=" + count +
-                ", size=" + size +
                 '}';
     }
 }

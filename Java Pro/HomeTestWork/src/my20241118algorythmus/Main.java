@@ -15,6 +15,10 @@ public class Main {
         dynamicArray.add(16);
         dynamicArray.add(20);
         System.out.println(dynamicArray);
+        dynamicArray.add(20);
+        dynamicArray.add(22);
+        dynamicArray.add(22);
+        dynamicArray.remove();
         dynamicArray.remove();
         System.out.println(dynamicArray);
 
