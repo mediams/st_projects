@@ -1,8 +1,9 @@
 package my20241123homework;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.DoubleStream;
+import java.util.stream.IntStream;
 
 public class Tasks {
     public static void main(String[] args) {
@@ -16,8 +17,9 @@ public class Tasks {
 //        }
 //        System.out.println(doubles);
 
-
+//        List<Double> doubles = new ArrayList<>();
 //        List<Double> doubles = doubleList.stream().filter(d -> d % 2 == 1).collect(Collectors.toList());
+//        System.out.println(doubles);
 
 
 //
@@ -30,9 +32,10 @@ public class Tasks {
 //            }
 //        }
 //        System.out.println(word);
-        
-        String word = null;
-        System.out.println(list.stream().filter(s -> s.length() == 3).findFirst().orElse(null));
+
+//        String word = null;
+//        word = list.stream().filter(s -> s.length() == 3).findFirst().orElse(null);
+//        System.out.println(word);
 
 //
 //        c)
@@ -46,8 +49,8 @@ public class Tasks {
 //            return oddSum;
 //        }
 
-//        List<Integer> integers
-//        integers.stream().filter(integer -> integer % 2 != 0).map(Integer::sum);
+
+//        return integers.stream().filter(integer -> integer % 2 != 0).reduce(0, Integer::sum));
 
 //
 //        d)
@@ -59,12 +62,18 @@ public class Tasks {
 //            }
 //            return -1;
 //        }
+
+//        return IntStream.range(0, data.length).filter(i->data[i].equals(element)).findFirst().orElse(-1);
+
 //
 //        e)
 //        double sum = 0.0;
 //        for (int i = 0; i < 10_000; i++) {
 //            sum += 0.1;
 //        }
+
+//        System.out.println(DoubleStream.generate(() -> 0.1).limit(10_000).sum());
+
 //
 //        f)
 //        public static void fill(List<Integer> list, int capacity) {
@@ -72,17 +81,24 @@ public class Tasks {
 //                list.add(i);
 //            }
 //        }
+
+//        IntStream.range(0, capacity).forEach(list::add);
+
+
 //
 //        g)
-//        Set<String> names = Set.of("Ivan", "Peter", "William", "Mary");
-//        Set<Integer> integerSet = new TreeSet<>();
+        Set<String> names = Set.of("Ivan", "Peter", "William", "Mary");
+        Set<Integer> integerSet = new TreeSet<>();
 //        for (String s : names) {
 //            integerSet.add(s.length());
 //        }
 //        System.out.println(integerSet);
+
+        names.stream().forEach(s -> integerSet.add(s.length()));
+
 //
 //        h)
-//        public static Map<Boolean, List<Integer>> getMap() {
+//        public static Map<Boolean, List<Integer>> getMap () {
 //            Map<Boolean, List<Integer>> map = new TreeMap<>();
 //            for (int i = 0; i < 100; i++) {
 //                if (i % 3 == 0) {
@@ -101,11 +117,28 @@ public class Tasks {
 //                    }
 //                }
 //            }
+//            map = IntStream.range(0, 99).filter(i -> i % 3 == 0).
 //            return map;
 //        }
+
+        Map<Boolean, List<Integer>> map = getMap();
+        System.out.println("Делятся на 3: " + map.get(true));
+        System.out.println("Не делятся на 3: " + map.get(false));
+        System.out.println(map);
+
 //
 //        2. С помощью IntStream и метода flatmap() получить все тройки пифагоровых чисел менее 1000.
 //        (Пифагорова тройка - упорядоченный набор из трёх натуральных чисел (a, b, c),
 //                удовлетворяющих уравнению a^2 + b^2 = c^2. Например, [3, 4, 5], [6, 8, 10]).
+
+
+    }
+
+
+
+    public static Map<Boolean, List<Integer>> getMap() {
+        return IntStream.range(0, 100)
+                .mapToObj(value -> value)
+                .collect(Collectors.partitioningBy(i -> i % 3 == 0));
     }
 }
