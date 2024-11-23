@@ -17,9 +17,7 @@ public class Tasks {
 //        }
 //        System.out.println(doubles);
 
-//        List<Double> doubles = new ArrayList<>();
-//        List<Double> doubles = doubleList.stream().filter(d -> d % 2 == 1).collect(Collectors.toList());
-//        System.out.println(doubles);
+        List<Double> doubles = doubleList.stream().filter(d -> d % 2 == 1).collect(Collectors.toList());
 
 
 //
@@ -33,9 +31,7 @@ public class Tasks {
 //        }
 //        System.out.println(word);
 
-//        String word = null;
-//        word = list.stream().filter(s -> s.length() == 3).findFirst().orElse(null);
-//        System.out.println(word);
+        word = list.stream().filter(s -> s.length() == 3).findFirst().orElse(null);
 
 //
 //        c)
@@ -50,7 +46,7 @@ public class Tasks {
 //        }
 
 
-//        return integers.stream().filter(integer -> integer % 2 != 0).reduce(0, Integer::sum));
+        integers.stream().filter(integer -> integer % 2 != 0).reduce(0, Integer::sum));
 
 //
 //        d)
@@ -63,7 +59,7 @@ public class Tasks {
 //            return -1;
 //        }
 
-//        return IntStream.range(0, data.length).filter(i->data[i].equals(element)).findFirst().orElse(-1);
+        return IntStream.range(0, data.length).filter(i->data[i].equals(element)).findFirst().orElse(-1);
 
 //
 //        e)
@@ -72,7 +68,7 @@ public class Tasks {
 //            sum += 0.1;
 //        }
 
-//        System.out.println(DoubleStream.generate(() -> 0.1).limit(10_000).sum());
+        System.out.println(DoubleStream.generate(() -> 0.1).limit(10_000).sum());
 
 //
 //        f)
@@ -82,13 +78,13 @@ public class Tasks {
 //            }
 //        }
 
-//        IntStream.range(0, capacity).forEach(list::add);
+        IntStream.range(0, capacity).forEach(list::add);
 
 
 //
 //        g)
-        Set<String> names = Set.of("Ivan", "Peter", "William", "Mary");
-        Set<Integer> integerSet = new TreeSet<>();
+//        Set<String> names = Set.of("Ivan", "Peter", "William", "Mary");
+//        Set<Integer> integerSet = new TreeSet<>();
 //        for (String s : names) {
 //            integerSet.add(s.length());
 //        }
@@ -128,12 +124,5 @@ public class Tasks {
 //        (Пифагорова тройка - упорядоченный набор из трёх натуральных чисел (a, b, c),
 //                удовлетворяющих уравнению a^2 + b^2 = c^2. Например, [3, 4, 5], [6, 8, 10]).
 
-
-    }
-
-
-
-    public static Map<Boolean, List<Integer>> getMap() {
-
-    }
-}
+//    }
+//}
