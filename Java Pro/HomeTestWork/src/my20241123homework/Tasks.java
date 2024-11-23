@@ -8,7 +8,7 @@ import java.util.stream.IntStream;
 public class Tasks {
     public static void main(String[] args) {
 //        1. Переписать через стримы фрагменты кода:
-//        a)
+        System.out.println("a)");
 //        List<Double> doubles = new ArrayList<>();
 //        for (Double d : doubleList) {
 //            if (d % 2 == 1) {
@@ -17,11 +17,11 @@ public class Tasks {
 //        }
 //        System.out.println(doubles);
 
-        List<Double> doubles = doubleList.stream().filter(d -> d % 2 == 1).collect(Collectors.toList());
 
+//        List<Double> doubles = doubleList.stream().filter(d -> d % 2 == 1).collect(Collectors.toList());
 
 //
-//        b)
+        System.out.println("b)");
 //        String word = null;
 //        for (String t : list){
 //            if (t.length() == 3) {
@@ -31,10 +31,10 @@ public class Tasks {
 //        }
 //        System.out.println(word);
 
-        word = list.stream().filter(s -> s.length() == 3).findFirst().orElse(null);
+//        word = list.stream().filter(s -> s.length() == 3).findFirst().orElse(null);
 
 //
-//        c)
+        System.out.println("c)");
 //        public static int getSum(List<Integer> integers) {
 //            int oddSum = 0;
 //            for(Integer i: integers) {
@@ -46,10 +46,10 @@ public class Tasks {
 //        }
 
 
-        integers.stream().filter(integer -> integer % 2 != 0).reduce(0, Integer::sum));
+//        integers.stream().filter(integer -> integer % 2 != 0).reduce(0, Integer::sum));
 
 //
-//        d)
+        System.out.println("d)");
 //        public static int findIndex(String[] data, String element) {
 //            for (int i = 0; i < data.length; i++) {
 //                if (data[i].equals(element)) {
@@ -59,30 +59,30 @@ public class Tasks {
 //            return -1;
 //        }
 
-        return IntStream.range(0, data.length).filter(i->data[i].equals(element)).findFirst().orElse(-1);
+//        return IntStream.range(0, data.length).filter(i->data[i].equals(element)).findFirst().orElse(-1);
 
 //
-//        e)
+        System.out.println("e)");
 //        double sum = 0.0;
 //        for (int i = 0; i < 10_000; i++) {
 //            sum += 0.1;
 //        }
 
-        System.out.println(DoubleStream.generate(() -> 0.1).limit(10_000).sum());
+//        System.out.println(DoubleStream.generate(() -> 0.1).limit(10_000).sum());
 
 //
-//        f)
+        System.out.println("f)");
 //        public static void fill(List<Integer> list, int capacity) {
 //            for (int i = 0; i < capacity; i++) {
 //                list.add(i);
 //            }
 //        }
 
-        IntStream.range(0, capacity).forEach(list::add);
+//        IntStream.range(0, capacity).forEach(list::add);
 
 
 //
-//        g)
+        System.out.println("g)");
 //        Set<String> names = Set.of("Ivan", "Peter", "William", "Mary");
 //        Set<Integer> integerSet = new TreeSet<>();
 //        for (String s : names) {
@@ -90,10 +90,10 @@ public class Tasks {
 //        }
 //        System.out.println(integerSet);
 
-        names.stream().forEach(s -> integerSet.add(s.length()));
+//        names.stream().forEach(s -> integerSet.add(s.length()));
 
 //
-//        h)
+        System.out.println("h)");
 //        public static Map<Boolean, List<Integer>> getMap () {
 //            Map<Boolean, List<Integer>> map = new TreeMap<>();
 //            for (int i = 0; i < 100; i++) {
@@ -117,12 +117,12 @@ public class Tasks {
 //            return map;
 //        }
 
-       IntStream.range(0, 100).mapToObj(value -> value).collect(Collectors.partitioningBy(i -> i % 3 == 0));
+//       IntStream.range(0, 100).mapToObj(value -> value).collect(Collectors.partitioningBy(i -> i % 3 == 0));
 
 //
 //        2. С помощью IntStream и метода flatmap() получить все тройки пифагоровых чисел менее 1000.
 //        (Пифагорова тройка - упорядоченный набор из трёх натуральных чисел (a, b, c),
 //                удовлетворяющих уравнению a^2 + b^2 = c^2. Например, [3, 4, 5], [6, 8, 10]).
 
-//    }
-//}
+    }
+}
