@@ -16,7 +16,7 @@ public class Tasks {
 //        }
 //        System.out.println(doubles);
 
-        
+
 //        List<Double> doubles = doubleList.stream().filter(d -> d % 2 == 1).collect(Collectors.toList());
 
 
@@ -30,6 +30,10 @@ public class Tasks {
 //            }
 //        }
 //        System.out.println(word);
+        
+        String word = null;
+        System.out.println(list.stream().filter(s -> s.length() == 3).findFirst().orElse(null));
+
 //
 //        c)
 //        public static int getSum(List<Integer> integers) {
@@ -41,6 +45,10 @@ public class Tasks {
 //            }
 //            return oddSum;
 //        }
+
+//        List<Integer> integers
+//        integers.stream().filter(integer -> integer % 2 != 0).map(Integer::sum);
+
 //
 //        d)
 //        public static int findIndex(String[] data, String element) {
