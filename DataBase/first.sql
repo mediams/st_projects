@@ -1844,20 +1844,206 @@ ON t1.department_id = t2.department_id;
 -- больше среднего
 SELECT
 d.department_name,
-COUNT(e.employee_id) AS employee_cnt
+COUNT(e.employee_id) AS employee_id
+FROM employees AS e
+INNER JOIN departments AS d
+ON d.department_id = e.department_id
+GROUP BY d.department_id, d.department_name
+HAVING COUNT(e.employee_id) > (SELECT
+MAX(empl_count) AS max_empl_cnt
+FROM (
+		SELECT
+		COUNT(e.employee_id) AS empl_count
+		FROM employees AS e
+		INNER JOIN departments AS d
+		ON d.department_id = e.department_id
+		GROUP BY d.department_id
+		)AS max );
 
+-- AVG 
+SELECT
+AVG(empl_count) AS avg_empl_cnt
+FROM (
+		SELECT
+		COUNT(e.employee_id) AS empl_count
+		FROM employees AS e
+		INNER JOIN departments AS d
+		ON d.department_id = e.department_id
+		GROUP BY d.department_id
+		)AS avg;
+        
+
+     
+-- COUNT empl
+SELECT
+COUNT(e.employee_id) AS empl_count
+FROM employees AS e
+INNER JOIN departments AS d
+ON d.department_id = e.department_id
+GROUP BY d.department_id;
+
+
+-- AVG
+SELECT
+d.department_name,
+COUNT(e.employee_id) AS employee_cnt
 FROM employees AS e
 INNER JOIN departments AS d
 ON d.department_id = e.department_id
 GROUP BY d.department_id, d.department_name
 HAVING COUNT(e.employee_id) > (
-    SELECT AVG(sub.employee_cnt)
+								SELECT
+								AVG(e2.employee_id) AS employee_avg
+								FROM employees AS e2
+								INNER JOIN departments AS d2
+								ON d2.department_id = e2.department_id
+								GROUP BY d2.department_id
+								);
+                                
+   -- MAX 
+SELECT
+MAX(empl_count) AS max_empl_cnt
+FROM (
+		SELECT
+		COUNT(e.employee_id) AS empl_count
+		FROM employees AS e
+		INNER JOIN departments AS d
+		ON d.department_id = e.department_id
+		GROUP BY d.department_id
+		)AS avg;                             
+                                
+SELECT
+d.department_name,
+COUNT(e.employee_id) AS employee_cnt
+FROM employees AS e
+INNER JOIN departments AS d
+ON d.department_id = e.department_id
+GROUP BY d.department_id, d.department_name
+HAVING COUNT(e.employee_id) > (
+								SELECT 
+                                MAX(sub.employee_cnt)
+								FROM (
+									SELECT
+									COUNT(e2.employee_id) AS employee_cnt
+									FROM employees AS e2
+									INNER JOIN departments AS d2
+									ON d2.department_id = e2.department_id
+									GROUP BY d2.department_id
+								) AS sub
+);
+
+-- MAX
+SELECT
+department_name
+FROM departments
+WHERE department_id IN (SELECT
+						department_id
+						FROM employees
+						GROUP BY department_id
+						HAVING MAX(department_id) = (SELECT
+											AVG(t1.cnt)
+											FROM (SELECT
+													department_id,
+													MAX(department_id) AS cnt
+													FROM employees
+													GROUP BY department_id) AS t1) );
+												
+-- AVG
+SELECT
+department_name
+FROM departments
+WHERE department_id IN (SELECT
+						department_id
+						FROM employees
+						GROUP BY department_id
+						HAVING COUNT(*) > (SELECT
+											AVG(t1.cnt)
+											FROM (SELECT
+													department_id,
+													COUNT(*) AS cnt
+													FROM employees
+													GROUP BY department_id) AS t1) );
+                                                    
+SELECT
+department_id,
+MAX(department_id) AS cnt
+FROM employees
+GROUP BY department_id;
+                                                    
+                                                    
+                                                    
+SELECT
+d.department_name,
+COUNT(e.employee_id) AS employee_count
+FROM employees AS e
+INNER JOIN departments AS d
+ON d.department_id = e.department_id
+GROUP BY d.department_id, d.department_name
+HAVING COUNT(e.employee_id) > (
+    SELECT MAX(empl_count)
     FROM (
         SELECT
-            COUNT(e2.employee_id) AS employee_cnt
+            COUNT(e2.employee_id) AS empl_count
         FROM employees AS e2
         INNER JOIN departments AS d2
         ON d2.department_id = e2.department_id
         GROUP BY d2.department_id
-    ) AS sub
+    ) AS subquery
 );
+
+-- -------------------------------------------------------------------------------
+-- -------------------------------------------------------------------------------
+-- 25-11-2024
+
+-- SELECT
+-- fields
+-- FROM table
+-- JOIN table
+-- ON fields
+-- WHERE feild
+-- GROUP BY field
+-- HAVING agr(field)
+-- ORDER field
+
+CREATE DATABASE interview;
+
+use interview;
+
+Create table If Not Exists Sales (sale_id int, product_id int, year int, quantity int, price int);
+Create table If Not Exists Product (product_id int, product_name varchar(10));
+Truncate table Sales;
+insert into Sales (sale_id, product_id, year, quantity, price) values ('1', '100', '2008', '10', '5000');
+insert into Sales (sale_id, product_id, year, quantity, price) values ('2', '100', '2009', '12', '5000');
+insert into Sales (sale_id, product_id, year, quantity, price) values ('7', '200', '2011', '15', '9000');
+Truncate table Product;
+insert into Product (product_id, product_name) values ('100', 'Nokia');
+insert into Product (product_id, product_name) values ('200', 'Apple');
+insert into Product (product_id, product_name) values ('300', 'Samsung');
+
+
+SELECT
+p.product_name,
+s.year,
+s.price
+FROM product AS p
+INNER JOIN sales AS s
+ON p.product_id= s.product_id;
+
+-- Task2 Вывести количество всего проданного товара по product_id
+SELECT
+product_id,
+SUM(sale_id)
+FROM sales
+GROUP BY product_id;
+
+-- Taks 3 : Вывести количество всего проданного товара по product_id в каждый год
+SELECT
+product_id,
+year,
+SUM(sale_id)
+FROM sales
+GROUP BY product_id, year;
+
+
+select * from product;
+select * from sales;
