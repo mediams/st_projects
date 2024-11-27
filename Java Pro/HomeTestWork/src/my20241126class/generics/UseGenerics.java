@@ -38,9 +38,9 @@ public class UseGenerics {
         return t;
     }
 
-    public <K> Parameter staticGenericMethod2(K k) {
-        System.out.println(data);
-        System.out.println(k);
-        return data;
-    }
+//    public <K> Parameter staticGenericMethod2(K k) {
+//        System.out.println(data);
+//        System.out.println(k);
+//        return data;
+//    }
 }
