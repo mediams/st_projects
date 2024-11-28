@@ -9,6 +9,7 @@ public class Tasks {
     public static void main(String[] args) {
 //        1. Переписать через стримы фрагменты кода:
         System.out.println("a)");
+        List<Double> doubleList = List.of(1.0, 2.0, 3.0, 4.0);
 //        List<Double> doubles = new ArrayList<>();
 //        for (Double d : doubleList) {
 //            if (d % 2 == 1) {
@@ -18,7 +19,8 @@ public class Tasks {
 //        System.out.println(doubles);
 
 
-//        List<Double> doubles = doubleList.stream().filter(d -> d % 2 == 1).collect(Collectors.toList());
+//        List<Double> doubles = doubleList.stream().filter(d -> d % 2 == 1).collect(Collectors.toList()); // not correct
+        List<Double> doubles = doubleList.stream().filter(d -> d % 2 == 1).collect(Collectors.toCollection(ArrayList::new)); // correct
 
 //
         System.out.println("b)");
@@ -117,7 +119,7 @@ public class Tasks {
 //            return map;
 //        }
 
-//       IntStream.range(0, 100).mapToObj(value -> value).collect(Collectors.partitioningBy(i -> i % 3 == 0));
+       IntStream.range(0, 100).mapToObj(value -> value).collect(Collectors.partitioningBy(i -> i % 3 == 0));
 
 //
 //        2. С помощью IntStream и метода flatmap() получить все тройки пифагоровых чисел менее 1000.
