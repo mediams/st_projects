@@ -2,7 +2,7 @@ package my20241202homework;
 
 import java.util.*;
 
-public class MyArrayList<T extends Iterable<?>> {
+public class MyArrayList<T> implements Iterable<T> {
 
     private T[] data;
 
@@ -14,7 +14,7 @@ public class MyArrayList<T extends Iterable<?>> {
         // logic for adding element
     }
 
-//    @Override
+    @Override
     public Iterator<T> iterator() {
         return new Iterator<>() {
             private int index = 0;
