@@ -15,7 +15,7 @@ public class ExceptionExamples {
 //        System.out.println("!!!");
         fileMethod();
 
-        recursion();
+//        recursion();
 
 
         try {
