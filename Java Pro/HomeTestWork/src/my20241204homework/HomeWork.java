@@ -9,19 +9,58 @@ public class HomeWork {
     public static void main(String[] args) {
 //        1. Создайте файл с текстом: "This is my first experience when I work with IO API. I can do everything!"
 //        Откройте и прочтите файл, напечатав его содержимое в консоль.
-
         try {
-            FileWriter writer = new FileWriter("fileWithText.txt");
-            BufferedReader bufferedReader = new BufferedReader(new FileReader("fileWithText.txt"));
-            writer.write("This is my first experience when I work with IO API.\nI can do everything!");
-            String line;
-            while((line=bufferedReader.readLine())!=null){
-                System.out.println(line);
+            try (FileWriter writer = new FileWriter("fileWithText.txt")) {
+                writer.write("This is my first experience when I work with IO API.\nI can do everything!");
             }
-            writer.close();
+            try (BufferedReader bufferedReader = new BufferedReader(new FileReader("fileWithText.txt"))) {
+                String line;
+                while ((line = bufferedReader.readLine()) != null) {
+                    System.out.println(line);
+                }
+            }
         } catch (IOException e) {
             System.out.println(e.getMessage());
-//            throw new RuntimeException(e);
         }
+
+//        Один метод вызывает три других метода, которые выбрасывают проверяемые и непроверяемые исключения:
+        try {
+            oneMethod();
+        } catch (MyAppException e) {
+            System.out.println("Message:" + e.getMessage());
+            System.out.println("Cause:" + e.getCause());
+        }
+    }
+
+    private static void oneMethod() throws MyAppException {
+        try {
+            method1();
+        } catch (ArithmeticException e) {
+            throw new MyAppException("ArithmeticException: " + e.getMessage(), e);
+        }
+
+        try {
+            method2();
+        } catch (NullPointerException e) {
+            throw new MyAppException("NullPointerException: " + e.getMessage(), e);
+        }
+
+        try {
+            method3();
+        } catch (IOException e) {
+            throw new MyAppException("IOException" + e.getMessage());
+        }
+    }
+
+    public static void method1() {
+        System.out.println(1 / 1);
+    }
+
+    public static void method2() {
+//        throw new NullPointerException("nulls everywhere!");
+    }
+
+    public static void method3() throws IOException {
+        throw new IOException("File not found");
     }
 }
