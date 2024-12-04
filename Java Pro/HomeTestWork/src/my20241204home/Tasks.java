@@ -1,7 +1,6 @@
 package my20241204home;
 
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 public class Tasks {
     public static void main(String[] args) {
@@ -10,7 +9,41 @@ public class Tasks {
 //
 //         Подсказка: Используйте классы FileWriter и блок try-catch.
 
-        creatFile("output.txt","Привет, мир!" );
+        creatFile("input.txt", "Привет, Java!\nКак дела?");
+
+//        Создайте текстовый файл input.txt, добавьте туда несколько строк текста (например, "Привет, Java!\nКак дела?").
+//        Напишите программу, которая считывает содержимое файла и выводит его в консоль.
+//
+//        Подсказка: Используйте FileReader и BufferedReader.
+
+        readFile("input.txt");
+
+//        Напишите программу, которая считывает содержимое файла source.txt и записывает его в новый файл destination.txt.
+//        Если файл source.txt не существует, программа должна вывести сообщение об ошибке и завершить работу.
+//
+//        Подсказка: Используйте блок try-catch для обработки исключений и работу с файлами.
+
+        File sourceFile = new File("source.txt");
+        File destinationFile = new File("destination.txt");
+
+        if (!sourceFile.exists()) {
+            System.out.println("Not found: " + sourceFile);
+            return;
+        }
+
+
+    }
+
+    private static void readFile(String file) {
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private static void creatFile(String file, String s) {
