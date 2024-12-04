@@ -53,11 +53,11 @@ public class HomeWork {
     }
 
     public static void method1() {
-        System.out.println(1 / 1);
+        System.out.println(1 / 0);
     }
 
     public static void method2() {
-//        throw new NullPointerException("nulls everywhere!");
+        throw new NullPointerException("nulls everywhere!");
     }
 
     public static void method3() throws IOException {
