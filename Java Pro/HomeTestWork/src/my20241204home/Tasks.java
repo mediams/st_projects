@@ -1,6 +1,5 @@
 package my20241204home;
 
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -11,9 +10,13 @@ public class Tasks {
 //
 //         Подсказка: Используйте классы FileWriter и блок try-catch.
 
+        creatFile("output.txt","Привет, мир!" );
+    }
+
+    private static void creatFile(String file, String s) {
         try {
-            FileWriter writer = new FileWriter("output.txt");
-            writer.write("Привет, мир!");
+            FileWriter writer = new FileWriter(file);
+            writer.write(s);
             writer.close();
             System.out.println("Created");
         } catch (IOException e) {
