@@ -30,12 +30,17 @@ public class Tasks {
 //
 //        Подсказка: Используйте цикл для построчного чтения файла.
 
-        
+//        createFile("data.txt", "Привет, Java!\nКак дела?\nJava ist sehr einfach!");
+        File sourceFile = new File("data.txt");
+
+        if (!sourceFile.exists()) {
+            System.out.printf("File %s not found", sourceFile);
+        }
 
     }
 
     private static void copyTextToFile() {
-        createFile("source.txt", "Привет, Java!\nКак дела?");
+//        createFile("source.txt", "Привет, Java!\nКак дела?");
         File sourceFile = new File("source.txt");
         File destinationFile = new File("destination.txt");
 
