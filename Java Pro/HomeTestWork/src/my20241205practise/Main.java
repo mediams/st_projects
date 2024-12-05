@@ -9,8 +9,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BReader reader = new BReader();
 
-        reader.readFileAndSaveInList("I:\\_Starta Institut\\Java Mikhail Egorov\\" +
-                "f.txt090724-m-be\\src\\main\\java\\com\\app\\_03_12_2024\\fileReader\\f.txt");
+        reader.readFileAndSaveInList("f.txt");
 
         reader.printData();
 
