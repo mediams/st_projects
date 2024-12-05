@@ -1,9 +1,8 @@
 package my20241204homework;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class HomeWork {
     public static void main(String[] args) {
@@ -23,13 +22,23 @@ public class HomeWork {
             System.out.println(e.getMessage());
         }
 
-//        Один метод вызывает три других метода, которые выбрасывают проверяемые и непроверяемые исключения:
+//        2. Один метод вызывает три других метода, которые выбрасывают проверяемые и непроверяемые исключения:
+//        try {
+//            oneMethod();
+//        } catch (MyAppException e) {
+//            System.out.println("Message:" + e.getMessage());
+//            System.out.println("Cause:" + e.getCause());
+//        }
+
+
+//   3. В некотором методе возникает Exception. Реализовать логирование стектрейса Exception со временем ошибки в файл errors.log.
+//    Логи всех возникших Exception должны накапливаться в файле, не перезаписываясь при перезапуске программы.
         try {
-            oneMethod();
-        } catch (MyAppException e) {
-            System.out.println("Message:" + e.getMessage());
-            System.out.println("Cause:" + e.getCause());
+            someMethod();
+        } catch (Exception e) {
+            logError(e);
         }
+
     }
 
     private static void oneMethod() throws MyAppException {
@@ -63,4 +72,22 @@ public class HomeWork {
     public static void method3() throws IOException {
         throw new IOException("File not found");
     }
+
+
+    public static void someMethod() {
+        throw new ArithmeticException("Just ArithmeticException");
+    }
+
+    public static void logError(Exception e) {
+        try (FileWriter fileWriter = new FileWriter(".\\resources\\errors.log", true);
+             PrintWriter writer = new PrintWriter(fileWriter)) {
+            String time = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+            fileWriter.write(time);
+            fileWriter.write("\n");
+            e.printStackTrace(writer);
+        } catch (IOException eIO) {
+            throw new RuntimeException(eIO);
+        }
+    }
+
 }
