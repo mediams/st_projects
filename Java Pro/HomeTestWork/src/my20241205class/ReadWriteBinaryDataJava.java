@@ -8,21 +8,28 @@ public class ReadWriteBinaryDataJava {
         byte data = 0b101;
 //        data = 5;
 
-        try (OutputStream stream = new FileOutputStream(".\\resources\\binaryFile")){
+        try (OutputStream stream = new FileOutputStream(".\\resources\\binaryFile")) {
             stream.write(data);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
-        try (InputStream inputStream = new FileInputStream(".\\resources\\binaryFile")){
+        try (InputStream inputStream = new FileInputStream(".\\resources\\binaryFile")) {
             int input = inputStream.read();
             System.out.println(input);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        try (InputStream inputStream = new FileInputStream(".\\resources\\AdobeStock_55929654.jpeg")){
+        try (InputStream inputStream = new FileInputStream(".\\resources\\AdobeStock_55929654.jpeg")) {
             int input = inputStream.read();
-            System.out.println(input);
+
+
+            for (int i=0; i <= 10; i++) {
+                System.out.println(input + ":" + Integer.toHexString(input) + ":" + (char) input);
+                input = inputStream.read();
+            }
+
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
