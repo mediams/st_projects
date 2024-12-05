@@ -1,0 +1,21 @@
+Dear Frank,
+
+I hope this email finds you well.
+
+I'm writing to update you on the current progress of your project.
+
+The project is advancing as planned, and we have successfully completed the following milestones:
+
+The login page has been implemented.
+Logging errors have been fixed.
+The header on the main page has been updated.
+We are now focusing on the next phase, which involves creating an additional page for the shopping cart. Everything remains on track to meet the agreed timeline.
+
+For your convenience, the project file is attached to this email.
+
+If you have any questions or require further details, please don't hesitate to let me know.
+
+Thank you for your time. I look forward to your feedback.
+
+Kind regards,
+Yevhen
