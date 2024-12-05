@@ -42,13 +42,13 @@ public class UsePrioritzQueueExample {
 //            if (!queue.isEmpty()){
 //                Task task= queue.poll();
 //                System.out.println(this + "doing task" + task);
-//            } else System.out.println("No tasks!");
+//            } else System.out.println("No tasks.txt!");
 
             if (!queue.isEmpty()) {
                 Task task = queue.poll(); // Берем задачу из очереди
                 System.out.println(this.name + " is doing task: " + task);
             } else {
-                System.out.println(this.name + " found no tasks to do!");
+                System.out.println(this.name + " found no tasks.txt to do!");
             }
         }
     }

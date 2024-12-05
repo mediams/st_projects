@@ -24,19 +24,5 @@ public class Main {
             e.printStackTrace();
         }
 
-//        // Подсчет среднего рейтинга
-//        double averageRating = reader.calculateAverageRating();
-//        System.out.println("Средний рейтинг: " + averageRating);
-//
-//        // Запись среднего рейтинга в файл
-//        reader.writeAverageToFile("average_rating.txt", averageRating);
-//
-//        // Фильтрация стримов с рейтингом > 4.5
-//        List<SData> filteredStreams = reader.filterStreamsByRating(4.5);
-//
-//        // Запись отфильтрованных стримов в файл
-//        reader.writeToFile("filtered_streams.txt", filteredStreams);
-
-
     }
 }
