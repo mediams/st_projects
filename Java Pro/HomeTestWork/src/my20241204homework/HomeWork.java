@@ -23,12 +23,12 @@ public class HomeWork {
         }
 
 //        2. Один метод вызывает три других метода, которые выбрасывают проверяемые и непроверяемые исключения:
-//        try {
-//            oneMethod();
-//        } catch (MyAppException e) {
-//            System.out.println("Message:" + e.getMessage());
-//            System.out.println("Cause:" + e.getCause());
-//        }
+        try {
+            oneMethod();
+        } catch (MyAppException e) {
+            System.out.println("Message:" + e.getMessage());
+            System.out.println("Cause:" + e.getCause());
+        }
 
 
 //   3. В некотором методе возникает Exception. Реализовать логирование стектрейса Exception со временем ошибки в файл errors.log.
