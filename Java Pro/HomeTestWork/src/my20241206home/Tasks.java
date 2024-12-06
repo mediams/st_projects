@@ -1,6 +1,7 @@
 package my20241206home;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
@@ -15,7 +16,7 @@ public class Tasks {
         createFileWithText(path, text);
 
         readFile(path);
-//        Запись текста в файл
+//        2. Запись текста в файл
 //        Напишите программу, которая запрашивает у пользователя текст через консоль и записывает его в файл output.txt.
 //        Если файл уже существует, он должен быть перезаписан. Добавьте обработку исключений для случаев, если что-то пойдёт не так.
 
@@ -30,18 +31,37 @@ public class Tasks {
         } catch (Exception e) {
             System.out.println("Ошибка ввода-вывода: " + e.getMessage());
         }
+
+//        3. Копирование содержимого файла
+//        Напишите программу, которая копирует содержимое файла source.txt в файл destination.txt.
+//        Если файл source.txt отсутствует, программа должна вывести сообщение об ошибке.
+//        Используйте блок try-with-resources для автоматического закрытия потоков.
+
+        try (BufferedReader br = new BufferedReader(new FileReader(String.valueOf(path)));
+             FileWriter writer = new FileWriter("destination.txt")
+        ) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                writer.write(line + "\n");
+//                writer.write(System.lineSeparator()); //-----------------------
+            }
+        } catch (FileNotFoundException e) {
+            System.err.println("File Not Found Exception: " + e.getMessage());
+        } catch (IOException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
     }
 
     private static void createFileWithText(Path path, String text) {
-        try (FileWriter writer = new FileWriter(String.valueOf(path));) {
-            writer.write(text);
+        try (FileWriter writer = new FileWriter(path.toString(), StandardCharsets.UTF_8, true);) {
+            writer.write(text + "\n");
         } catch (IOException e) {
             System.err.println("Error!" + e.getMessage());
         }
     }
 
     private static void readFile(Path path) {
-        try (BufferedReader br = new BufferedReader(new FileReader(String.valueOf(path)));) {
+        try (BufferedReader br = new BufferedReader(new FileReader(path.toString()));) {//------------------
             String line;
             while ((line = br.readLine()) != null) {
                 System.out.println(line);
