@@ -5,3 +5,35 @@ try (Scanner sc = new Scanner(System.in)) {
                 System.out.println("String is Empty!");
                 return;
             }
+try (Scanner sc = new Scanner(System.in)) {
+            System.out.print("Enter some text: ");
+            String string = sc.nextLine();
+            if (string.isEmpty()) {
+                System.out.println("String is Empty!");
+                return;
+            }
+sd
+try (Scanner sc = new Scanner(System.in)) {
+            System.out.print("Enter some text: ");
+            String string = sc.nextLine();
+            if (string.isEmpty()) {
+                System.out.println("String is Empty!");
+                return;
+            }
+dfr
+try (Scanner sc = new Scanner(System.in)) {
+            System.out.print("Enter some text: ");
+            String string = sc.nextLine();
+            if (string.isEmpty()) {
+                System.out.println("String is Empty!");
+                return;
+            }
+rs
+try (Scanner sc = new Scanner(System.in)) {
+            System.out.print("Enter some text: ");
+            String string = sc.nextLine();
+            if (string.isEmpty()) {
+                System.out.println("String is Empty!");
+                return;
+            }
+wrg

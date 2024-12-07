@@ -2,6 +2,7 @@ package my20241206home;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
@@ -11,14 +12,11 @@ public class Tasks {
 //        1. Чтение текста из файла и вывод на экран
 //        Напишите программу, которая читает текстовый файл input.txt и выводит его содержимое на экран.
 //        Используйте блок try-catch для обработки возможных ошибок, таких как отсутствие файла.
-        Path path = Paths.get("resources", "lines.txt");
-        String text = "try (Scanner sc = new Scanner(System.in)) {\n" +
-                "            System.out.print(\"Enter some text: \");\n" +
-                "            String string = sc.nextLine();\n" +
-                "            if (string.isEmpty()) {\n" +
-                "                System.out.println(\"String is Empty!\");\n" +
-                "                return;\n" +
-                "            }";
+        Path path = Paths.get("resources", "data.txt");
+        String text = "5. Фильтрация текста из файла\n" +
+                "Напишите программу, которая читает текст из файла data.txt и\n" +
+                "записывает в новый файл filtered.txt только те строки,\n" +
+                "которые содержат слово \"Java\". Используйте try-catch для обработки возможных ошибок.";
         createFileWithText(path, text);
 
         readFile(path);
@@ -61,7 +59,52 @@ public class Tasks {
 //        4. Подсчёт строк в файле
 //        Напишите программу, которая считает количество строк в текстовом файле lines.txt.
 //        Если файл пуст или отсутствует, программа должна выводить соответствующее сообщение.
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("test"))) {
+            String line;
+            int count = 0;
+            while ((line = bufferedReader.readLine()) != null) {
+                count++;
+            }
+            if (count == 0) {
+                System.out.println("File is Empty!");
+            } else System.out.println("количество строк: " + count);
+        } catch (FileNotFoundException e) {
+            System.err.println("File not found: " + e.getMessage());
+        } catch (IOException e) {
+            System.err.println("Error IO Execption.");
+            e.printStackTrace();
+        }
 
+//        5. Фильтрация текста из файла
+//        Напишите программу, которая читает текст из файла data.txt и записывает в новый файл filtered.txt только те строки,
+//        которые содержат слово "Java". Используйте try-catch для обработки возможных ошибок.
+        Path outputPath = Paths.get("resources", "filtered.txt");
+        
+        // Проверяем, существует ли директория и создаём её при необходимости
+        try {
+            Files.createDirectories(outputPath.getParent());
+        } catch (IOException e) {
+            System.err.println("Failed to create directory: " + e.getMessage());
+            return;
+        }
+
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(path.toString()));
+        FileWriter writer = new FileWriter(".\\resources\\filtered.txt")
+        ) {
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                if (line.contains("Java")) {
+                    writer.write(line);
+                    writer.write(System.lineSeparator());
+                }
+            }
+            readFile(outputPath);
+        } catch (FileNotFoundException e) {
+            System.err.println("File not found: " + e.getMessage());
+        } catch (IOException e) {
+            System.err.println("IOException");
+            e.printStackTrace();
+        }
 
     }
 
