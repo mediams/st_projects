@@ -29,7 +29,8 @@ public class Tasks {
             }
             createFileWithText(path, string);
         } catch (Exception e) {
-            System.out.println("Ошибка ввода-вывода: " + e.getMessage());
+            throw new RuntimeException();
+//            System.out.println("Ошибка ввода-вывода: " + e.getMessage());
         }
 
 //        3. Копирование содержимого файла
