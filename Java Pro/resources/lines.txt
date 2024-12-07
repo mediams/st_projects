@@ -1,0 +1,7 @@
+try (Scanner sc = new Scanner(System.in)) {
+            System.out.print("Enter some text: ");
+            String string = sc.nextLine();
+            if (string.isEmpty()) {
+                System.out.println("String is Empty!");
+                return;
+            }

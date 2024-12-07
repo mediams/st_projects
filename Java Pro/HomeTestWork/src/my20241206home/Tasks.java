@@ -11,8 +11,14 @@ public class Tasks {
 //        1. Чтение текста из файла и вывод на экран
 //        Напишите программу, которая читает текстовый файл input.txt и выводит его содержимое на экран.
 //        Используйте блок try-catch для обработки возможных ошибок, таких как отсутствие файла.
-        Path path = Paths.get("resources", "input.txt");
-        String text = "Напишите программу, которая читает текстовый файл input.txt и выводит его содержимое на экран.";
+        Path path = Paths.get("resources", "lines.txt");
+        String text = "try (Scanner sc = new Scanner(System.in)) {\n" +
+                "            System.out.print(\"Enter some text: \");\n" +
+                "            String string = sc.nextLine();\n" +
+                "            if (string.isEmpty()) {\n" +
+                "                System.out.println(\"String is Empty!\");\n" +
+                "                return;\n" +
+                "            }";
         createFileWithText(path, text);
 
         readFile(path);
@@ -51,6 +57,12 @@ public class Tasks {
         } catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
         }
+
+//        4. Подсчёт строк в файле
+//        Напишите программу, которая считает количество строк в текстовом файле lines.txt.
+//        Если файл пуст или отсутствует, программа должна выводить соответствующее сообщение.
+
+
     }
 
     private static void createFileWithText(Path path, String text) {
