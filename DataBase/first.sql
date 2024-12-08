@@ -2044,6 +2044,440 @@ SUM(sale_id)
 FROM sales
 GROUP BY product_id, year;
 
+CREATE DATABASE interviewNEW;
 
-select * from product;
-select * from sales;
+use interviewNEW;
+
+DROP TABLE IF EXISTS Sales;
+DROP TABLE IF EXISTS Product;
+
+Create table If Not Exists Sales (sale_id int, product_id int, user_id int, quantity int);
+Create table If Not Exists Product (product_id int, price int);
+
+insert into Sales (sale_id, product_id, user_id, quantity) values ('1', '1', '101', '10');
+insert into Sales (sale_id, product_id, user_id, quantity) values ('2', '2', '101', '1');
+insert into Sales (sale_id, product_id, user_id, quantity) values ('3', '3', '102', '3');
+insert into Sales (sale_id, product_id, user_id, quantity) values ('4', '3', '102', '2');
+insert into Sales (sale_id, product_id, user_id, quantity) values ('5', '2', '103', '3');
+
+insert into Product (product_id, price) values ('1', '10');
+insert into Product (product_id, price) values ('2', '25');
+insert into Product (product_id, price) values ('3', '15');
+
+-- Task 4 : Вывести данные о том, какой пользователь(user_id) сколько в целом потратил
+-- отсортировать по убыванию потраченного и возрастанию айди пользователя
+
+SELECT
+s.user_id,
+SUM(p.price) AS total_price
+FROM sales AS s
+INNER JOIN product AS p
+ON s.product_id = p.product_id
+GROUP BY s.user_id
+ORDER BY s.user_id ASC, total_price DESC;
+
+
+-- ---------------------------------------------------------------------------------------
+-- ---------------------------------------------------------------------------------------
+-- lesson 27-11-2024
+
+-- Relationship types
+-- One-to-One (1:1)
+
+CREATE DATABASE relationship;
+
+USE relationship;
+
+CREATE TABLE person(#
+id INT,
+name varchar (255)
+);
+
+-- Если добавить ограничение уникальности на колонку, по которой будет 
+-- находиться соответствие между таблицами, то это будет отношение One-to-One
+
+CREATE TABLE passport( 
+num varchar(16),
+person_id int unique  -- One-to-One
+);
+
+INSERT INTO person (id, name) VALUES(1, 'Alex'),(2,'Oleg');
+INSERT INTO passport (num, person_id) VALUES ('55555',1),('77777', 2);
+
+-- Таблица паспортов и таблица персон находятся теперь в отношении (1:1)
+
+SELECT
+p1.id,
+p1.name,
+p2.num
+FROM person AS p1
+INNER JOIN passport AS p2
+ON p1.id=p2.person_id;
+
+-- Таблица паспортов и таблица персон находятся теперь в отношении (1:1)
+
+-- One-to-Many (1:M)
+-- Для одной строки одной таблицы, может соответствовать несколько строк из другой
+-- таблице
+
+CREATE TABLE student (
+id integer,
+name varchar(64)
+);
+
+CREATE TABLE order_course(
+order_id integer,
+title varchar(64),
+student_id integer
+);
+
+INSERT INTO student(id, name) VALUES (1,'Alex'),(2, 'Maxim');
+INSERT INTO order_course(order_id, title, student_id) VALUES
+													(1,'Java',2),(2, 'JS',2),(3,'SQL',1);
+
+SELECT * FROM student;
+SELECT * FROM order_course;
+
+SELECT
+t1.id AS student_id,
+t1.name,
+t2.order_id AS course_id,
+t2.title AS course_title
+FROM student AS t1
+LEFT JOIN order_course AS t2
+ON t1.id = t2.student_id;
+
+-- Таблица студентов и таблица курсов находятся во взаимоотношении (1:M)
+
+-- Many-to-Many (M:M) - Для одной строки из первой таблицы, может соответствовать
+-- несколько строк из второй таблицы и наоброт, для любой строки второй таблицы,
+-- может соответствовать несколько строк из первой таблицы
+
+CREATE TABLE customer(
+id integer,
+name varchar(64)
+);
+
+CREATE TABLE shop(
+id integer,
+title varchar(64),
+address varchar(64)
+);
+
+INSERT INTO customer(id, name) VALUES (1,'Alex'),(2,'Max'),(3,'Oleg');
+INSERT INTO shop(id, title, address) VALUES (1,'Amazon','Berlin'),(2,'Wallmart','Ontario');
+
+CREATE TABLE shop2customer(
+customer_id integer,
+shop_id integer
+);
+-- Alex - Amazon; Max - Amazon, Wallmart; Oleg - Wallmart
+-- Amazon - Alex,Max;  Wallmart - Oleg, Max
+INSERT INTO shop2customer(customer_id, shop_id) VALUES (1,1),(2,1),(2,2),(3,2);
+
+SELECT * FROM customer;
+SELECT * FROM shop;
+SELECT * FROM shop2customer;
+
+SELECT
+t1.id AS customer_id,
+t1.name AS customer_name,
+t3.id AS shop_id,
+t3.title AS shop_title,
+t3.address AS shop_address
+FROM customer AS t1
+LEFT JOIN shop2Customer AS t2
+ON t1.id = t2.customer_id
+LEFT JOIN shop AS t3
+ON t3.id = t2.shop_id
+WHERE t1.id = 2;
+
+SELECT
+t3.id AS shop_id,
+t3.title AS shop_title,
+t3.address AS shop_address,
+t1.id AS customer_id,
+t1.name AS customer_name
+FROM shop AS t3
+LEFT JOIN shop2Customer AS t2
+ON t3.id = t2.shop_id
+LEFT JOIN customer AS t1
+ON t1.id = t2.customer_id
+WHERE t3.id = 1;
+
+-- PRIMARY KEY, FOREIGN KEY
+
+-- PRIMARY KEY (unique  + not null)
+-- Первычный ключ может быть натуральный или искусственный (id)
+
+-- искусственный (id integer primary key)
+-- натуральный (passport_number varchar(64) pimary key)
+
+CREATE TABLE person_correct(
+id integer primary key,
+name varchar(255)
+);
+
+-- FOREIGN KEY - значение в колонке , которая является внешним ключем одной таблицы
+-- это значение из колонки , которая является первичным ключем в другой таблице
+
+DROP TABLE passport_correct;
+
+CREATE TABLE passport_correct(
+id integer primary key,
+num varchar(16),
+person_id integer unique,
+FOREIGN KEY (person_id) REFERENCES person_correct (id) ON DELETE CASCADE
+);
+
+-- текущая таблица - (passport_correct) - 1
+-- таблица (person_correct) - 2
+-- FOREIGN KEY (имя_колонки из 1) REFERENCES таблицу 2  (имя колонки первичного ключа из 2)
+
+INSERT INTO person_correct(id, name) VALUES(1,'Alexx'),(2,'Oleg');
+-- Error Code: 1062. Duplicate entry '1' for key 'person_correct.PRIMARY'
+
+INSERT INTO passport_correct(id, num, person_id) VALUES (1,'5555555',1);
+
+INSERT INTO passport_correct(id, num, person_id) VALUES (2,'4444444',2);
+-- Error Code: 1452. Cannot add or update a child row:
+-- a foreign key constraint fails (`relationship`.`passport_correct`,
+-- CONSTRAINT `passport_correct_ibfk_1` FOREIGN KEY (`person_id`) REFERENCES `person_correct` (`id`))
+
+
+SELECT * FROM person_correct;
+SELECT * FROM passport_correct;
+
+DELETE FROM person_correct WHERE id = 1;
+-- Error Code: 1451. Cannot delete or update a parent row:
+-- a foreign key constraint fails (`relationship`.`passport_correct`,
+-- CONSTRAINT `passport_correct_ibfk_1` FOREIGN KEY (`person_id`) REFERENCES `person_correct` (`id`))
+
+-- ON DELETE CASCADE - добавление к внешнему ключу, которое говорит о том, что если запись с первичным
+-- ключем будет удалена , то удаляются и все записи из таблиц, которые ссылались на этот первичный ключ
+
+-- AFTER ADD ON DELETE CASCADE
+
+DELETE FROM person_correct WHERE id = 1;
+
+CREATE TABLE customer(
+id integer primary key,
+name varchar(64)
+);
+
+CREATE TABLE shop(
+id integer primary key,
+title varchar(64),
+address varchar(64)
+);
+
+CREATE TABLE shop2customer(
+customer_id integer,
+shop_id integer,
+FOREIGN KEY (customer_id) REFERENCES customer (id),
+FOREIGN KEY (shop_id) REFERENCES shop (id)
+);
+
+
+-- Вполне достаточно , что бы СКЛ таблица находилась в третьей нормальной форме
+-- 1NF, 2NF, 3NF
+
+
+-- name | surname | phone
+-- Alex | Alexeev | 6665,7778
+-- Oleg | Olegov. | 6664, 7774, 4444
+
+-- fio 		 | age | rate
+-- Alex Alexeev | 30. | 5
+-- Oleg Olegov. | 23  | 2
+
+-- 1NF - говорит о том, что в колонках таблицы, не должно быть составных значений
+-- или набора значений ( не должно быть массивов, строк через запятую)-- 
+-- fio -> first_name,last_name; address -> country, city, street, building
+
+-- name | surname | age | rate
+-- Alex | Alexeev | 30. | 5
+-- Oleg | Olegov. | 23  | 2
+
+-- name | surname | phone
+-- Alex | Alexeev | 6665
+-- Alex | Alexeev | 7778
+-- Oleg | Olegov. | 6664
+-- Oleg | Olegov. | 7774
+-- Oleg | Olegov. | 4444
+
+-- name | surname | id
+-- Alex | Alexeev | 1
+-- Oleg | Olegov. | 2
+
+-- phone | person_id
+-- 6665  | 1
+-- 7778. | 1
+-- 6664. | 2
+-- 7774. | 2
+-- 4444. | 2
+
+
+
+-- 2NF -> 1NF  + Primary key - данная нормальная форма говорит о том, что таблица
+-- должна соответствовать первой нормальной форме и иметь первичный ключ
+
+-- name | surname | id(PK)
+-- Alex | Alexeev | 1
+-- Oleg | Olegov. | 2
+
+-- phone(PK)   | person_id
+-- 6665  		| 1
+-- 7778. 		| 1
+-- 6664. 		| 2
+-- 7774. 		| 2
+-- 4444. 		| 2
+
+
+-- 3NF -> 2 NF + (id (PK) | name | course_id | course_title | course_description) 
+-- > не должно быть зависимостей между неключевыми полями ->
+-- >(id (PK) | name | course_id ), (course_id(PK) | course_title | course_description)
+
+-- /*
+-- Students:
+-- id (PK) | name | course_id | course_title | course_description
+-- 1		| Alex | 3		   | Java		  | Java prof course
+-- 2	    | Oleg | 4 		   | SQL	      | SQL for beginners
+
+-- Students:
+-- id (PK) | name | course_id 
+-- 1		| Alex | 3		   
+-- 2	    | Oleg | 4 		   
+
+-- Courses:
+-- course_id(PK) | course_title | course_description
+-- 3		       | Java		 | Java prof course
+-- 4 		       | SQL	     | SQL for beginners
+-- */
+
+use hr;
+select * from employees;
+
+
+
+select * from departments;
+
+
+-- /*
+-- Buyer 
+-- id | name | surname 
+
+
+-- Address 
+-- id | city | street | building | buyer_id
+
+-- */
+
+-- Task : 
+
+-- User : 
+
+-- name surname | birth date | phone number | cell_operator | zodiac sign | city | country |
+
+-- 1NF :
+-- name | surname | birth date | phone number | cell_operator | zodiac sign | city | country |
+
+-- 2NF :
+-- id(PK) | name | surname | birth date | phone number | cell_operator | zodiac sign | city | country |
+
+-- 3NF : 
+
+-- id(PK) | name | surname | birth date | phone_number | location_id
+
+
+-- Phones :
+-- phone_number(PK) | cell_operator 
+
+-- Locations :
+-- id (PK) | city | country_id|
+-- 1		Berlin 	Germany
+
+
+-- Countries : 
+-- country(PK) | 
+
+-- Zodiacs : 
+-- zodiac_sign(PK) | start_date | end_date 
+
+
+
+
+-- Спроектировать службу заказа такси :
+
+-- Driver
+-- Car
+-- Client
+-- Order
+-- Operator
+-- Service class
+-- Feedback
+
+
+CREATE DATABASE taxi;
+use taxi;
+
+CREATE TABLE cars(
+plate integer primary key,
+model varchar(32),
+class varchar(32)
+);
+
+CREATE TABLE drivers (
+id integer primary key auto_increment,
+name varchar(32),
+surname varchar(32),
+car_id integer,
+FOREIGN KEY (car_id) REFERENCES cars (plate)
+);
+
+CREATE TABLE clients (
+id integer primary key auto_increment,
+name varchar(32),
+surname varchar(32),
+rate integer
+);
+
+
+CREATE TABLE operators (
+id integer primary key auto_increment,
+name varchar(32),
+surname varchar(32),
+alias varchar(16)
+);
+
+CREATE TABLE service_classes (
+type varchar(16) primary key, 
+descr varchar(64)
+);
+
+drop table orders;
+drop table feedbacks;
+
+CREATE TABLE orders (
+id integer primary key auto_increment,
+start varchar(255),
+finish varchar(255),
+state varchar(255),
+payment_method varchar(255),
+amount integer,
+driver_id integer,
+operator_id integer,
+service_type varchar(16),
+client_id integer,
+FOREIGN KEY (driver_id) REFERENCES drivers (id),
+FOREIGN KEY (operator_id) REFERENCES operators (id),
+FOREIGN KEY (service_type) REFERENCES service_classes (type),
+FOREIGN KEY (client_id) REFERENCES clients (id)
+);
+
+CREATE TABLE feedbacks (
+id integer primary key auto_increment,
+feedback varchar(255),
+order_id integer unique,
+FOREIGN KEY (order_id) REFERENCES orders (id)
+);
