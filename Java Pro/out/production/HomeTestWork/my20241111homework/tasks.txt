@@ -1,0 +1,31 @@
+1. Имеется класс Customer c полями:
+public class Customer {
+    private String name;
+    private String email;
+    private String country;
+    private int bonusAmount;
+    private boolean isEmailConfirmed;
+}
+На основе списка экземпляров данного класса List customers
+
+a. Получить Map email / страна
+b. Получить Map email / покупатель
+c. Получить Map isEmailConfirmed / количество подтвержденных и неподтвержденных email
+d. Получить Map> страна / список покупателей из данной страны
+e. Получить Map страна / суммарный накопленный бонус покупателей из данной страны
+
+
+2. Имеется некоторый текст. Составить словарь используемых в нем слов с частотой их употребления.
+Отсортировать словарь по частоте встречаемости слов (по убыванию).
+
+3. Составить маршрут из заданного списка билетов
+Имеется перемешанный список билетов. Необходимо найти маршрут, восстановив порядок билетов.
+Вход:
+«Berlin» -> «London»
+«Tokyo» -> «Seoul»
+«Mumbai» -> «Berlin»
+«Seoul» -> «Mumbai»
+
+
+Выход:
+Tokyo->Seoul, Seoul->Mumbai, Mumbai->Berlin, Berlin->London

@@ -1,5 +1,32 @@
+### IntelliJ IDEA ###
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+.idea
+*.iml
+
 Bücher
 Offline_Materialen
 myenv/
 _Base
 notes.lnk
+sync_repo.bat
+My_Java_Way — ярлык.lnk
+
+
+*.iml
+
+*.class
+
+*.log
+*.bat
+
+target/
+
+build/
+
+.env
+
+.DS_Store
+Thumbs.db
+
