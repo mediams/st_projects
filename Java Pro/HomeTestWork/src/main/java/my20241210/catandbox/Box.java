@@ -64,7 +64,6 @@ public class Box {
         }
     }
 
-
     @Override
     public String toString() {
         return "Box{" +

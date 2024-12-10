@@ -1,5 +1,8 @@
 package my20241210.catandbox;
 
+import lombok.ToString;
+
+@ToString
 public class Main {
     public static void main(String[] args) {
         Cat cat1 = new Cat("Cat 1");
