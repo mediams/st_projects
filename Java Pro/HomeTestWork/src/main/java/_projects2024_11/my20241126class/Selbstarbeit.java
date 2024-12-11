@@ -1,6 +1,5 @@
-package my20241126class;
+package _projects2024_11.my20241126class;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;

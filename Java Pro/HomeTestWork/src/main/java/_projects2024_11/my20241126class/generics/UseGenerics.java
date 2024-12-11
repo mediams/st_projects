@@ -1,6 +1,4 @@
-package my20241126class.generics;
-
-import java.lang.reflect.Parameter;
+package _projects2024_11.my20241126class.generics;
 
 public class UseGenerics {
     public static void main(String[] args) {

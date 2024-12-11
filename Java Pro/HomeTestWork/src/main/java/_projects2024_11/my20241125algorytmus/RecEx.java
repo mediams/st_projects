@@ -1,4 +1,4 @@
-package my20241125algorytmus;
+package _projects2024_11.my20241125algorytmus;
 
 public class RecEx {
     public static void main(String[] args) {

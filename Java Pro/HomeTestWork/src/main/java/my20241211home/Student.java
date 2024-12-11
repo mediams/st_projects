@@ -5,12 +5,27 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.Comparator;
+import java.util.List;
+
 @Getter
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class Student {
+public class Student implements Comparator<Student> {
     private String name;
-    private int grade;
+    private double grade;
 
+    public String getName() {
+        return name;
+    }
+
+    public double getGrade() {
+        return grade;
+    }
+
+    @Override
+    public int compare(Student o1, Student o2) {
+        return Double.compare(o2.getGrade(), o1.getGrade());
+    }
 }

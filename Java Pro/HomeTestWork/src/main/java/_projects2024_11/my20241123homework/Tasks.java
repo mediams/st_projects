@@ -1,4 +1,4 @@
-package my20241123homework;
+package _projects2024_11.my20241123homework;
 
 import java.util.*;
 import java.util.stream.Collectors;

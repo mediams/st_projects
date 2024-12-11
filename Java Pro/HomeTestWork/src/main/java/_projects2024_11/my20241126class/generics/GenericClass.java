@@ -1,4 +1,4 @@
-package my20241126class.generics;
+package _projects2024_11.my20241126class.generics;
 
 public class GenericClass<Parametr, M> {
     private Parametr data;
