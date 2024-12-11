@@ -1,7 +1,6 @@
 package my20241211home;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -35,8 +34,49 @@ public class SomeEx {
         studentList.add(new Student("Igor", 4.8));
         studentList.add(new Student("Igor", 4.6));
 
-        Collections.sort(studentList, new Student());
+        studentList.sort(new Student());
 
         System.out.println(studentList);
+
+        System.out.println("Дан список чисел: [5, 12, 8, 3, 25, 10, 7]. Используя Stream API, выполните:\n" +
+                "\n" +
+                "Фильтрацию чисел, оставляя только те, которые больше 10.\n" +
+                "Умножение каждого числа на 2.\n" +
+                "Нахождение суммы всех оставшихся чисел");
+
+        List<Integer> integerList = List.of(5, 12, 8, 3, 25, 10, 7);
+
+        List<Integer> moreThenTen = integerList.stream()
+                .filter(integer -> integer > 10)
+                .collect(Collectors.toList());
+
+        System.out.println(moreThenTen);
+
+        System.out.println(moreThenTen.stream()
+                .map(integer -> integer * 2)
+                .toList());
+
+        System.out.println(moreThenTen.stream()
+                .reduce((integer, integer2) -> integer + integer2)
+                .get());
+
+        System.out.println("Напишите метод, который принимает список чисел и возвращает их сумму. \n" +
+                "Если встречается отрицательное число, выбрасывается исключение IllegalArgumentException. \n" +
+                "Создайте собственное исключение NegativeNumberException, чтобы заменить стандартное исключение.\n");
+
+        List<Integer> integers = List.of(1, 2, 3, 4, 5, -6, 7, 8, -9);
+        try {
+            sumAllOfNumbers(integers);
+        } catch (NegativeNumberException e) {
+            System.err.println("Negative Number Exception: " + e.getMessage());
+        }
+    }
+
+    private static void sumAllOfNumbers(List<Integer> integers) throws NegativeNumberException {
+        for (int i : integers) {
+            if (i < 0) {
+                throw new NegativeNumberException(" " + i);
+            }
+        }
     }
 }

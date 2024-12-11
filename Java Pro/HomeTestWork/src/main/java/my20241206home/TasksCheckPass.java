@@ -1,8 +1,5 @@
 package my20241206home;
 
-import my20241203class.WrongPasswordException;
-
-import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 

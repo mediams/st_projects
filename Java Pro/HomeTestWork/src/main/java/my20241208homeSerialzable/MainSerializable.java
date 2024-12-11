@@ -1,7 +1,7 @@
 package my20241208homeSerialzable;
 
-import my20241205class.Adress;
-import my20241205class.Person;
+import _projects2024_11.my20241205class.Adress;
+import _projects2024_11.my20241205class.Person;
 
 import java.io.*;
 

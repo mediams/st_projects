@@ -32,7 +32,6 @@ public class Person implements Comparable {
         if (personList == null || personList.isEmpty()) {
             return null;
         }
-
         Person temp = personList.get(0);
         for (Person p : personList) {
             if (p.getAge().compareTo(temp.getAge()) < 0) {
