@@ -1,0 +1,27 @@
+package _projects2024_10.my20241024homework;
+
+public class Item {
+    private String name;
+    private String description;
+
+    public Item(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
+}
