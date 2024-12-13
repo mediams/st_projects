@@ -9,7 +9,7 @@ class CalculatorTest {
     private static final int A = 10;
     private static final int B = 5;
     private static final int ZERO = 0;
-    private static final Calculator CALCULATOR = new Calculator;
+    private static final Calculator CALCULATOR = new Calculator();
 
     @Test
     void dividePositiveTest() {

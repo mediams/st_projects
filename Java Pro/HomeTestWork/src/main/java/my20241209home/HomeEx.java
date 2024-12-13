@@ -15,7 +15,7 @@ public class HomeEx {
 //        Записывает их в файл output.txt.
 
         Path path = Paths.get("resources", "input.txt");
-//        readAndCopyToFile(path);
+        readAndCopyToFile(path);
 
 //        Копирование содержимого файла
 //        Напишите программу, которая:
