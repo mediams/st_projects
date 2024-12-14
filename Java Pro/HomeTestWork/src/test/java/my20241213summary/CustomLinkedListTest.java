@@ -47,18 +47,38 @@ class CustomLinkedListTest {
 
     @Test
     void pushToIndex() {
+        assertThrows(RuntimeException.class, ()-> customLinkedList.pushToIndex("1",1));
+        customLinkedList.pushToHead("1");
+        customLinkedList.pushToTail("2");
+        customLinkedList.pushToIndex("0", 0);
+        assertEquals(customLinkedList.get(0), "0");
+        customLinkedList.pushToIndex("1", 1);
+        customLinkedList.pushToIndex("2", 2);
+        assertEquals(customLinkedList.get(0), "0");
+        assertEquals(customLinkedList.get(1), "1");
+        assertEquals(customLinkedList.get(2), "2");
+        customLinkedList.pushToTail("3");
+//        customLinkedList.print();
+
+        assertThrows(RuntimeException.class, ()-> customLinkedList.pushToIndex("100",100));
+
+
     }
 
     @Test
     void get() {
-//        assertNull();
         assertThrows(RuntimeException.class, ()-> customLinkedList.get(0));
+        customLinkedList.pushToHead("0");
+        customLinkedList.pushToHead("1");
+        assertThrows(RuntimeException.class, ()-> customLinkedList.get(3));
     }
 
     @Test
     void removeFirst() {
-        assertThrows(RuntimeException.class, ()-> customLinkedList.get(0));
-
+        customLinkedList.pushToHead("1");
+        customLinkedList.pushToTail("2");
+        customLinkedList.removeFirst();
+        assertEquals(customLinkedList.get(0), "2");
     }
 
     @Test
