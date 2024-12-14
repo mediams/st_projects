@@ -38,7 +38,6 @@ public class HomeWork {
     public static boolean checkLoginAndPassword(String login, String password, String confirmPassword) throws WrongLoginException, WrongPasswordException {
 //        Login должен содержать только латинские буквы, длина login должна быть от 3 до 20 символов.
         if (login == null || !login.matches("[a-zA-Z]{3,20}")) {
-            System.out.println("Логин не прошёл проверку: " + login);
             throw new WrongLoginException("Login должен содержать только латинские буквы, длина login должна быть от 3 до 20 символов.");
         }
 
@@ -51,16 +50,16 @@ public class HomeWork {
             throw new WrongPasswordException("password и confirmPassword должны быть равны.");
         }
         return true;
-}
+    }
 
-private static void checkEmail(String emails) {
-    String regex;
-    Pattern pattern;
-    regex = "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}";
-    pattern = Pattern.compile(regex);
-    Matcher matcherEmail = pattern.matcher(emails);
+    private static void checkEmail(String emails) {
+        String regex;
+        Pattern pattern;
+        regex = "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}";
+        pattern = Pattern.compile(regex);
+        Matcher matcherEmail = pattern.matcher(emails);
 
-    matcherEmail.results()
-            .forEach(matchResult -> System.out.println(matchResult.group()));
-}
+        matcherEmail.results()
+                .forEach(matchResult -> System.out.println(matchResult.group()));
+    }
 }
