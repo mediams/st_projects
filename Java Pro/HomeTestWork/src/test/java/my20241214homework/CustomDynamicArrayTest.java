@@ -92,7 +92,7 @@ class CustomDynamicArrayTest {
 
         customDynamicArray.removeAt(1);
         assertEquals(3, customDynamicArray.count);
-        assertEquals(2, customDynamicArray.get(1)); 
+        assertEquals(2, customDynamicArray.get(1));
 
     }
 
