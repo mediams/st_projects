@@ -25,12 +25,16 @@ public class HomeWork {
         String login = "john";
         String password = "1234a1";
         String confirmPassword = "1234a";
+
+
         try {
             checkLoginAndPassword(login, password, confirmPassword);
         } catch (WrongLoginException e) {
-            throw new RuntimeException(e);
+            System.err.println("WrongLoginException: " + e.getMessage());
+            e.printStackTrace();
         } catch (WrongPasswordException e) {
-            throw new RuntimeException(e);
+            System.err.println("WrongLoginException: " + e.getMessage());
+            e.printStackTrace();
         }
 
     }
@@ -45,10 +49,12 @@ public class HomeWork {
         if (password == null || !password.matches("[a-zA-Z0-9]{5,20}")) {
             throw new WrongPasswordException("Password должен содержать только цифры и латинские буквы. Длина password должна быть от 5 до 20 символов.");
         }
+
 //            Также password и confirmPassword должны быть равны.
         if (!password.equals(confirmPassword)) {
             throw new WrongPasswordException("password и confirmPassword должны быть равны.");
         }
+
         return true;
     }
 
