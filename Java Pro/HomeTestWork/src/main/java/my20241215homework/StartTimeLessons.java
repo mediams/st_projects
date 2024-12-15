@@ -10,7 +10,7 @@ public class StartTimeLessons {
 //        Составить список времен начала всех занятий по Java на декабрь 2024, если предположить,
 //        что они проходят каждый вторник/четверг/пятницу c 9:30 CET.
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd 'Time' HH:mm '(+'XXX'[CET])'");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd 'Time' HH:mm '('XXX'[CET])'");
         List<ZonedDateTime> localDate = LocalDate.of(2024, Month.DECEMBER, 1).datesUntil(LocalDate.of(2024, Month.DECEMBER, 22))
                 .filter(localDate1 -> localDate1.getDayOfWeek() == DayOfWeek.THURSDAY || localDate1.getDayOfWeek() == DayOfWeek.TUESDAY ||
                         localDate1.getDayOfWeek() == DayOfWeek.FRIDAY)
@@ -35,5 +35,4 @@ public class StartTimeLessons {
         return departureTime.plus(flightDuration).withZoneSameInstant(arrivalZoneId);
     }
 
-}
 }
