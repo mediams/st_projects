@@ -4,8 +4,8 @@ package my20241215home;
 public class BinarySearch {
     public static void main(String[] args) {
         int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-        int searchNumber = 10;
-        myBinarySearch(array, searchNumber);
+        int searchNumber = 1;
+        System.out.println(myBinarySearch(array, searchNumber));
 
     }
 
@@ -15,7 +15,7 @@ public class BinarySearch {
 
         while (left <= right) {
 
-            int mid = left - (right - left) / 2;
+            int mid = left + (right - left) / 2;
 
             if (array[mid] == searchNumber) {
                 return mid;
