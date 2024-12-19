@@ -20,7 +20,6 @@ public class AwakeningThreads {
             System.out.println("After existing loop");
         });
         thread.start();
-        
 
         try {
             Thread.sleep(5000);
