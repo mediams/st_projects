@@ -11,6 +11,6 @@ public class Main {
         Thread taskTwo = new Thread(new MyThreadTwo());
         taskTwo.start();
 
-        List<Integer> integerList = new ArrayList<>(taskOne.start());
+//        List<Integer> integerList = new ArrayList<>(taskOne.start());
     }
 }
