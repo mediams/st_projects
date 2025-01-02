@@ -1,11 +1,16 @@
 package my20241231home;
 
-public class Demo {
+public class Demo extends Run {
     {
         System.out.println("Non static initialization block");
     }
     static {
         System.out.println("static initialization block");
+    }
+
+    @Override
+    void run() {
+        System.out.println("Test Run!");
     }
 
     static class InnerDemo {

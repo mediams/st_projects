@@ -13,6 +13,27 @@ public class Main {
 
         Demo.InnerDemo innerDemo = new Demo.InnerDemo();
         innerDemo.demo();
+
+        Runnable task = new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("Runnable");
+            }
+        };
+
+        new Thread(task).start();
+
+        Run run = new Run() {
+            @Override
+            void run() {
+
+            }
+        };
+
+        demo.runStart();
+        demo.run();
+
+        Dog.test();
     }
 
 }
