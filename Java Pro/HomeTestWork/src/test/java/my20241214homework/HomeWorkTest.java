@@ -1,10 +1,10 @@
 package my20241214homework;
 
-import my20241207homework.WrongLoginException;
-import my20241207homework.WrongPasswordException;
+import _projects2024_12.my20241205home.my20241207homework.WrongLoginException;
+import _projects2024_12.my20241205home.my20241207homework.WrongPasswordException;
 import org.junit.jupiter.api.Test;
 
-import static my20241207homework.HomeWork.checkLoginAndPassword;
+import static _projects2024_12.my20241205home.my20241207homework.HomeWork.checkLoginAndPassword;
 import static org.junit.jupiter.api.Assertions.*;
 
 class HomeWorkTest {

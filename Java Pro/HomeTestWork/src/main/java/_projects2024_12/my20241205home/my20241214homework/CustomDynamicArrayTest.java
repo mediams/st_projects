@@ -1,9 +1,9 @@
-package my20241214homework;
+package _projects2024_12.my20241205home.my20241214homework;
 
-import _projects2024_12.my20241205home.my20241214homework.CustomDynamicArray;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class CustomDynamicArrayTest {
     CustomDynamicArray customDynamicArray = new CustomDynamicArray();

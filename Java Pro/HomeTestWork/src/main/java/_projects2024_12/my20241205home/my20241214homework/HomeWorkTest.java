@@ -1,4 +1,4 @@
-package my20241207homework;
+package _projects2024_12.my20241205home.my20241214homework;
 
 import _projects2024_12.my20241205home.my20241207homework.WrongLoginException;
 import _projects2024_12.my20241205home.my20241207homework.WrongPasswordException;

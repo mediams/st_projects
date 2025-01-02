@@ -1,8 +1,8 @@
 package my20241213summary;
 
+import _projects2024_12.my20241205home.my20241213summary.CustomLinkedList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.platform.engine.support.hierarchical.Node;
 
 import static org.junit.jupiter.api.Assertions.*;
 

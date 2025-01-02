@@ -3,7 +3,7 @@ package my20241211home;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static my20241211home.Calculater.add;
+import static _projects2024_12.my20241205home.my20241211home.Calculater.add;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CalculatorTest {
