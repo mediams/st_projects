@@ -5,7 +5,7 @@ public class Bank {
         Konto kontoOne = new Konto("Konto 1", 27);
         Konto kontoTwo = new Konto("Konto 2", 112);
 
-        überweisung(kontoOne, kontoTwo, 5);
+        transfer(kontoOne, kontoTwo, 5);
         getAktuellKonto(kontoOne, kontoTwo);
         System.out.println(getSum(kontoOne, kontoTwo));
     }
@@ -19,7 +19,7 @@ public class Bank {
 
     }
 
-    public static void überweisung(Konto kontoOne, Konto kontoTwo, int sum) {
+    public static void transfer(Konto kontoOne, Konto kontoTwo, int sum) {
         synchronized (kontoOne) {
             synchronized (kontoTwo) {
                 kontoOne.setKonto(kontoOne.getKonto() - sum);
