@@ -7,6 +7,7 @@ public class ReentrantLockExample {
     static ReentrantLock lock = new ReentrantLock(true);
 
     public static void main(String[] args) {
+
         new Thread(() -> {
             for (int i = 0; i < 10; i++) {
                 increment();
