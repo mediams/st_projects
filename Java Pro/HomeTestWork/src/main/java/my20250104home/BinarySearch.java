@@ -3,7 +3,7 @@ package my20250104home;
 public class BinarySearch {
     public static void main(String[] args) {
         int[] ints = {1, 2, 3, 4, 5, 9};
-        int key = 2;
+        int key = 9;
 
         int rsult = search(key, ints);
         if (rsult == -1) {
