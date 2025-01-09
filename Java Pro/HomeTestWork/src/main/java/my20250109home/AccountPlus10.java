@@ -7,12 +7,12 @@ public class AccountPlus10 {
         AtomicInteger count = new AtomicInteger(0);
 
         Thread t1 = new Thread(() -> {
-            while (count.get()<=100) {
+            while (count.get() < 100) {
                 count.addAndGet(10);
             }
         });
         Thread t2 = new Thread(() -> {
-            while (count.get()<=100) {
+            while (count.get() < 100) {
                 count.addAndGet(10);
             }
         });
