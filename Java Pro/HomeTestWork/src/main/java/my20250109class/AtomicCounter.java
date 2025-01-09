@@ -26,7 +26,7 @@ public class AtomicCounter {
 
         new Thread(() -> {
             for (int i = 0; i < 10; i++) {
-                
+
                 int currentValue = counter.get();
                 int old = currentValue;
                 currentValue++;
