@@ -7,8 +7,26 @@ public class SelectionSortEx {
         int[] array = {12, 5, 2, 89, 0, -1, 27};
 
         System.out.println(Arrays.toString(selectionSort(array)));
+        array = new int[]{12, 5, 2, 89, 0, -1, 27};
+        System.out.println(Arrays.toString(selectonSortEx(array)));
+    }
 
-        selectonSortEx
+    private static int[] selectonSortEx(int[] array) {
+        for (int j = 0; j < array.length -1; j++) {
+            int minIndex = j;
+            for (int i = j + 1; i < array.length; i++) {
+                if (array[i] < array[minIndex]) {
+                    minIndex = i;
+                }
+            }
+
+            int temp = array[j];
+            array[j] = array[minIndex];
+            array[minIndex] = temp;
+        }
+
+
+        return array;
     }
 
     private static int[] selectionSort(int[] array) {
