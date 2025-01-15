@@ -1,5 +1,7 @@
 package my20250115home;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
@@ -23,5 +25,15 @@ public class CallableEx {
                 throw new RuntimeException(e);
             }
         });
+
+        Collection<String> stringCollection = new ArrayList<>();
+        List<String> stringList = new ArrayList<>();
+        ArrayList<String> stringArrayList = new ArrayList<>();
+        var valString = new ArrayList<>();
+
+        stringCollection;
+        stringList.clear();
+        stringArrayList;
+        valString.
     }
 }
