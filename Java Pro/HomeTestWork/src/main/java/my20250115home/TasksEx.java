@@ -20,18 +20,17 @@ public class TasksEx {
     }
 
     private static int[] selectedSort(int[] array) {
-        int minIndex = array[0];
-        int temp = 0;
-        for (int i = 1; i < array.length - 1; i++) {
-            if (array[i] < minIndex) {
-                minIndex = array[i];
-                temp = i;
+        for (int j = 0; j < array.length - 1; j++) {
+            int minIndex = j;
+            for (int i = j + 1; i < array.length; i++) {
+                if (array[i] < array[minIndex]) {
+                    minIndex = i;
+                }
             }
+            int temp = array[j];
+            array[j] = array[minIndex];
+            array[minIndex] = temp;
         }
-
-        array[temp] = array[0];
-        array[0] = minIndex;
-
         return array;
     }
 
