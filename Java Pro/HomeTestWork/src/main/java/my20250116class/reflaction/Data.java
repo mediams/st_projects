@@ -1,4 +1,4 @@
-package my20250116class;
+package my20250116class.reflaction;
 
 public class Data {
     private final String name;
