@@ -31,9 +31,6 @@ public class CallableEx {
         ArrayList<String> stringArrayList = new ArrayList<>();
         var valString = new ArrayList<>();
 
-        stringCollection;
-        stringList.clear();
-        stringArrayList;
-        valString.
+
     }
 }
