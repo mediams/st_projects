@@ -39,12 +39,14 @@ public class ReflexitionEx {
         Class<NewClass> newClassClass = NewClass.class;
         Constructor<?>[] constructors = newClassClass.getConstructors();
         for (Constructor constructor1 : constructors){
-            System.out.println(constructor1);
+            constructor1.newInstance(1);
         }
         Method[] declaredMethods = newClassClass.getDeclaredMethods();
         for (Method method:declaredMethods){
             System.out.println(method.getName());
         }
+
+
 
     }
 
