@@ -16,4 +16,8 @@ public class NewClass {
 //        this.name = name;
         this.num = num;
     }
+
+    public void show(){
+        System.out.println("Show text test API");
+    }
 }
