@@ -46,7 +46,15 @@ public class ReflexitionEx {
             System.out.println(method.getName());
         }
 
+        Class<Example> exampleClass = Example.class;
+        Constructor<Example> constructor1 = exampleClass.getConstructor(String.class, int.class);
+        Example example = constructor1.newInstance("Task 1", 5);
+        System.out.println(example);
 
+        Example example1 = Example.class.getConstructor(String.class, int.class).newInstance("Task 2", 10);
+        Field field = example1.getClass().getField("name");
+        field.setAccessible(true);
+        System.out.println(field);
 
     }
 
