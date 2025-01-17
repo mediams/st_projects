@@ -52,9 +52,10 @@ public class ReflexitionEx {
         System.out.println(example);
 
         Example example1 = Example.class.getConstructor(String.class, int.class).newInstance("Task 2", 10);
-        Field field = example1.getClass().getField("name");
+        System.out.println(example1);
+        Field field = example1.getClass().getDeclaredField("name");
         field.setAccessible(true);
-        System.out.println(field);
+        System.out.println(field.get(example1));
 
     }
 

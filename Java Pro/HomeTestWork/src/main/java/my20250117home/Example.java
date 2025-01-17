@@ -12,6 +12,10 @@ public class Example {
                 '}';
     }
 
+    public void show(){
+        System.out.println("test");
+    }
+
     public String getName() {
         return name;
     }
