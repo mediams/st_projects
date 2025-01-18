@@ -15,7 +15,7 @@ public class Reflection {
 //        - вызвать методы introduce(), feedAnimal(Animal animal)
 //        -создать экземпляр класса
 
-//        3. Имеется класс lesson20241119.hometasks.Jokes. Через рефлексию заменить список исходных шуток в классе.
+
         Class<Human> humanClass = Human.class;
         Constructor<?>[] constructors = humanClass.getConstructors();
         Arrays.stream(constructors).forEach(constructor -> {

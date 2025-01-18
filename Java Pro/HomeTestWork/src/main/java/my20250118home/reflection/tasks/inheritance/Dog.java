@@ -1,5 +1,7 @@
 package my20250118home.reflection.tasks.inheritance;
 
+import _projects2024_10.my20241002.inheritance.Creature;
+
 public class Dog extends Animal {
 
     public Dog(String name, int age) {
@@ -19,11 +21,9 @@ public class Dog extends Animal {
 
     @Override
     public void play(Creature another) {
-        if (another instanceof Cat) {
-            gav();
-        } else {
-            super.play(another);
-        }
+
     }
+
+
 
 }

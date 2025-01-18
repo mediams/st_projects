@@ -1,9 +1,10 @@
 package my20250118home.reflection.tasks.inheritance;
 
-public abstract class Animal {
+import _projects2024_10.my20241002.inheritance.Creature;
+
+public abstract class Animal extends Creature {
 
     private int age;
-
     private boolean isHungry = true;
 
     public void setHungry(boolean hungry) {
@@ -11,7 +12,7 @@ public abstract class Animal {
     }
 
     public Animal(String name, int age) {
-        this.name = name;
+        super(name);
         this.age = age;
     }
 
@@ -26,6 +27,7 @@ public abstract class Animal {
     @Override
     public String toString() {
         return "Animal{" +
+                "name='" + super.getName() + '\'' +
                 ", age=" + age +
                 ", isHungry=" + isHungry +
                 '}';
