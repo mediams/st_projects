@@ -10,6 +10,9 @@ public class Example {
     private void show(){
         System.out.println("Text in method.");
     }
+    private static void staticShow(){
+        System.out.println("Text in static method.");
+    }
 
     public String getName() {
         return name;
