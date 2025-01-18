@@ -1,6 +1,9 @@
 package my20250118home.reflection.tasks.inheritance;
 
-import lesson20240924.inheritance.interfaces.Walkable;
+
+import _projects2024_10.my20241002.inheritance.Animal;
+import _projects2024_10.my20241002.inheritance.Creature;
+import _projects2024_10.my20241002.inheritance.Walkable;
 
 public class Human extends Creature implements Walkable {
 
@@ -11,6 +14,11 @@ public class Human extends Creature implements Walkable {
     @Override
     public void introduce() {
         System.out.println("Hello! I'm human. My name is " + super.getName());
+    }
+
+    @Override
+    public void play(Creature another) {
+
     }
 
     public void feedAnimal(Animal animal) {
@@ -24,10 +32,10 @@ public class Human extends Creature implements Walkable {
         }
     }
 
-    @Override
-    public void walk(Animal animal) {
-        System.out.println("Human walks with " + animal.getName());
-        animal.setHungry(true);
-    }
 
+
+    @Override
+    public void walk(_projects2024_10.my20241002.inheritance.Animal animal) {
+
+    }
 }
