@@ -1,4 +1,4 @@
-package my20250118homework;
+package my20250118homework.task1;
 
 import java.util.Arrays;
 
