@@ -1,4 +1,4 @@
-package my20250113homework.hometask;
+package _projects2025_01.my20250113homework.hometask;
 
 public class BankAccount {
     private int accountA;

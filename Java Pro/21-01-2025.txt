@@ -1,0 +1,35 @@
+1. Скачать проект https://github.com/IliaIliukovich/mavenMultiModuleExample
+- открыть в среде разработки, изучить его устройство
+- запустить тесты
+- проверить, как связаны модули
+- проверить запуск всех maven целей
+- собрать jar и найти его в файловой системе
+2. Создать новый maven-проект с одним классом.
+Подключить зависимость от DesktopApp модуля проекта mavenMultiModuleExample
+- вызвать метод app() класса DesktopApp.java
+- запустить из командной строки
+3. Добавить в проект mavenMultiModuleExample новый модуль MobileApp так, чтобы:
+- модуль MobileApp имел один запускаемый класс
+- модуль MobileApp имел junit тест
+- модуль MobileApp мог использовать библиотеку lombok, классы модулей SharedLibrary и DesktopApp
+Проверить, как запускается и собирается модуль из среды разработки, из командной строки
+
+<!-- зависимость для сборки выполняемого JAR в maven проекте -->
+<build>
+<plugins>
+<plugin>
+<groupId>org.apache.maven.plugins</groupId>
+<artifactId>maven-jar-plugin</artifactId>
+<version>3.3.0</version>
+<configuration>
+<archive>
+<manifest>
+<addClasspath>true</addClasspath>
+<classpathPrefix>lib/</classpathPrefix>
+<mainClass>com.telran.Main</mainClass>
+</manifest>
+</archive>
+</configuration>
+</plugin>
+</plugins>
+</build>

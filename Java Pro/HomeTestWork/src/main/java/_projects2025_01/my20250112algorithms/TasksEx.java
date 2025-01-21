@@ -1,4 +1,4 @@
-package my20250112algorithms;
+package _projects2025_01.my20250112algorithms;
 
 import java.util.Arrays;
 

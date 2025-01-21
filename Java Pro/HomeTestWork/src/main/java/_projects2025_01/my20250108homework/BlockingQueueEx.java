@@ -1,4 +1,4 @@
-package my20250108homework;
+package _projects2025_01.my20250108homework;
 
 import java.util.List;
 import java.util.concurrent.BlockingQueue;

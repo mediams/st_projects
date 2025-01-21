@@ -1,6 +1,4 @@
-package my20241231home;
-
-import java.sql.SQLOutput;
+package _projects2024_12.my20241205home.my20241231home;
 
 public class Animal extends Run{
     public void eat(){

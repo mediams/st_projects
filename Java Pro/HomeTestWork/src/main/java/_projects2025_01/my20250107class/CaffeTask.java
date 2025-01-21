@@ -1,4 +1,4 @@
-package my20250107class;
+package _projects2025_01.my20250107class;
 
 public class CaffeTask {
     static Object visitorComes = new Object();

@@ -1,6 +1,4 @@
-package my20250113homework;
-
-import java.util.Arrays;
+package _projects2025_01.my20250113homework;
 
 public class ThreadsEx {
     public static void main(String[] args) {

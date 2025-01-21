@@ -1,4 +1,4 @@
-package my20250111home;
+package _projects2025_01.my20250111home;
 
 public class BinarySerch {
     public static void main(String[] args) {
