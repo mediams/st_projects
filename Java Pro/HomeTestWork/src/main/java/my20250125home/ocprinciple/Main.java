@@ -14,6 +14,6 @@ public class Main {
         System.out.println("SuperVIP: " + SuperService.calculateDiscount("SuperVIP", 100));
 
         Map<String, String> stringMap = new HashMap<>();
-        stringMap.getOrDefault()
+//        stringMap.getOrDefault()
     }
 }
