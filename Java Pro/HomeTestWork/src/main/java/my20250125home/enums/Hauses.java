@@ -6,17 +6,7 @@ public enum Hauses {
     THIRD(541, 22),
     FOURTH(541, 22),
     FIFTH(541, 22),
-    SIFTH(541, 22),
-//
-
-    ADD {
-        @Override
-        public int apply(int a, int b) { return a + b; }
-    },
-    SUBTRACT {
-        @Override
-        public int apply(int a, int b) { return a - b; }
-    };
+    SIFTH(541, 22);
 
     private final int employees;
     private final int age;
@@ -25,11 +15,6 @@ public enum Hauses {
         this.employees = employees;
         this.age = age;
     }
-
-    Hauses() {
-
-    }
-
 
     public int getEmployees() {
         return employees;
