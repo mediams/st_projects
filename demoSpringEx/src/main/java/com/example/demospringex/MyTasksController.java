@@ -9,6 +9,7 @@ public class MyTasksController {
     @RequestMapping("/hello")
     public String hello(Model model) {
         model.addAttribute("message", "Hello World");
+        model.addAttribute("messageh2", "First Message");
         return "hello";
     }
 }
