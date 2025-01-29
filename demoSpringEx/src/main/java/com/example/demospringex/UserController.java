@@ -20,5 +20,24 @@ public class UserController {
         return users;
     }
 
+//    @PostMapping("/users")
+////    – добавить нового пользователя (использовать @RequestBody).
+//    public String addUser(@ModelAttribute("user") User user) {
+//        users.add(user);
+//        return "redirect:/users";
+//    }
+
+    @GetMapping("/users/{id}")
+//    – вернуть пользователя по id.
+    public String getUser(@PathVariable int id) {
+        return "redirect:/users/" + id;
+    }
+    
+    @DeleteMapping("/users/{id}")
+//    – удалить пользователя по id.
+    public String deleteUser(@PathVariable int id) {
+        users.remove(id);
+        return "redirect:/users";
+    }
 
 }
