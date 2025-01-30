@@ -2,11 +2,14 @@ package com.example.demospringex;
 
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -61,5 +64,49 @@ public class ClientController {
                 .findFirst()
                 .map(ResponseEntity::ok) // Если найден, возвращаем 200 OK с клиентом
                 .orElseGet(() -> ResponseEntity.notFound().build()); // Если нет, 404
+    }
+
+    @PostMapping("/add")
+    public Client addClient(@RequestBody Client client) {
+        client.setId(UUID.randomUUID().toString());
+        clients.add(client);
+        return client;
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<Client> updateClient(@RequestBody Client client) {
+        String id = client.getId();
+        Optional<Client> clientOptional = clients.stream().filter(c -> id.equals(c.getId())).findAny();
+        if (clientOptional.isPresent()) {
+            Client foundClient = clientOptional.get();
+            foundClient.setFirstName(client.getFirstName());
+            foundClient.setLastName(client.getLastName());
+            foundClient.setEmail(client.getEmail());
+            foundClient.setPhone(client.getPhone());
+            foundClient.setAddress(client.getAddress());
+            foundClient.setTaxCode(client.getTaxCode());
+            foundClient.setStatus(client.getStatus());
+
+//            return new ResponseEntity<>(foundClient, HttpStatusCode.valueOf(202));
+            return new ResponseEntity<>(foundClient, HttpStatus.ACCEPTED);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @PatchMapping
+    public ResponseEntity<Client> patchClient(@RequestParam String id, @RequestParam String status) {
+        Optional<Client> clientOptional = clients.stream().filter(c -> id.equals(c.getId())).findAny();
+        if (clientOptional.isPresent()) {
+            Client foundClient = clientOptional.get();
+            foundClient.setStatus(ClientStatus.valueOf(status));
+            return new ResponseEntity<>(foundClient, HttpStatus.ACCEPTED);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteClient(@RequestParam String id) {
+        clients.removeIf(c -> id.equals(c.getId()));
+        return ResponseEntity.accepted().build();
     }
 }
