@@ -14,6 +14,7 @@ public class UserController {
             new User("Charlie", 35, "charlie@example.com")
     ));
 
+
     @GetMapping("/users")
 //    – вернуть список всех пользователей.
     public List<User> getUsers() {
@@ -39,5 +40,7 @@ public class UserController {
         users.remove(id);
         return "redirect:/users";
     }
+
+
 
 }

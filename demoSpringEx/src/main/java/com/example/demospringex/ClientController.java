@@ -94,11 +94,12 @@ public class ClientController {
     }
 
     @PatchMapping
-    public ResponseEntity<Client> patchClient(@RequestParam String id, @RequestParam String status) {
+    public ResponseEntity<Client> patchClient(@RequestParam String id, @RequestParam(required = false) String status) {
         Optional<Client> clientOptional = clients.stream().filter(c -> id.equals(c.getId())).findAny();
         if (clientOptional.isPresent()) {
             Client foundClient = clientOptional.get();
-            foundClient.setStatus(ClientStatus.valueOf(status));
+            ClientStatus clientStatus = status == null ? ClientStatus.ACTIVE : ClientStatus.valueOf(status);
+//            foundClient.setStatus(ClientStatus.valueOf(status));
             return new ResponseEntity<>(foundClient, HttpStatus.ACCEPTED);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
