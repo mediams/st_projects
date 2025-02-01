@@ -10,8 +10,6 @@ public enum Weensday {
     SUNDAY(false);
 
     private boolean isWorkingDay;
-    Weensday() {
-    }
 
     Weensday(boolean isWorkingDay) {
         this.isWorkingDay = isWorkingDay;

@@ -1,10 +1,5 @@
 package com.example.demospringex;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
 import java.util.Objects;
 
 //@AllArgsConstructor
@@ -22,16 +17,15 @@ public class User {
         this.email = email;
     }
 
-    public User() {
-    }
-
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+// --Commented out by Inspection START (01.02.2025 18:20):
+//    public void setName(String name) {
+//        this.name = name;
+//    }
+// --Commented out by Inspection STOP (01.02.2025 18:20)
 
     public int getAge() {
         return age;
