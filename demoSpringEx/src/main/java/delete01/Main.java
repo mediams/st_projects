@@ -14,5 +14,19 @@ public class Main {
         System.out.println(Operation.SUBTRACT.apply(5, 4));
         System.out.println(Operation.MULTIPLY.apply(5, 4));
         System.out.println(Operation.DIVIDE.apply(5, 4));
+
+        OrderStatus status = OrderStatus.NEW;
+        System.out.println(status); // NEW
+        status = status.nextStatus();
+        System.out.println(status); // PROCESSING
+        status = status.nextStatus();
+        System.out.println(status);
+        status = status.nextStatus();
+        System.out.println(status);
+        status = status.nextStatus();
+        System.out.println(status);
+        status = status.nextStatus();
+        System.out.println(status);
+
     }
 }
