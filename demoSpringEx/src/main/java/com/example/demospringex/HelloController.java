@@ -22,4 +22,8 @@ public class HelloController {
     public String greetWithParam(@RequestParam(name = "name", defaultValue = "Гость") String name) {
         return "Привет, " + name + "!";
     }
+
+    public void test() {
+        Status running = Status.RUNNING;
+    }
 }
