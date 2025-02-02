@@ -11,14 +11,15 @@ public class HomeWorkDate30012025Application {
     public static void main(String[] args) {
 //        SpringApplication.run(HomeWorkDate30012025Application.class, args);
         ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-        Object visa = context.getBean("visa");
+        Order visa = (Order)context.getBean("visa");
         System.out.println(visa);
-        Object paypal = context.getBean("paypal");
+        Order paypal = (Order)context.getBean("paypal");
         System.out.println(paypal);
-        Object order = context.getBean("orderPayPal");
+        
+        PaymentGateway order = (PaymentGateway)context.getBean("orderPayPal");
         System.out.println(order);
 
-        Object orderVisa = context.getBean("orderVisa");
+        PaymentGateway orderVisa = (PaymentGateway)context.getBean("orderVisa");
         System.out.println(orderVisa);
 
 
