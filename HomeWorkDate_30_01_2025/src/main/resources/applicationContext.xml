@@ -4,21 +4,21 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-    <bean name="visa" class="org.example.homeworkdate_30_01_2025.Order">
-        <property name="item" value="Visa"/>
-        <property name="price" value="2.0"/>
+    <bean name="laptop" class="org.example.homeworkdate_30_01_2025.Order">
+        <property name="item" value="Laptop"/>
+        <property name="price" value="1500"/>
     </bean>
 
-    <bean name="paypal" class="org.example.homeworkdate_30_01_2025.Order">
-        <property name="item" value="PayPal"/>
-        <property name="price" value="1.0"/>
+    <bean name="pc" class="org.example.homeworkdate_30_01_2025.Order">
+        <property name="item" value="PC"/>
+        <property name="price" value="2500"/>
     </bean>
 
     <bean name="orderPayPal" class="org.example.homeworkdate_30_01_2025.PaymentGateway">
-        <property name="order" ref="paypal"/>
+        <property name="order" ref="pc"/>
     </bean>
     <bean name="orderVisa" class="org.example.homeworkdate_30_01_2025.PaymentGateway">
-        <property name="order" ref="visa"/>
+        <property name="order" ref="laptop"/>
     </bean>
 
 </beans>

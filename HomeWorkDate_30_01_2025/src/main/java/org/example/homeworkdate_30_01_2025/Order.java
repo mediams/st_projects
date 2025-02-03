@@ -1,9 +1,8 @@
 package org.example.homeworkdate_30_01_2025;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -15,7 +14,7 @@ import java.math.BigDecimal;
 @Component
 public class Order {
     private String item;
-    private BigDecimal price;
+    private double price;
 
     @Override
     public String toString() {

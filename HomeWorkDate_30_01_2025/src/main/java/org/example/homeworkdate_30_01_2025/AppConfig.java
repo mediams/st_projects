@@ -4,43 +4,41 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-import java.math.BigDecimal;
-
-//@Configuration
-//@ComponentScan("org.example.homeworkdate_30_01_2025")
+@Configuration
+@ComponentScan("org.example.homeworkdate_30_01_2025")
 public class AppConfig {
-
-    @Bean("visa")
-    public Order orderVisa() {
+//
+    @Bean("laptop")
+    public Order laptop() {
 //        Order order = new Order();
-//        order.setItem("VISA");
-//        order.setPrice(BigDecimal.valueOf(2.0));
-//        return orderVisa();
-        return new Order("VISA", BigDecimal.valueOf(2.0));
+//        order.setItem("Laptop 'McBook'");
+//        order.setPrice(1500);
+//        return order;
+        return new Order("Laptop 'McBook'", 1500);
     }
-
-    @Bean("paypal")
-    public Order orderPaypal() {
+//
+    @Bean("pc")
+    public Order pc() {
 //        Order order = new Order();
-//        order.setItem("PayPal");
-//        order.setPrice(BigDecimal.valueOf(1.0));
-//        return orderVisa();
-        return new Order("PayPal", BigDecimal.valueOf(1.0));
+//        order.setItem("PC 'Booster'");
+//        order.setPrice(2500);
+//        return order;
+        return new Order("PC 'Booster'", 2500);
     }
-
-    @Bean("orderPayPal")
-    public PaymentGateway PaymentGatewayVisa() {
-//        PaymentGateway paymentGateway = new PaymentGateway();
-//        paymentGateway.setOrder(orderPaypal());
-//        return paymentGateway;
-        return new PaymentGateway(orderPaypal());
-    }
-
-    @Bean("orderVisa")
-    public PaymentGateway PaymentGatewayPayPal() {
-//        PaymentGateway paymentGateway = new PaymentGateway();
-//        paymentGateway.setOrder(orderVisa());
-//        return paymentGateway;
-        return new PaymentGateway(orderVisa());
-    }
+//
+//    @Bean("orderPayPal")
+//    public PaymentGateway PaymentGatewayVisa() {
+////        PaymentGateway paymentGateway = new PaymentGateway();
+////        paymentGateway.setOrder(orderPaypal());
+////        return paymentGateway;
+//        return new PaymentGateway(pc());
+//    }
+//
+//    @Bean("orderVisa")
+//    public PaymentGateway PaymentGatewayPayPal() {
+////        PaymentGateway paymentGateway = new PaymentGateway();
+////        paymentGateway.setOrder(orderVisa());
+////        return paymentGateway;
+//        return new PaymentGateway(laptop());
+//    }
 }

@@ -5,17 +5,20 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @Component
 public class PaymentGateway {
-    @Autowired
     private Order order;
 
+    @Autowired
+    public PaymentGateway(Order order) { // Выбираем бин
+        this.order = order;
+    }
 
     @Override
     public String toString() {
