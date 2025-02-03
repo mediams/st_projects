@@ -7,7 +7,6 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 @SpringBootApplication
 public class HomeWorkDate30012025Application {
-
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(HomeWorkDate30012025Application.class, args);
 //        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
@@ -24,8 +23,6 @@ public class HomeWorkDate30012025Application {
 
         PaymentGateway orderVisa = context.getBean("pc", PaymentGateway.class);
         System.out.println(orderVisa);
-
-
     }
 
 }

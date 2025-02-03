@@ -16,7 +16,7 @@ public class PaymentGateway {
     private Order order;
 
     @Autowired
-    public PaymentGateway(Order order) { // Выбираем бин
+    public PaymentGateway(@Qualifier("laptop") Order order) { // Выбираем бин
         this.order = order;
     }
 
@@ -24,5 +24,4 @@ public class PaymentGateway {
     public String toString() {
         return "ordering " + this.order.getItem() + " | price: " + this.order.getPrice();
     }
-
 }

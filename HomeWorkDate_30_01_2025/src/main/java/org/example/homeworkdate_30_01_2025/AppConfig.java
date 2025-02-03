@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ComponentScan("org.example.homeworkdate_30_01_2025")
 public class AppConfig {
-//
+
     @Bean("laptop")
     public Order laptop() {
 //        Order order = new Order();
@@ -16,7 +16,7 @@ public class AppConfig {
 //        return order;
         return new Order("Laptop 'McBook'", 1500);
     }
-//
+
     @Bean("pc")
     public Order pc() {
 //        Order order = new Order();
@@ -25,7 +25,7 @@ public class AppConfig {
 //        return order;
         return new Order("PC 'Booster'", 2500);
     }
-//
+
 //    @Bean("orderPayPal")
 //    public PaymentGateway PaymentGatewayVisa() {
 ////        PaymentGateway paymentGateway = new PaymentGateway();
@@ -33,7 +33,7 @@ public class AppConfig {
 ////        return paymentGateway;
 //        return new PaymentGateway(pc());
 //    }
-//
+
 //    @Bean("orderVisa")
 //    public PaymentGateway PaymentGatewayPayPal() {
 ////        PaymentGateway paymentGateway = new PaymentGateway();
