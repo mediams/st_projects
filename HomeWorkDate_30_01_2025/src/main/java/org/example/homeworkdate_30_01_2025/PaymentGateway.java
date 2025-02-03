@@ -1,10 +1,14 @@
 package org.example.homeworkdate_30_01_2025;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 @Component
