@@ -18,5 +18,6 @@ public class DemoAutowiredEx {
         NotificationManager sendMessage = context.getBean(NotificationManager.class);
         sendMessage.sendEmail();
         sendMessage.sendSms();
+        sendMessage.getNotifications();
     }
 }
