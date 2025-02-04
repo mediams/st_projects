@@ -7,6 +7,6 @@ public class EmailNotificationService implements NotificationService {
 
     @Override
     public void sendNotification() {
-        System.out.println("Отправка email-уведомления...");
+        System.out.println("Отправка email-уведомления");
     }
 }
