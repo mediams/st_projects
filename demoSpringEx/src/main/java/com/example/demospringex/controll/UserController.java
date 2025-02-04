@@ -1,6 +1,6 @@
-package com.example.demospringex;
+package com.example.demospringex.controll;
 
-import org.springframework.stereotype.Controller;
+import com.example.demospringex.entity.User;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;

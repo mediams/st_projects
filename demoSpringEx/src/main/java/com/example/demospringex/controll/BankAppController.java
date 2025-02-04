@@ -1,4 +1,4 @@
-package com.example.demospringex;
+package com.example.demospringex.controll;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

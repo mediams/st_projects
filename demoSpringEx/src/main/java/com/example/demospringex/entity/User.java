@@ -1,4 +1,4 @@
-package com.example.demospringex;
+package com.example.demospringex.entity;
 
 import java.util.Objects;
 

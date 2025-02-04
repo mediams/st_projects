@@ -1,8 +1,8 @@
-package com.example.demospringex;
+package com.example.demospringex.controll;
 
+import com.example.demospringex.entity.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;

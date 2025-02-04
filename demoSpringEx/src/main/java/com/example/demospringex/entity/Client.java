@@ -1,8 +1,6 @@
-package com.example.demospringex;
+package com.example.demospringex.entity;
 
-import lombok.AllArgsConstructor;
-
-import java.util.UUID;
+import com.example.demospringex.ClientStatus;
 
 //@AllArgsConstructor
 public class Client {
