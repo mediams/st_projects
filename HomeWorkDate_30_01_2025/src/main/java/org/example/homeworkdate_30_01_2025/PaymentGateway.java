@@ -8,12 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-@NoArgsConstructor
 @Getter
 @Setter
 @Component
 public class PaymentGateway {
-    private Order order;
+    private final Order order;
 
     @Autowired
     public PaymentGateway(@Qualifier("laptop") Order order) { // Выбираем бин
