@@ -1,14 +1,9 @@
-package com.example.demospringex.repo;
+package com.example.demospringex.service;
 
-import com.example.demospringex.service.MessageService;
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
-@Getter
-@Setter
-@Repository
+@Component
 public class MessagePrinter {
 
     private MessageService messageService;
@@ -16,5 +11,9 @@ public class MessagePrinter {
     @Autowired
     public MessagePrinter(MessageService messageService) {
         this.messageService = messageService;
+    }
+
+    public void printMessage() {
+        messageService.sendMessage();
     }
 }
