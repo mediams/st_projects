@@ -13,11 +13,17 @@ public class ArraysEx {
 
         for (int i = 0; i <= 3; i++) {
             for (int j = 0; j <= 5; j++) {
-                if (i == 0 || i ==3 || j == 0 || j ==5) {
+                if (i == 0 || i == 3 || j == 0 || j == 5) {
                     System.out.print("* ");
                 } else System.out.print("  ");
             }
             System.out.println();
+        }
+
+        for (int i = 0; i < a.length; i++) {
+            for (int j = 0; j < a[i].length; j++) {
+                System.out.print(a[i][j] + " ");
+            }
         }
     }
 }
