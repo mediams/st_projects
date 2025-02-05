@@ -36,9 +36,11 @@ public class DemoAutowiredEx {
         studentService.addStudent(student);
 
         List<Student> students = studentService.getStudents();
+        System.out.println(students);
 
+        User user = context.getBean(User.class);
         UserService userService = context.getBean(UserService.class);
-        userService.addUser(context.getBean(User.class));
+        userService.addUser(user);
 
     }
 }

@@ -16,8 +16,6 @@ public class StudentService {
         this.studentRepo = studentRepo;
     }
 
-
-
     public void addStudent(Student student) {
         studentRepo.save(student);
     }

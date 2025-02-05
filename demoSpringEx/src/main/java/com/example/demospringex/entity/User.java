@@ -1,16 +1,25 @@
 package com.example.demospringex.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import java.util.Objects;
 
 //@AllArgsConstructor
-//@NoArgsConstructor
-//@Getter
-//@Setter
+@NoArgsConstructor
+@Getter
+@Setter
+@Component
 public class User {
     private String name;
     private int age;
     private String email;
 
+//    @Autowired
     public User(String name, int age, String email) {
         this.name = name;
         this.age = age;
@@ -21,11 +30,9 @@ public class User {
         return name;
     }
 
-// --Commented out by Inspection START (01.02.2025 18:20):
-//    public void setName(String name) {
-//        this.name = name;
-//    }
-// --Commented out by Inspection STOP (01.02.2025 18:20)
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public int getAge() {
         return age;

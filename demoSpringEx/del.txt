@@ -1,0 +1,66 @@
+C:\Users\PC-JK\.jdks\corretto-19.0.2\bin\java.exe "-Dmaven.multiModuleProjectDirectory=I:\_Starta Institut\demoSpringEx" -Djansi.passthrough=true -Dmaven.home=C:\Users\PC-JK\.m2\wrapper\dists\apache-maven-3.9.9-bin\4nf9hui3q3djbarqar9g711ggc\apache-maven-3.9.9 -Dclassworlds.conf=C:\Users\PC-JK\.m2\wrapper\dists\apache-maven-3.9.9-bin\4nf9hui3q3djbarqar9g711ggc\apache-maven-3.9.9\bin\m2.conf "-Dmaven.ext.class.path=C:\Program Files\JetBrains\IntelliJ IDEA 2024.3.2\plugins\maven\lib\maven-event-listener.jar" "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2024.3.2\lib\idea_rt.jar=10229:C:\Program Files\JetBrains\IntelliJ IDEA 2024.3.2\bin" -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 -classpath C:\Users\PC-JK\.m2\wrapper\dists\apache-maven-3.9.9-bin\4nf9hui3q3djbarqar9g711ggc\apache-maven-3.9.9\boot\plexus-classworlds-2.8.0.jar;C:\Users\PC-JK\.m2\wrapper\dists\apache-maven-3.9.9-bin\4nf9hui3q3djbarqar9g711ggc\apache-maven-3.9.9\boot\plexus-classworlds.license org.codehaus.classworlds.Launcher -Didea.version=2024.3.2.2 mvn dependency:tree | grep mysql
+[INFO] Scanning for projects...
+Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/build-helper-maven-plugin/3.6.0/build-helper-maven-plugin-3.6.0.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/build-helper-maven-plugin/3.6.0/build-helper-maven-plugin-3.6.0.pom (8.1 kB at 24 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/mojo-parent/82/mojo-parent-82.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/mojo-parent/82/mojo-parent-82.pom (36 kB at 665 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/build-helper-maven-plugin/3.6.0/build-helper-maven-plugin-3.6.0.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/build-helper-maven-plugin/3.6.0/build-helper-maven-plugin-3.6.0.jar (72 kB at 1.6 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/cyclonedx/cyclonedx-maven-plugin/2.9.1/cyclonedx-maven-plugin-2.9.1.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/cyclonedx/cyclonedx-maven-plugin/2.9.1/cyclonedx-maven-plugin-2.9.1.pom (19 kB at 762 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/cyclonedx/cyclonedx-maven-plugin/2.9.1/cyclonedx-maven-plugin-2.9.1.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/cyclonedx/cyclonedx-maven-plugin/2.9.1/cyclonedx-maven-plugin-2.9.1.jar (52 kB at 1.5 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/flywaydb/flyway-maven-plugin/10.20.1/flyway-maven-plugin-10.20.1.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/flywaydb/flyway-maven-plugin/10.20.1/flyway-maven-plugin-10.20.1.pom (3.8 kB at 164 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/flywaydb/flyway-parent/10.20.1/flyway-parent-10.20.1.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/flywaydb/flyway-parent/10.20.1/flyway-parent-10.20.1.pom (36 kB at 1.3 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/flywaydb/flyway-maven-plugin/10.20.1/flyway-maven-plugin-10.20.1.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/flywaydb/flyway-maven-plugin/10.20.1/flyway-maven-plugin-10.20.1.jar (110 kB at 2.2 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/io/github/git-commit-id/git-commit-id-maven-plugin/9.0.1/git-commit-id-maven-plugin-9.0.1.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/io/github/git-commit-id/git-commit-id-maven-plugin/9.0.1/git-commit-id-maven-plugin-9.0.1.pom (28 kB at 1.1 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/io/github/git-commit-id/git-commit-id-maven-plugin/9.0.1/git-commit-id-maven-plugin-9.0.1.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/io/github/git-commit-id/git-commit-id-maven-plugin/9.0.1/git-commit-id-maven-plugin-9.0.1.jar (55 kB at 1.7 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/jooq/jooq-codegen-maven/3.19.18/jooq-codegen-maven-3.19.18.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/jooq/jooq-codegen-maven/3.19.18/jooq-codegen-maven-3.19.18.pom (3.8 kB at 152 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/jooq/jooq-parent/3.19.18/jooq-parent-3.19.18.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/jooq/jooq-parent/3.19.18/jooq-parent-3.19.18.pom (40 kB at 1.4 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/jooq/jooq-codegen-maven/3.19.18/jooq-codegen-maven-3.19.18.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/jooq/jooq-codegen-maven/3.19.18/jooq-codegen-maven-3.19.18.jar (17 kB at 754 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-maven-plugin/1.9.25/kotlin-maven-plugin-1.9.25.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-maven-plugin/1.9.25/kotlin-maven-plugin-1.9.25.pom (6.7 kB at 267 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-project/1.9.25/kotlin-project-1.9.25.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-project/1.9.25/kotlin-project-1.9.25.pom (16 kB at 372 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-maven-plugin/1.9.25/kotlin-maven-plugin-1.9.25.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-maven-plugin/1.9.25/kotlin-maven-plugin-1.9.25.jar (82 kB at 2.5 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/liquibase/liquibase-maven-plugin/4.29.2/liquibase-maven-plugin-4.29.2.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/liquibase/liquibase-maven-plugin/4.29.2/liquibase-maven-plugin-4.29.2.pom (2.0 kB at 77 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/liquibase/liquibase-maven-plugin/4.29.2/liquibase-maven-plugin-4.29.2.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/liquibase/liquibase-maven-plugin/4.29.2/liquibase-maven-plugin-4.29.2.jar (310 kB at 6.6 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-assembly-plugin/3.7.1/maven-assembly-plugin-3.7.1.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-assembly-plugin/3.7.1/maven-assembly-plugin-3.7.1.pom (15 kB at 634 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-assembly-plugin/3.7.1/maven-assembly-plugin-3.7.1.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-assembly-plugin/3.7.1/maven-assembly-plugin-3.7.1.jar (240 kB at 3.5 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-dependency-plugin/3.8.1/maven-dependency-plugin-3.8.1.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-dependency-plugin/3.8.1/maven-dependency-plugin-3.8.1.pom (18 kB at 783 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-dependency-plugin/3.8.1/maven-dependency-plugin-3.8.1.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-dependency-plugin/3.8.1/maven-dependency-plugin-3.8.1.jar (208 kB at 5.3 MB/s)
+[INFO] 
+[INFO] ----------------------< com.example:demoSpringEx >----------------------
+[INFO] Building demoSpringEx 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.863 s
+[INFO] Finished at: 2025-02-05T14:22:03+01:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Unknown lifecycle phase "mvn". You must specify a valid lifecycle phase or a goal in the format <plugin-prefix>:<goal> or <plugin-group-id>:<plugin-artifact-id>[:<plugin-version>]:<goal>. Available lifecycle phases are: pre-clean, clean, post-clean, validate, initialize, generate-sources, process-sources, generate-resources, process-resources, compile, process-classes, generate-test-sources, process-test-sources, generate-test-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration-test, post-integration-test, verify, install, deploy, pre-site, site, post-site, site-deploy. -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/LifecyclePhaseNotFoundException
+
+Process finished with exit code 1
