@@ -1,9 +1,11 @@
 package com.example.demospringex;
 
 import com.example.demospringex.entity.Student;
+import com.example.demospringex.entity.User;
 import com.example.demospringex.service.MessagePrinter;
 import com.example.demospringex.service.NotificationManager;
 import com.example.demospringex.service.StudentService;
+import com.example.demospringex.service.UserService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -34,6 +36,9 @@ public class DemoAutowiredEx {
         studentService.addStudent(student);
 
         List<Student> students = studentService.getStudents();
+
+        UserService userService = context.getBean(UserService.class);
+        userService.addUser(context.getBean(User.class));
 
     }
 }
