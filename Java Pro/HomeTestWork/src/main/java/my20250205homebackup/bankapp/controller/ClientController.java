@@ -1,17 +1,14 @@
-package de.telran.bankapp.controller;
+package my20250205homebackup.bankapp.controller;
 
 import de.telran.bankapp.entity.Client;
-import de.telran.bankapp.entity.enums.ClientStatus;
 import de.telran.bankapp.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 
 @RestController

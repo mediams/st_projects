@@ -1,4 +1,4 @@
-package de.telran.bankapp.repository;
+package my20250205homebackup.bankapp.repository;
 
 import de.telran.bankapp.entity.Client;
 import de.telran.bankapp.entity.enums.ClientStatus;

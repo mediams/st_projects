@@ -1,4 +1,4 @@
-package de.telran.bankapp.entity.enums;
+package my20250205homebackup.bankapp.entity.enums;
 
 public enum TransactionType {
     PAYMENT,

@@ -1,11 +1,11 @@
-package de.telran.bankapp.entity;
+package my20250205homebackup.bankapp.entity;
 
 import de.telran.bankapp.entity.enums.AccountStatus;
 import de.telran.bankapp.entity.enums.AccountType;
 import de.telran.bankapp.entity.enums.CurrencyCode;
-import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;

@@ -1,13 +1,13 @@
-package my20250205homebackup.bankapp;
+package org.example.demojdbcmysql;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BankAppApplication {
+public class DemoJdbcMySqlApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(BankAppApplication.class, args);
+        SpringApplication.run(DemoJdbcMySqlApplication.class, args);
     }
 
 }

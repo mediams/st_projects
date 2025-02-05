@@ -1,6 +1,5 @@
-package de.telran.bankapp.controller;
+package my20250205homebackup.bankapp.controller;
 
-import de.telran.bankapp.entity.Client;
 import de.telran.bankapp.entity.Product;
 import de.telran.bankapp.entity.enums.CurrencyCode;
 import de.telran.bankapp.entity.enums.ProductStatus;

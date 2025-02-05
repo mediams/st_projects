@@ -1,4 +1,4 @@
-package de.telran.bankapp.entity;
+package my20250205homebackup.bankapp.entity;
 
 import de.telran.bankapp.entity.enums.CardType;
 
