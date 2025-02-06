@@ -1,4 +1,4 @@
-package my20250601home.bank;
+package _projects2025_01.my20250601home.bank;
 
 public class Konto {
     String name;

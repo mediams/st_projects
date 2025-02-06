@@ -1,4 +1,4 @@
-package my20250118home.reflection.tasks.inheritance;
+package _projects2025_01.my20250118home.reflection.tasks.inheritance;
 
 public class House {
 

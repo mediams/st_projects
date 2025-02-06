@@ -1,6 +1,4 @@
-package my20250116class.annotation;
-
-import java.lang.reflect.Field;
+package _projects2025_01.my20250116class.annotation;
 
 public class PersonsAtWork {
     @Name(name = "Bob")

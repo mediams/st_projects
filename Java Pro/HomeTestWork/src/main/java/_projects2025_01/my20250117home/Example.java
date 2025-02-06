@@ -1,4 +1,4 @@
-package my20250117home;
+package _projects2025_01.my20250117home;
 
 public class Example {
     private String name;

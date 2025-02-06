@@ -1,4 +1,4 @@
-package my20250116class.reflaction;
+package _projects2025_01.my20250116class.reflaction;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -29,7 +29,7 @@ public class UseData {
         String result = (String) method.invoke(data);
         System.out.println(result);
 
-        Class<?> forName = Class.forName("my20250116class.reflaction.Data");
+        Class<?> forName = Class.forName("_projects2025_01.my20250116class.reflaction.Data");
         Constructor<?> constructor = forName.getConstructor(String.class, int.class);
         Data iphone = (Data) constructor.newInstance("Iphone", 5);
         System.out.println(iphone);

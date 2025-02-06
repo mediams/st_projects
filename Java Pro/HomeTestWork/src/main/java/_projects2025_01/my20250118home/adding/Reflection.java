@@ -1,4 +1,4 @@
-package my20250118home.adding;
+package _projects2025_01.my20250118home.adding;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -8,7 +8,7 @@ import java.util.Arrays;
 
 public class Reflection {
     public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, NoSuchFieldException {
-        Class<?> person = Class.forName("my20250118home.adding.Person");
+        Class<?> person = Class.forName("_projects2025_01.my20250118home.adding.Person");
         System.out.println(person.getSimpleName());
         Field[] declaredFields = person.getDeclaredFields();
         Arrays.stream(declaredFields).forEach(field -> System.out.println(field.getName()));

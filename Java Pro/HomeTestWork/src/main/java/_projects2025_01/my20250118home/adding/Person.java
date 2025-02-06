@@ -1,4 +1,4 @@
-package my20250118home.adding;
+package _projects2025_01.my20250118home.adding;
 
 public class Person {
     private String name;

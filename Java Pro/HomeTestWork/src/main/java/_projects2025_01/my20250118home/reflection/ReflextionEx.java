@@ -1,4 +1,4 @@
-package my20250118home.reflection;
+package _projects2025_01.my20250118home.reflection;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -8,7 +8,7 @@ import java.util.Arrays;
 
 public class ReflextionEx {
     public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
-        Class<?> newClass = Class.forName("my20250118home.reflection.Example");
+        Class<?> newClass = Class.forName("_projects2025_01.my20250118home.reflection.Example");
         Constructor<?> constructor = newClass.getConstructor(String.class, int.class);
         Object newObject = constructor.newInstance("New class", 1);
         System.out.println(newObject);

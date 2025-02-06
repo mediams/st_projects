@@ -1,4 +1,4 @@
-package my20250601home;
+package _projects2025_01.my20250601home;
 
 interface Discount {
     double calculate(double price);

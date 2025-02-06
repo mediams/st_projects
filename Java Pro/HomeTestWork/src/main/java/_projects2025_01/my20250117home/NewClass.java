@@ -1,4 +1,4 @@
-package my20250117home;
+package _projects2025_01.my20250117home;
 
 public class NewClass {
     private String name = "secret";

@@ -1,5 +1,4 @@
-import my20250118home.annotation.Logger;
-import my20250118home.annotation.MyAnnotation;
+package _projects2025_01.my20250118home.annotation;
 
 import java.lang.reflect.Method;
 

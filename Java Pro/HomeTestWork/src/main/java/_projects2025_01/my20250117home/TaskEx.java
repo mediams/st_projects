@@ -1,4 +1,4 @@
-package my20250117home;
+package _projects2025_01.my20250117home;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -18,7 +18,7 @@ public class TaskEx {
             method.invoke(example);
         }
 
-        Class<?> testClass = Class.forName("my20250117home.Example");
+        Class<?> testClass = Class.forName("_projects2025_01.my20250117home.Example");
         Constructor<?> constructor = testClass.getConstructor(String.class, int.class);
         Object object = constructor.newInstance("Test", 10);
         Field field = object.getClass().getDeclaredField("name");
@@ -26,7 +26,7 @@ public class TaskEx {
         field.set(object, "NewTest");
         System.out.println(object);
 
-        Object object1 = Class.forName("my20250117home.Example").getConstructor(String.class, int.class).newInstance("Test 001", 15);
+        Object object1 = Class.forName("_projects2025_01.my20250117home.Example").getConstructor(String.class, int.class).newInstance("Test 001", 15);
         System.out.println(object1);
 
         Arrays.stream(object1.getClass().getDeclaredFields())

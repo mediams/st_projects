@@ -1,4 +1,4 @@
-package my20250118home.annotation;
+package _projects2025_01.my20250118home.annotation;
 
 public class Service {
     @Loggable

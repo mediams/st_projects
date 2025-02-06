@@ -21,8 +21,14 @@ public class DemoJdbc {
 
         Connection conn = DriverManager.getConnection(url, user, password);
         Statement stmt = conn.createStatement();
-        String sql = "select * from city where id = 2";
-        ResultSet rs = stmt.executeQuery(sql);
+//        String sql = "select * from city where id = 2";
+//        String sql = "insert into city values(1, 'Test', 'USA', 'Testing', 500)";
+//        String sql = "update city set Name ='Test-2' where Id =1";
+//        String sql = "delete from city where id=1";
+        String sql = "insert into city values(1, 'Test', 'USA', 'Testing', 500)";
+        boolean i = stmt.execute(sql);
+        System.out.println(i);
+//        ResultSet rs = stmt.executeQuery(sql);
 
 //        rs.next(); //ID, Name, CountryCode, District, Population
 //        System.out.println(rs.getInt("ID"));
@@ -32,14 +38,14 @@ public class DemoJdbc {
 //        System.out.println(rs.getString("Population"));
 //        System.out.println("Connected to database: " + rs);
 
-        while (rs.next()) {
-            System.out.print(rs.getInt(1) + " - ");
-            System.out.print(rs.getString(2) + " - ");
-            System.out.print(rs.getString(3)+ " - ");
-            System.out.print(rs.getString(4)+ " - ");
-            System.out.println(rs.getString(5));
-        }
-
-        rs.close();
+//        while (rs.next()) {
+//            System.out.print(rs.getInt(1) + " - ");
+//            System.out.print(rs.getString(2) + " - ");
+//            System.out.print(rs.getString(3)+ " - ");
+//            System.out.print(rs.getString(4)+ " - ");
+//            System.out.println(rs.getString(5));
+//        }
+//
+//        rs.close();
     }
 }

@@ -1,4 +1,4 @@
-package my20250117home;
+package _projects2025_01.my20250117home;
 
 import java.lang.reflect.*;
 
@@ -20,7 +20,7 @@ public class ReflexitionEx {
             System.out.println(field.get(newClass));
         }
 
-        Class<?> newClassOne = Class.forName("my20250117home.NewClass");
+        Class<?> newClassOne = Class.forName("_projects2025_01.my20250117home.NewClass");
         Constructor<?> constructor = newClassOne.getConstructor(int.class);
         Object object = constructor.newInstance(1);
         System.out.println(object);

@@ -1,8 +1,7 @@
-package my20250118home.reflection.tasks;
+package _projects2025_01.my20250118home.reflection.tasks;
 
-import _projects2024_10.my20241002.inheritance.Animal;
 import _projects2024_10.my20241002.inheritance.Dog;
-import my20250118home.reflection.tasks.inheritance.Human;
+import _projects2025_01.my20250118home.reflection.tasks.inheritance.Human;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;

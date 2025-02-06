@@ -1,4 +1,4 @@
-package my20250601home;
+package _projects2025_01.my20250601home;
 
 public class ThreadsEx {
     public static void main(String[] args) {

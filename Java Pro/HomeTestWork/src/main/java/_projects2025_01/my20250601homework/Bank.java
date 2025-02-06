@@ -1,4 +1,4 @@
-package my20250601homework;
+package _projects2025_01.my20250601homework;
 
 public class Bank {
     public static void main(String[] args) {

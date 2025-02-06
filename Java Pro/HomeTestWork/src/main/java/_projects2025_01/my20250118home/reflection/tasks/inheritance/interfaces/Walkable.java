@@ -1,4 +1,4 @@
-package my20250118home.reflection.tasks.inheritance.interfaces;
+package _projects2025_01.my20250118home.reflection.tasks.inheritance.interfaces;
 
 
 import _projects2024_10.my20241002.inheritance.Animal;

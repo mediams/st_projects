@@ -1,4 +1,4 @@
-package my20250116class.annotation;
+package _projects2025_01.my20250116class.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
