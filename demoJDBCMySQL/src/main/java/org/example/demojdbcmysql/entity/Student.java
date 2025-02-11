@@ -1,15 +1,23 @@
 package org.example.demojdbcmysql.entity;
 
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.context.annotation.Scope;
+import jakarta.persistence.Id;
 import org.springframework.stereotype.Component;
+
 
 @Component
 @Getter
 @Setter
-@Scope("prototype")
+@Table( name = "student_tracker")
+//@Scope("prototype")
 public class Student {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private int age;
