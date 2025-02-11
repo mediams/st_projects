@@ -19,6 +19,7 @@ public class StudentDAOImpl implements StudentDAO {
     @Override
     @Transactional
     public void save(Student student) {
+        System.out.println("Inside save");
         em.persist(student);
     }
 }
