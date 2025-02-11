@@ -37,8 +37,8 @@ public class StudentRepository {
 
                 Student student = new Student();
                 student.setId(rs.getInt("id"));
-                student.setName(rs.getString("name"));
-                student.setAge(rs.getInt("age"));
+                student.setFirstName(rs.getString("name"));
+                student.setId(rs.getInt("age"));
                 return student;
             }
         };
