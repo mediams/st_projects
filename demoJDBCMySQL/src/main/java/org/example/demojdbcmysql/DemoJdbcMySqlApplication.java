@@ -2,7 +2,6 @@ package org.example.demojdbcmysql;
 
 import org.example.demojdbcmysql.entity.Student;
 import org.example.demojdbcmysql.dao.StudentDAO;
-import org.example.demojdbcmysql.service.StudentService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -23,8 +22,57 @@ public class DemoJdbcMySqlApplication {
         return runner -> {
 //            createStudent(studentDAO);
 
-            createMultipleStudents(studentDAO);
+//            createMultipleStudents(studentDAO);
+
+//            readStudent(studentDAO);
+
+            getAllStudent(studentDAO);
+
+//            getStudentByName(studentDAO);
+
+//            updateStudent(studentDAO);
+
+//            deleteStudent(studentDAO);
+
+            deleteAllStudent(studentDAO);
+
+            getAllStudent(studentDAO);
         };
+    }
+
+    private void deleteAllStudent(StudentDAO studentDAO) {
+        int i = studentDAO.deleteAll();
+        System.out.println(i);
+    }
+
+    private void deleteStudent(StudentDAO studentDAO) {
+        studentDAO.delete(7);
+    }
+
+    private void updateStudent(StudentDAO studentDAO) {
+        Student studentById = studentDAO.findById(10);
+        studentById.setFirstName("Jack");
+        studentById.setLastName("Smith");
+        studentDAO.update(studentById);
+    }
+
+    private void getStudentByName(StudentDAO studentDAO) {
+        List<Student> doe3 = studentDAO.findByLastName("Doe_3");
+        for (Student student : doe3) {
+            System.out.println(student);
+        }
+    }
+
+    private void getAllStudent(StudentDAO studentDAO) {
+        studentDAO.findAll().forEach(student -> {
+            System.out.println(student);
+
+        });
+    }
+
+    private void readStudent(StudentDAO studentDAO) {
+        Student student = studentDAO.findById(1);
+        System.out.println(student);
     }
 
     private void createMultipleStudents(StudentDAO studentDAO) {
@@ -44,6 +92,6 @@ public class DemoJdbcMySqlApplication {
         Student student = new Student("Paul", "Doe", "mail@mail.ru");
 
         studentDAO.save(student);
-        System.out.println("Student created: " + student.getId()) ;
+        System.out.println("Student created: " + student.getId());
     }
 }
