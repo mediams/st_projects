@@ -22,11 +22,11 @@ public class DemoJdbcMySqlApplication {
         return runner -> {
 //            createStudent(studentDAO);
 
-//            createMultipleStudents(studentDAO);
+            createMultipleStudents(studentDAO);
 
 //            readStudent(studentDAO);
 
-            getAllStudent(studentDAO);
+//            getAllStudent(studentDAO);
 
 //            getStudentByName(studentDAO);
 
@@ -34,9 +34,9 @@ public class DemoJdbcMySqlApplication {
 
 //            deleteStudent(studentDAO);
 
-            deleteAllStudent(studentDAO);
+//            deleteAllStudent(studentDAO);
 
-            getAllStudent(studentDAO);
+//            getAllStudent(studentDAO);
         };
     }
 
