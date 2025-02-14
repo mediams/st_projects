@@ -7,13 +7,31 @@ import java.util.*;
 public class CollectionsEx {
     public static void main(String[] args) {
 
-        Comparator<Integer> comparator = new Comparator<>() {
+        Comparator<Integer> comparatorInteger = new Comparator<>() {
             @Override
             public int compare(Integer o1, Integer o2) {
 //                return o1 - o2;
                 return o2%10 - o1%10;
             }
         };
+
+        Comparator<String> comparator = new Comparator<>() {
+            @Override
+            public int compare(String o1, String o2) {
+//                return Character.compare(o1.charAt(0), o2.charAt(0));
+                return o1.length() - o2.length();
+            }
+        };
+
+        List<String> list1 = new ArrayList<>();
+        list1.add("New");
+        list1.add("Na");
+        list1.add("Text");
+        list1.add("Y");
+
+        Collections.sort(list1, comparator);
+        System.out.println(list1);
+
 
         int[] intArray  = {1, 2};;
         intArray[0] = 13;
@@ -35,7 +53,7 @@ public class CollectionsEx {
         integerList.add(43);
         integerList.add(55);
 
-        Collections.sort(integerList, comparator);
+        Collections.sort(integerList, comparatorInteger);
         System.out.println(integerList);
 
         System.out.println(integerList.get(1));
