@@ -1,7 +1,11 @@
 package my20251402home;
 
+import my20250124summary.Library;
+
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+import java.util.Objects;
 
 public class CollectionsEx {
     public static void main(String[] args) {
@@ -11,10 +15,17 @@ public class CollectionsEx {
 
         System.out.println(intArray[1]);
 
-        Collection<Integer> collection = new ArrayList();
+        Collection<Object> collection = new ArrayList();
         collection.add(1);
-//        collection.add("Test");
+        collection.add("Test");
 
         System.out.println(collection);
+
+        List<Integer> integerList = new ArrayList<>();
+
+        integerList.add(1);
+        integerList.add(2);
+
+        System.out.println(integerList.get(1));
     }
 }
