@@ -9,8 +9,9 @@ public class CollectionsEx {
 
         Comparator<Integer> comparator = new Comparator<>() {
             @Override
-            public int compare(Integer o2, Integer o1) {
-                return o1 - o2;
+            public int compare(Integer o1, Integer o2) {
+//                return o1 - o2;
+                return o2%10 - o1%10;
             }
         };
 
@@ -28,11 +29,11 @@ public class CollectionsEx {
 
         List<Integer> integerList = new ArrayList<>();
 
-        integerList.add(1);
-        integerList.add(2);
-        integerList.add(3);
-        integerList.add(4);
-        integerList.add(5);
+        integerList.add(12);
+        integerList.add(21);
+        integerList.add(34);
+        integerList.add(43);
+        integerList.add(55);
 
         Collections.sort(integerList, comparator);
         System.out.println(integerList);
