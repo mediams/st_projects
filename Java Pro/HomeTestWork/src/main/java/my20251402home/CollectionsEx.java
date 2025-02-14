@@ -2,10 +2,7 @@ package my20251402home;
 
 import my20250124summary.Library;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class CollectionsEx {
     public static void main(String[] args) {
@@ -27,5 +24,10 @@ public class CollectionsEx {
         integerList.add(2);
 
         System.out.println(integerList.get(1));
+        System.out.println(integerList.indexOf(1));
+
+        Iterator<Integer> iterator = integerList.iterator();
+        while (iterator.hasNext())
+            System.out.println(iterator.next() + " - ");
     }
 }
