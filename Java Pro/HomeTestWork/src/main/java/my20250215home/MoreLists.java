@@ -23,5 +23,15 @@ public class MoreLists {
 
         arrayList.addAll(stringArrayList); //addAll
         System.out.println(arrayList);
+
+        System.out.println(arrayList.get(3)); //get
+
+        if (arrayList.contains("milk")) { //.contains
+            System.out.println("milk gefunded!");
+        }
+
+        System.out.println("first = " + arrayList.indexOf("mill")); //.indexOf
+        System.out.println("last = " + arrayList.lastIndexOf("mill")); //.lastIndexOf
+
     }
 }
