@@ -7,6 +7,11 @@ record GroceryItem(String name, String type, int count) {
     public GroceryItem(String name) {
         this(name, "Dairy", 1);
     }
+
+    @Override
+    public String toString() {
+        return String.format("\n%d %s in %s", count, name.toUpperCase(), type.toUpperCase());
+    }
 }
 public class Main {
     public static void main(String[] args) {
@@ -20,6 +25,12 @@ public class Main {
         groceryItems.add(new GroceryItem("Brote"));
         groceryItems.add(new GroceryItem("milk"));
         groceryItems.add(new GroceryItem("apple", "PRODUCE", 6));
+        System.out.println(groceryItems);
+
+        System.out.println("-----------------------------------------");
+
+        groceryItems.add(1, new GroceryItem("Cola"));
+        groceryItems.addFirst(new GroceryItem("Kuchen"));
         System.out.println(groceryItems);
     }
 }
