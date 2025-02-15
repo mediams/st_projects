@@ -11,17 +11,12 @@ public class CollectionsEx {
             @Override
             public int compare(Integer o1, Integer o2) {
 //                return o1 - o2;
-                return o2%10 - o1%10;
+                return o2 % 10 - o1 % 10;
             }
         };
 
-        Comparator<String> comparator = new Comparator<>() {
-            @Override
-            public int compare(String o1, String o2) {
 //                return Character.compare(o1.charAt(0), o2.charAt(0));
-                return o1.length() - o2.length();
-            }
-        };
+        Comparator<String> comparator = (o1, o2) -> o1.length() - o2.length();
 
         List<String> list1 = new ArrayList<>();
         list1.add("New");
@@ -33,7 +28,8 @@ public class CollectionsEx {
         System.out.println(list1);
 
 
-        int[] intArray  = {1, 2};;
+        int[] intArray = {1, 2};
+        ;
         intArray[0] = 13;
         intArray[1] = 21;
 
