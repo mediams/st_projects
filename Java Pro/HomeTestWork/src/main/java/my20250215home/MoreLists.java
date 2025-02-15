@@ -50,6 +50,7 @@ public class MoreLists {
         System.out.println(arrayList);
         System.out.println(arrayList.size()); //.size()
         var groceryArray = arrayList.toArray(new String[arrayList.size()]); // ArrayList to Array
+        var groceryArray2 = arrayList.toArray(new String[0]);
         System.out.println("als array" + Arrays.toString(groceryArray));
 
         ArrayList<ArrayList<String>> arrayListArrayList = new ArrayList<>(); // Wie das funktioniert
