@@ -24,7 +24,13 @@ public class TasksEx {
     private static void addItems(ArrayList<String> groceries) {
         System.out.println("add item(s) to list (comma delimited list):");
         String[] items = scanner.nextLine().split(",");
-        groceries.addAll(List.of(items));
+//        groceries.addAll(List.of(items));
+        for (String item : items) {
+            String trimmed = item.trim();
+            if (!groceries.contains(trimmed)) {
+                groceries.add(trimmed);
+            }
+        }
     }
 
     private static void printActions() {
