@@ -1,13 +1,12 @@
 package my20250215home;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class MoreLists {
     public static void main(String[] args) {
         String[] items = {"apples", "bananas", "milk", "eggs"};
 
-        List<String> list = List.of(items); //list.of
+        List<String> list = List.of(items); //list.of Array to ArrayList
         System.out.println(list);
 
         System.out.println(list.getClass().getName());
@@ -22,6 +21,8 @@ public class MoreLists {
         System.out.println(stringArrayList);
 
         arrayList.addAll(stringArrayList); //addAll
+        arrayList.addAll(List.of("Brot", "Milch", "Banane")); //intersenya zapis
+        arrayList.addAll(Arrays.asList("Brötchen", "Radler")); //intersenya zapis
         System.out.println(arrayList);
 
         System.out.println(arrayList.get(3)); //get
@@ -30,8 +31,27 @@ public class MoreLists {
             System.out.println("milk gefunded!");
         }
 
-        System.out.println("first = " + arrayList.indexOf("mill")); //.indexOf
-        System.out.println("last = " + arrayList.lastIndexOf("mill")); //.lastIndexOf
+        System.out.println("first = " + arrayList.indexOf("milk")); //.indexOf
+        System.out.println("last = " + arrayList.lastIndexOf("milk")); //.lastIndexOf
 
+        System.out.println(arrayList.removeAll(List.of("milk", "kiwi"))); //intersenya zapis
+        arrayList.retainAll(List.of("milk", "bananas")); //.retainAll
+        System.out.println(arrayList.isEmpty()); //.isEmpty()
+
+//        arrayList.remove(arrayList.indexOf(List.of("milk")));
+        System.out.println("first = " + arrayList.indexOf("milk")); //.indexOf
+
+        arrayList.addAll(List.of("Brot", "Milch", "Banane"));
+
+        Collections.sort(arrayList); //.sort Collections
+        System.out.println(arrayList);
+
+        arrayList.sort(Comparator.naturalOrder()); //.sort Comparator .reverseOrder() .naturalOrder()
+        System.out.println(arrayList);
+        System.out.println(arrayList.size()); //.size()
+        var groceryArray = arrayList.toArray(new String[arrayList.size()]); // ArrayList to Array
+        System.out.println("als array" + Arrays.toString(groceryArray));
+
+        ArrayList<ArrayList<String>> arrayListArrayList = new ArrayList<>(); // Wie das funktioniert
     }
 }
