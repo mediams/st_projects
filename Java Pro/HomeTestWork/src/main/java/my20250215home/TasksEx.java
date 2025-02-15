@@ -1,56 +1,39 @@
 package my20250215home;
 
-import _projects2024_10.my20241024home_two.Task;
-
-import java.util.ArrayList;
-import java.util.Scanner;
-
-record GroceryItems(int id, String name, String day) {
-    private static int idCounter = 1;
-
-    public GroceryItems(String name) {
-        this(idCounter++, name, "MONDAY");
-    }
-
-}
+import java.util.*;
 
 public class TasksEx {
-    private static ArrayList<GroceryItems> groceryItemsArrayList = new ArrayList<>();
+    private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        System.out.println("Available actions: " +
-                "\n0 - to shutdown " +
-                "\n1 - to add item(s) to list (comma delimited list)" +
-                "\n2 - to remove any items (comma delimited list)");
 
+        boolean flag = true;
+        ArrayList<String> groceries = new ArrayList<>();
 
-        Scanner sc = new Scanner(System.in);
-        while (true) {
-            System.out.println("Choose: 0 or 1 or 2: ");
-            String choose = sc.next();
-            switch (choose) {
-                case "0":
-                    return;
-                case "1":
-                    addItemToList();
-                    break;
-                case "2":
-                    System.out.println("removeAnyItems();");
-                    break;
-                default:
-                    System.out.println("Неверный ввод, попробуйте снова.");
-                    break;
+        while (flag) {
+            printActions();
+            switch (Integer.parseInt(scanner.nextLine())) {
+                case 1 -> addItems(groceries);
+                default -> flag = false;
             }
+            groceries.sort(Comparator.naturalOrder());
+            System.out.println(groceries);
         }
     }
 
-    private static void addItemToList() {
-        System.out.println("Write the list (comma delimited list): ");
-        Scanner sc = new Scanner(System.in);
-        String addStringToList = sc.nextLine();
-        groceryItemsArrayList.add(new GroceryItems(addStringToList));
-        System.out.println(groceryItemsArrayList);
+    private static void addItems(ArrayList<String> groceries) {
+        System.out.println("add item(s) to list (comma delimited list):");
+        String[] items = scanner.nextLine().split(",");
+        groceries.addAll(List.of(items));
     }
 
-
+    private static void printActions() {
+        String textBlock = """
+                Available actions:
+                0 - to shutdown
+                1 - to add item(s) to list (comma delimited list)
+                2 - to remove any items (comma delimited list)
+                Enter a number for which action you want to do:""";
+        System.out.println(textBlock + " ");
+    }
 }
