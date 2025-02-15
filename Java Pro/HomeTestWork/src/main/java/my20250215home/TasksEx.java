@@ -14,6 +14,7 @@ public class TasksEx {
             printActions();
             switch (Integer.parseInt(scanner.nextLine())) {
                 case 1 -> addItems(groceries);
+                case 2 -> removeItems(groceries);
                 default -> flag = false;
             }
             groceries.sort(Comparator.naturalOrder());
@@ -24,12 +25,20 @@ public class TasksEx {
     private static void addItems(ArrayList<String> groceries) {
         System.out.println("add item(s) to list (comma delimited list):");
         String[] items = scanner.nextLine().split(",");
-//        groceries.addAll(List.of(items));
         for (String item : items) {
             String trimmed = item.trim();
             if (!groceries.contains(trimmed)) {
                 groceries.add(trimmed);
             }
+        }
+    }
+
+    private static void removeItems(ArrayList<String> groceries) {
+        System.out.println("remove any item(s) to list (comma delimited list):");
+        String[] items = scanner.nextLine().split(",");
+        for (String item : items) {
+            String trimmed = item.trim();
+            groceries.remove(trimmed);
         }
     }
 
