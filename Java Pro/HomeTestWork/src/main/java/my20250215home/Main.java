@@ -1,5 +1,6 @@
 package my20250215home;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 record GroceryItem(String name, String type, int count) {
@@ -14,5 +15,11 @@ public class Main {
         grocceryArray[1] = new GroceryItem("apple", "PRODUCE", 6);
         grocceryArray[2] = new GroceryItem("oranges", "PRODUCE", 5);
         System.out.println(Arrays.toString(grocceryArray));
+
+        ArrayList<GroceryItem> groceryItems = new ArrayList<>();
+        groceryItems.add(new GroceryItem("Brote"));
+        groceryItems.add(new GroceryItem("milk"));
+        groceryItems.add(new GroceryItem("apple", "PRODUCE", 6));
+        System.out.println(groceryItems);
     }
 }
