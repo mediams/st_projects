@@ -31,6 +31,7 @@ public class Main {
 
         groceryItems.add(1, new GroceryItem("Cola"));
         groceryItems.addFirst(new GroceryItem("Kuchen"));
+        groceryItems.remove(3);
         System.out.println(groceryItems);
     }
 }
