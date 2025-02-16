@@ -1,43 +1,41 @@
 package my20250216home;
 
-import java.util.*;
+import java.util.LinkedList;
+
+record Place(String name, int distance) {
+    @Override
+    public String toString() {
+        return String.format("%s (%d)", name, distance);
+    }
+}
 
 public class TaskEx {
-    private static Scanner scanner = new Scanner(System.in);
-    private static LinkedList<String> townList = new LinkedList<>(List.of(
-            "Adelaide", "Alice Springs", "Brisbane", "Darwin", "Melbourne", "Perth"
-    ));
-
     public static void main(String[] args) {
+        LinkedList<Place> placeToVisit = new LinkedList<>();
 
-        boolean flag = true;
-        while (flag) {
-            printMessage();
-            ListIterator<String> iterator = townList.listIterator();
-            while (iterator.hasNext()) {
-//            String back = iterator.();
+        Place adelaide = new Place("Adelaide", 1374);
+        Place adelaide2 = new Place("adelaide", 1374);
+        addPlace(placeToVisit, adelaide);
+        addPlace(placeToVisit, adelaide2);
+        System.out.println(placeToVisit);
 
-                switch (scanner.nextLine().toLowerCase()) {
-                    case "m" -> {
-                        break;
-                    }
-                    case "f" -> {
-                        String forwad = iterator.next();
-                        System.out.println(forwad);
-                    }
-                    case "b" -> {
-                        if (iterator.hasPrevious()) {
-                            System.out.println(iterator.previous());
-                        }
-                    }
-                    case "q" -> flag = false;
-                    default -> {
-                        System.out.println("Error!");
-                        flag = true;
-                    }
-                }
-            }
+    }
+
+    private static void addPlace(LinkedList<Place> list, Place place) {
+        if (list.contains(place)) {
+            System.out.println("Duplicate found!");
+            return;
         }
+
+        for (Place town : list) {
+            if (town.name().equalsIgnoreCase(place.name())) {
+                System.out.println("Duplicate found!");
+                return;
+            }
+
+        }
+//        else System.out.println("added : " + place);
+        list.add(place);
     }
 
     private static void printMessage() {
