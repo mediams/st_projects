@@ -21,7 +21,14 @@ public class Main {
         printItinerary(placesToVisit);
         printItinerary2(placesToVisit);
         printItinerary3(placesToVisit);
+        System.out.println("testIterator-------------");
+        testIterator(placesToVisit);
+        System.out.println("testIterator2-------------");
+        testIterator2(placesToVisit);
+        System.out.println("testIterator3-------------");
+        testIterator3(placesToVisit);
 
+        System.out.println("-------------");
         System.out.println(placesToVisit);
     }
 
@@ -109,7 +116,7 @@ public class Main {
             System.out.println("--> From: " + previousTown + " to " + string);
             previousTown = string;
         }
-                System.out.println("Trip ends at: " + list.getLast());
+        System.out.println("Trip ends at: " + list.getLast());
     }
 
     public static void printItinerary3(LinkedList<String> list) {
@@ -124,7 +131,44 @@ public class Main {
         System.out.println("Trip ends at: " + list.getLast());
     }
 
-    private static void testIterator() {
-        
+    private static void testIterator(LinkedList<String> list) {
+        var iterator = list.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+        System.out.println(list);
     }
+
+    private static void testIterator2(LinkedList<String> list) {
+        var iterator = list.iterator();
+        while (iterator.hasNext()) {
+            if (iterator.next().equals("Darein")) {
+                iterator.remove(); // wichtig! list.remove - error
+            }
+        }
+        System.out.println(list);
+    }
+
+    private static void testIterator3(LinkedList<String> list) {
+        System.out.println();
+        System.out.println(list);
+        System.out.println("listIterator hasNext()");
+        var iterator = list.listIterator();
+        while (iterator.hasNext()) {
+            String i = iterator.next();
+            System.out.println("* " + i);
+            if (i.equals("Paris")) {
+                iterator.add("Some Lake");
+            }
+        }
+        System.out.println(list);
+        System.out.println();
+        System.out.println("hasPrevious()\n");
+        while (iterator.hasPrevious()) {
+            System.out.println("- " + iterator.previous());
+        }
+        System.out.println(list);
+    }
+
+
 }
