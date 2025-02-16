@@ -34,15 +34,42 @@ public class TaskEx {
         printMessage();
 
         while (!quitLoop) {
+            if (!iterator.hasPrevious()) {
+                System.out.println("Originating: " + iterator.next());
+                forward = true;
+            }
+            if (!iterator.hasNext()) {
+                System.out.println("Final: " + iterator.previous());
+                forward = false;
+            }
+
             System.out.println("Enter value: ");
             String menuItem = scanner.nextLine().toLowerCase().substring(0, 1);
 
             switch (menuItem) {
                 case "f" -> {
                     System.out.println("User want to go forward");
+                    if (!forward) { // reverse direction
+                        forward = true;
+                        if (iterator.hasNext()) {
+                            iterator.next(); // Adjust position forward
+                        }
+                    }
+                    if (iterator.hasNext()) {
+                        System.out.println(iterator.next());
+                    }
                 }
                 case "b" -> {
                     System.out.println("User want to go backrwards");
+                    if (forward) { // reverse direction
+                        forward = false;
+                        if (iterator.hasPrevious()) {
+                            iterator.previous(); // Adjust position forward
+                        }
+                    }
+                    if (iterator.hasPrevious()) {
+                        System.out.println(iterator.previous());
+                    }
                 }
                 case "m" -> {
                     printMessage();
@@ -70,8 +97,7 @@ public class TaskEx {
             }
 
         }
-//        else System.out.println("added : " + place);
-
+        
         int matchIndex = 0;
         for (var distance : list) {
             if (place.distance() < distance.distance()) {
