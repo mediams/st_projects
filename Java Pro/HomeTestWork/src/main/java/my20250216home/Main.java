@@ -12,9 +12,11 @@ public class Main {
         System.out.println(placesToVisit);
 
         addMoreElements(placesToVisit);
-        System.out.println(placesToVisit);
 
         removeElements(placesToVisit);
+
+        gettingElements(placesToVisit);
+        System.out.println(placesToVisit);
     }
 
     private static void addMoreElements(LinkedList<String> list) {
@@ -66,7 +68,12 @@ public class Main {
         String p4 = list.pollFirst(); // removes last element
         System.out.println(p4 + " was removed");
         System.out.println(list);
+    }
 
+    private static void gettingElements(LinkedList<String> list) {
+        System.out.println("Retrieved Element = " + list.get(1));
 
+        System.out.println("First element: " + list.getFirst());
+        System.out.println("Last Element: " + list.getLast());
     }
 }
