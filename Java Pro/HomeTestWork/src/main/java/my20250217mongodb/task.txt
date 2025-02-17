@@ -1,0 +1,11 @@
+db.students.updateOne(
+   { _id: "10" },
+   { $pull: { courses: { title: "Engineering" } } }
+)
+
+db.students.updateOne(
+   { _id: "9" },
+   { $pop: { attendance: -1 } }
+)
+
+db.students.countDocuments({ "courses.title": "History" })
