@@ -34,5 +34,12 @@ public class TownsTasksEx {
             indexMatcher++;
         }
         towns.add(town);
+
+//        int index = Collections.binarySearch(list, town, Comparator.comparingInt(Town::distance));
+//        if (index < 0) {
+//            index = -(index + 1); // Получаем правильную позицию для вставки
+//        }
+//        list.add(index, town);
+//        Этот метод работает за O(log N) благодаря бинарному поиску, в отличие от линейного поиска O(N) в обоих ваших методах.
     }
 }
