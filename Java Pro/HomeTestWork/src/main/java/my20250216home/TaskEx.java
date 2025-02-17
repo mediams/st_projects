@@ -97,7 +97,7 @@ public class TaskEx {
             }
 
         }
-        
+
         int matchIndex = 0;
         for (var distance : list) {
             if (place.distance() < distance.distance()) {
