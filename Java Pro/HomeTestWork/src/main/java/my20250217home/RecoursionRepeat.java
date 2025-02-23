@@ -5,6 +5,7 @@ public class RecoursionRepeat {
         System.out.println(sumOfNNumber(5));
         System.out.println(miltiOfNNumber(5));
         reverseNummer(123);
+        System.out.println("\n" + linearSearch(new int[]{1, 2, 3, 4, 5}, 4));
     }
 
     private static int sumOfNNumber(int n) {
@@ -28,5 +29,14 @@ public class RecoursionRepeat {
         }
         System.out.print(n % 10);
         reverseNummer(n / 10);
+    }
+
+    private static int linearSearch(int [] array, int n) {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == n) {
+                return i;
+            }
+        }
+        return -1;
     }
 }
