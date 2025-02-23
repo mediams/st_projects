@@ -5,7 +5,6 @@ public class RecoursionRepeat {
         System.out.println(sumOfNNumber(5));
         System.out.println(miltiOfNNumber(5));
         reverseNummer(123);
-
     }
 
     private static int sumOfNNumber(int n) {
