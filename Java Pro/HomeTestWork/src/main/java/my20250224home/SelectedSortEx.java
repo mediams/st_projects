@@ -8,6 +8,10 @@ public class SelectedSortEx {
         int[] array = {2, 3, 1, 9, 7, 8, 4, 6};
 
         System.out.println(Arrays.toString(selectSort(array)));
+
+        for (int i : selectSort(array)) {
+            System.out.print(i + " ");
+        }
     }
 
     private static int[] selectSort(int[] array) {
