@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class SelectedSortEx {
 
     public static void main(String[] args) {
-        int[] array = {2, 3, 1, 9, 7, 8, 4, 6};
+        int[] array = {2, 3, 1, 9, 7, 8, 4, 6, 5};
 
         System.out.println(Arrays.toString(selectSort(array)));
 
@@ -18,7 +18,7 @@ public class SelectedSortEx {
         for (int i = 0; i < array.length - 1; i++) {
             int minIndex = i;
             for (int j = i + 1; j < array.length; j++) {
-                if (array[minIndex] > array[j]) {
+                if (array[i] > array[j]) {
                     minIndex = j;
                 }
             }
