@@ -1,4 +1,4 @@
-package my20250225home;
+package my20250225home.repeat;
 
 public class BinarySearch {
     public static void main(String[] args) {
