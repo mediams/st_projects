@@ -30,7 +30,7 @@ public class Main {
         System.out.println("-----------------------------------------");
 
         groceryItems.add(1, new GroceryItem("Cola")); // add
-        groceryItems.addFirst(new GroceryItem("Kuchen")); // addFirst
+        groceryItems.add(new GroceryItem("Kuchen")); // addFirst
         groceryItems.remove(3); //remove
         System.out.println(groceryItems);
     }
