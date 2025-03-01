@@ -1,9 +1,9 @@
 package _projects2024_12.my20241205home.my20241211homeMongoDB;
 
-import com.mongodb.MongoClientSettings;
-import com.mongodb.client.MongoClient;
-import com.mongodb.client.MongoClients;
-import com.mongodb.client.MongoDatabase;
+//import com.mongodb.MongoClientSettings;
+//import com.mongodb.client.MongoClient;
+//import com.mongodb.client.MongoClients;
+//import com.mongodb.client.MongoDatabase;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -30,11 +30,11 @@ public class MongoDBConnection {
 
     private static final String CONNECTION_STRING = getStringToConnect();
 
-    public static MongoDatabase connectToDatabase(String databaseName) {
-        MongoClient client = MongoClients.create(MongoClientSettings.builder()
-                .applyConnectionString(new com.mongodb.ConnectionString(CONNECTION_STRING))
-                .build());
-        return client.getDatabase(databaseName);
-    }
+//    public static MongoDatabase connectToDatabase(String databaseName) {
+//        MongoClient client = MongoClients.create(MongoClientSettings.builder()
+//                .applyConnectionString(new com.mongodb.ConnectionString(CONNECTION_STRING))
+//                .build());
+//        return client.getDatabase(databaseName);
+//    }
 }
 
