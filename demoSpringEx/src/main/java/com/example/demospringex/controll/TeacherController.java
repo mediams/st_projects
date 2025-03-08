@@ -1,10 +1,8 @@
 package com.example.demospringex.controll;
 
 import com.example.demospringex.entity.Teacher;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +36,21 @@ public class TeacherController {
     public Teacher getTeacher(@RequestParam int id,
                               @RequestParam String name) {
         return new Teacher(id, name);
+    }
+
+    @PostMapping("/teacher/create")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Teacher createTeacher(@RequestBody Teacher teacher) {
+        System.out.println(teacher.getId());
+        System.out.println(teacher.getName());
+        return teacher;
+    }
+
+    @PutMapping("/teacher/{id}/update")
+    public Teacher updateTeacher(@RequestBody Teacher teacher,@PathVariable("id") int id) {
+        System.out.println(teacher.getId());
+        System.out.println(teacher.getName());
+        return teacher;
     }
 
 }
