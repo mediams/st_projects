@@ -2,6 +2,7 @@ package com.example.demospringex.controll;
 
 import com.example.demospringex.entity.Teacher;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -11,9 +12,12 @@ import java.util.List;
 public class TeacherController {
 
     @GetMapping("/teacher")
-    public Teacher getTeacher() {
+    public ResponseEntity<Teacher> getTeacher() {
         Teacher teacher = new Teacher(1, "John");
-        return teacher;
+//        return new ResponseEntity<>(teacher, HttpStatus.OK);
+//        return ResponseEntity.ok(teacher);
+        return ResponseEntity.ok()
+                .header("custom-header", "yevhen").body(teacher);
     }
 
     @GetMapping("/teachers")
