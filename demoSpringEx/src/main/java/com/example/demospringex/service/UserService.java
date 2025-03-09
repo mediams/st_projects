@@ -1,11 +1,17 @@
 package com.example.demospringex.service;
 
 import com.example.demospringex.entity.User;
-import org.springframework.stereotype.Service;
 
-@Service
-public class UserService {
-    public void addUser(User bean) {
-        System.out.println("UserService addUser");
-    }
+import java.util.List;
+
+public interface UserService {
+    User createUser(User user);
+
+    User findById(Long id);
+
+    List<User> getAllUsers();
+
+    User update(User user);
+
+    void deleteUser(Long id);
 }
