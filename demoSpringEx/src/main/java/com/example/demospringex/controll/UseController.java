@@ -1,5 +1,6 @@
 package com.example.demospringex.controll;
 
+import com.example.demospringex.dto.UserDto;
 import com.example.demospringex.entity.User;
 import com.example.demospringex.service.UserService;
 import org.springframework.http.HttpStatus;
@@ -15,24 +16,24 @@ public class UseController {
     private UserService service;
 
     @PostMapping("/create")
-    public ResponseEntity<User> createUser (@RequestBody User user) {
-        User savedUser = service.createUser(user);
+    public ResponseEntity<UserDto> createUser (@RequestBody UserDto user) {
+        UserDto savedUser = service.createUser(user);
         return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
 //        return ResponseEntity.ok(user);
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<User> getUserById(@PathVariable Long id) {
+    public ResponseEntity<UserDto> getUserById(@PathVariable Long id) {
         return new ResponseEntity<>(service.findById(id), HttpStatus.OK);
     }
 
     @GetMapping("all")
-    public ResponseEntity<List<User>> getAllUsers() {
+    public ResponseEntity<List<UserDto>> getAllUsers() {
         return new ResponseEntity<>(service.getAllUsers(), HttpStatus.OK);
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<User> updateUser(@RequestBody User user,@PathVariable Long id) {
+    public ResponseEntity<UserDto> updateUser(@RequestBody UserDto user,@PathVariable Long id) {
         return new ResponseEntity<>(service.update(user), HttpStatus.OK);
     }
 

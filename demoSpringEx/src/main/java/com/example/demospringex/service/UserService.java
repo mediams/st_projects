@@ -1,17 +1,18 @@
 package com.example.demospringex.service;
 
+import com.example.demospringex.dto.UserDto;
 import com.example.demospringex.entity.User;
 
 import java.util.List;
 
 public interface UserService {
-    User createUser(User user);
+    UserDto createUser(UserDto user);
 
-    User findById(Long id);
+    UserDto findById(Long id);
 
-    List<User> getAllUsers();
+    List<UserDto> getAllUsers();
 
-    User update(User user);
+    UserDto update(UserDto user);
 
     void deleteUser(Long id);
 }

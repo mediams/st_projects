@@ -1,6 +1,8 @@
 package com.example.demospringex.service.impl;
 
+import com.example.demospringex.dto.UserDto;
 import com.example.demospringex.entity.User;
+import com.example.demospringex.mapper.UserMapper;
 import com.example.demospringex.repo.UserRepository;
 import com.example.demospringex.service.UserService;
 import lombok.AllArgsConstructor;
@@ -8,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -16,27 +19,37 @@ public class UserServiceImpl implements UserService {
     private UserRepository repository;
 
     @Override
-    public User createUser(User user) {
-        return repository.save(user);
+    public UserDto createUser(UserDto userDto) {
+        // Convert UserDto into User JPA Entity
+        User user = UserMapper.mapToUser(userDto);
+        User saved = repository.save(user);
+
+        // Convert User JPA entity to UserDto
+        UserDto savedUserDto = UserMapper.mapToUserDto(user);
+        return savedUserDto;
     }
 
     @Override
-    public User findById(Long id) {
+    public UserDto findById(Long id) {
         Optional<User> optionalUser = repository.findById(id);
-        return optionalUser.get();
+        User user = optionalUser.get();
+        return UserMapper.mapToUserDto(user);
     }
 
     @Override
-    public List<User> getAllUsers() {
-        return repository.findAll();
+    public List<UserDto> getAllUsers() {
+        List<User> users = repository.findAll();
+        return users.stream().map(UserMapper::mapToUserDto)
+                .collect(Collectors.toList());
     }
 
     @Override
-    public User update(User user) {
+    public UserDto update(UserDto user) {
         User existingUser = repository.findById(user.getId()).get();
         existingUser.setName(user.getName());
         existingUser.setEmail(user.getEmail());
-        return repository.save(existingUser);
+        User saved = repository.save(existingUser);
+        return UserMapper.mapToUserDto(saved);
     }
 
     @Override
